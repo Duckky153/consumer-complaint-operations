@@ -2,13 +2,17 @@
 
 ## Release state
 
-**Source candidate:** local commit `38aa385`, fully verified  
-**Public repository:** publication approved; URL verification in progress  
-**GitHub Pages:** deployment approved; URL verification in progress
+**Source candidate:** local commit `38aa385`, fully verified
+
+**Published dashboard content commit:** `6c6918779484ae34826cde410cd2ffab360e3cef`
+
+**Public repository:** https://github.com/Duckky153/consumer-complaint-operations
+
+**GitHub Pages:** https://duckky153.github.io/consumer-complaint-operations/
 
 Publication was explicitly approved after the local quality and browser gates
-passed. The public history excludes private interview and résumé-preparation
-material.
+passed. The public history excludes operator instructions, private interview
+preparation, and résumé-preparation material.
 
 ## Completion audit against the requested delivery
 
@@ -28,13 +32,13 @@ material.
 | Security and privacy considerations | Field allowlist, minimized public data asset, CSP, vendored dependency, and `delivery/security-privacy.md` | Local pass |
 | AI-assistance disclosure | `delivery/ai-assistance.md` | Local pass |
 | Two-minute demo | `delivery/demo-script.md` | Local pass |
-| Privacy-clean public history | Operator instructions, private interview preparation, and résumé preparation are absent | Prepared; verification pending |
+| Privacy-clean public history | Operator instructions, private interview preparation, and résumé preparation are absent | Public pass |
 | Python/pandas/SQLite/pytest/HTML/CSS/JS/Chart.js | Runtime, source, tests, assets, and version evidence | Local pass |
-| GitHub Actions and Pages | CI plus manual deployment workflow; deployment depends on a fresh quality job | Prepared; verification pending |
-| Public repository and live dashboard | Owner approval is recorded; push, CI, Pages, and URL checks remain | In progress |
+| GitHub Actions and Pages | CI plus manual deployment workflow; deployment depends on a fresh quality job | Public pass |
+| Public repository and live dashboard | Repository, CI, Pages, desktop, mobile, and filter checks are recorded below | Public pass |
 
-The local scope is complete. Publication evidence will be recorded only after
-the repository, CI, deployment, and live dashboard have been checked.
+The local and public scopes are complete. The published artifact is an
+independent portfolio project, not a production complaint-management system.
 
 ## Source evidence
 
@@ -177,10 +181,21 @@ Reviewed screenshots:
 - `evidence/screenshots/tablet-768.jpg`
 - `evidence/screenshots/mobile-360.jpg`
 
-## Publication evidence pending
+## Public verification evidence
 
-The delivery record still requires:
-
-1. the public repository URL and commit SHA;
-2. the successful GitHub Actions CI run;
-3. the verified GitHub Pages URL at desktop and mobile widths.
+- Repository: https://github.com/Duckky153/consumer-complaint-operations
+- Dashboard content commit:
+  `6c6918779484ae34826cde410cd2ffab360e3cef`
+- Push quality gate:
+  https://github.com/Duckky153/consumer-complaint-operations/actions/runs/30416782413
+  — passed Python 3.12 tests and both JavaScript syntax checks.
+- Pages deployment:
+  https://github.com/Duckky153/consumer-complaint-operations/actions/runs/30416816460
+  — passed a fresh quality job and deployed successfully.
+- Live dashboard:
+  https://duckky153.github.io/consumer-complaint-operations/
+- Live Chrome verification: 84,194 default rows; exact 281-row January +
+  checking account + managing an account + Bank of America slice; reset;
+  populated filters; four non-zero canvases; complete fallback tables; 360 and
+  1440 CSS-pixel layouts; zero page overflow; and zero site-owned console
+  errors or warnings.

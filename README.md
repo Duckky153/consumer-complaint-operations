@@ -13,6 +13,10 @@ limitations, and handoff—is part of the product.
 > companies represented in the data did not commission, sponsor, review, or
 > endorse it.
 
+**[Open the live dashboard](https://duckky153.github.io/consumer-complaint-operations/)**
+·
+**[View the quality workflow](https://github.com/Duckky153/consumer-complaint-operations/actions/workflows/ci.yml)**
+
 ![Consumer Complaint Operations Dashboard](evidence/screenshots/desktop-1440.jpg)
 
 ## Business decision
