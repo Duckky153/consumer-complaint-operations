@@ -1,0 +1,29 @@
+[build-system]
+requires = ["setuptools>=75"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "consumer-complaint-operations"
+version = "1.0.0"
+description = "A reproducible CFPB consumer complaint operations dashboard."
+readme = "README.md"
+requires-python = ">=3.12,<3.13"
+dependencies = [
+  "pandas==3.0.5",
+]
+
+[project.optional-dependencies]
+dev = [
+  "pytest==9.1.1",
+]
+
+[tool.setuptools.packages.find]
+where = ["src"]
+
+[tool.pytest.ini_options]
+addopts = "-ra --strict-markers"
+testpaths = ["tests"]
+markers = [
+  "requirement(id): maps a test to a documented requirement",
+]
+

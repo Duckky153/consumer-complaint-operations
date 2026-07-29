@@ -1,0 +1,21 @@
+{
+  "source": {
+    "name": "CFPB Consumer Complaint Database API",
+    "endpoint": "https://www.consumerfinance.gov/data-research/consumer-complaints/search/api/v1/",
+    "documentation": "https://cfpb.github.io/ccdb5-api/documentation/",
+    "database_page": "https://www.consumerfinance.gov/data-research/consumer-complaints/",
+    "license": "CC0"
+  },
+  "scope": {
+    "date_received_min": "2025-01-01",
+    "date_received_max_exclusive": "2026-01-01",
+    "product": "Checking or savings account"
+  },
+  "paths": {
+    "sanitized_csv": "data/raw/complaints_2025_checking_savings.csv",
+    "sqlite": "data/processed/complaints.db",
+    "quality_report": "evidence/data-quality-report.json",
+    "source_manifest": "evidence/source-manifest.json",
+    "dashboard_data": "docs/dashboard-data.js"
+  }
+}
