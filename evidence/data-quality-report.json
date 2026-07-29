@@ -1,0 +1,95 @@
+{
+  "column_count": 14,
+  "completeness": {
+    "company": {
+      "null_count": 0,
+      "null_rate": 0.0
+    },
+    "company_response": {
+      "null_count": 0,
+      "null_rate": 0.0
+    },
+    "complaint_id": {
+      "null_count": 0,
+      "null_rate": 0.0
+    },
+    "date_received": {
+      "null_count": 0,
+      "null_rate": 0.0
+    },
+    "date_sent_to_company": {
+      "null_count": 0,
+      "null_rate": 0.0
+    },
+    "issue": {
+      "null_count": 0,
+      "null_rate": 0.0
+    },
+    "product": {
+      "null_count": 0,
+      "null_rate": 0.0
+    },
+    "received_month": {
+      "null_count": 0,
+      "null_rate": 0.0
+    },
+    "route_hours": {
+      "null_count": 0,
+      "null_rate": 0.0
+    },
+    "sub_issue": {
+      "null_count": 51,
+      "null_rate": 0.000606
+    },
+    "sub_product": {
+      "null_count": 0,
+      "null_rate": 0.0
+    },
+    "timely": {
+      "null_count": 0,
+      "null_rate": 0.0
+    }
+  },
+  "critical_checks": {
+    "duplicate_complaint_ids": 0,
+    "invalid_timely_values": 0,
+    "negative_route_hours": 0,
+    "outside_date_window": 0,
+    "required_nulls": 0,
+    "status": "passed",
+    "wrong_product": 0
+  },
+  "dataset_grain": "one published CFPB complaint per complaint_id",
+  "date_received_max": "2025-12-31T23:58:31+00:00",
+  "date_received_min": "2025-01-01T00:10:30+00:00",
+  "distinct_companies": 471,
+  "distinct_issues": 11,
+  "interpretation": "The dataset is safe for the documented aggregate use, with the reported temporal warning kept visible.",
+  "row_count": 84194,
+  "status": "passed_with_warnings",
+  "temporal_profile": {
+    "anomaly_rule": "month count greater than 2x the calendar-year monthly median",
+    "median_monthly_complaints": 6108.5,
+    "monthly_complaint_counts": {
+      "2025-01": 18367,
+      "2025-02": 5452,
+      "2025-03": 5070,
+      "2025-04": 5229,
+      "2025-05": 5394,
+      "2025-06": 5557,
+      "2025-07": 6403,
+      "2025-08": 6505,
+      "2025-09": 6141,
+      "2025-10": 6308,
+      "2025-11": 6076,
+      "2025-12": 7692
+    }
+  },
+  "warnings": {
+    "missing_date_sent_to_company": 0,
+    "missing_issue": 0,
+    "monthly_volume_anomalies": {
+      "2025-01": 18367
+    }
+  }
+}

@@ -1,0 +1,13 @@
+Date received,Product,Sub-product,Issue,Sub-issue,Company,State,Tags,Submitted via,Date sent to company,Company response to consumer,Timely response?,Complaint ID
+2025-01-05T10:00:00.000Z,Checking or savings account,Checking account,Managing an account,Deposits and withdrawals,Example Bank A,VA,,Web,2025-01-05T12:00:00.000Z,Closed with explanation,Yes,1001
+2025-01-12T08:00:00.000Z,Checking or savings account,Checking account,Closing an account,Funds not received from closed account,Example Bank A,MD,,Phone,2025-01-13T14:00:00.000Z,Closed with monetary relief,No,1002
+2025-02-02T09:00:00.000Z,Checking or savings account,Savings account,Managing an account,Problem using a debit or ATM card,Example Bank B,DC,,Web,2025-02-02T10:00:00.000Z,Closed with non-monetary relief,Yes,1003
+2025-02-18T11:00:00.000Z,Checking or savings account,Checking account,Problem caused by your funds being low,Overdrafts and overdraft fees,Example Bank B,VA,,Web,2025-02-19T07:00:00.000Z,Closed with monetary relief,Yes,1004
+2025-03-04T15:00:00.000Z,Checking or savings account,CD (Certificate of Deposit),Opening an account,Unable to open an account,Example Bank C,NY,,Referral,2025-03-06T15:00:00.000Z,Closed with explanation,Yes,1005
+2025-04-09T10:00:00.000Z,Checking or savings account,Other banking product or service,Managing an account,Problem accessing account,Example Bank C,CA,,Web,2025-04-09T15:00:00.000Z,Closed with explanation,No,1006
+2025-05-16T13:00:00.000Z,Checking or savings account,Checking account,Problem with a lender or other company charging your account,Transaction was not authorized,Example Bank A,TX,,Web,2025-05-16T16:00:00.000Z,Closed with non-monetary relief,Yes,1007
+2025-06-21T07:00:00.000Z,Checking or savings account,Savings account,Closing an account,Can't close your account,Example Bank B,FL,,Web,2025-06-21T11:00:00.000Z,Closed with explanation,Yes,1008
+2025-07-08T09:00:00.000Z,Checking or savings account,Checking account,Managing an account,Deposits and withdrawals,Example Bank A,OH,,Web,2025-07-08T10:00:00.000Z,Closed with explanation,Yes,1009
+2025-08-14T14:00:00.000Z,Checking or savings account,Checking account,Managing an account,Deposits and withdrawals,Example Bank D,NC,,Web,2025-08-14T18:00:00.000Z,Closed with non-monetary relief,Yes,1010
+2025-09-24T12:00:00.000Z,Checking or savings account,Savings account,Problem caused by your funds being low,Overdrafts and overdraft fees,Example Bank B,GA,,Phone,2025-09-24T16:00:00.000Z,Closed with monetary relief,Yes,1011
+2025-12-30T08:00:00.000Z,Checking or savings account,Checking account,Opening an account,Didn't receive terms that were advertised,Example Bank C,VA,,Web,2025-12-30T10:00:00.000Z,Closed with explanation,Yes,1012

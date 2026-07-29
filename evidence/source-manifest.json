@@ -1,0 +1,35 @@
+{
+  "excluded_public_fields": [
+    "Consumer complaint narrative",
+    "ZIP code",
+    "Company public response",
+    "Company response to consumer (raw category)",
+    "Date sent to company / route hours",
+    "State",
+    "Tags",
+    "Submitted via"
+  ],
+  "generated_at": "2026-07-29T00:49:15+00:00",
+  "quality_status": "passed_with_warnings",
+  "row_count": 84194,
+  "sanitized_columns": [
+    "date_received",
+    "product",
+    "sub_product",
+    "issue",
+    "sub_issue",
+    "company",
+    "date_sent_to_company",
+    "company_response",
+    "timely",
+    "complaint_id"
+  ],
+  "sanitized_csv_sha256": "964912efdcfe70f2376591d40781f64832e879c73ff7d629fdadb6115541053b",
+  "scope": {
+    "date_received_max_exclusive": "2026-01-01",
+    "date_received_min": "2025-01-01",
+    "product": "Checking or savings account"
+  },
+  "source_endpoint": "https://www.consumerfinance.gov/data-research/consumer-complaints/search/api/v1/",
+  "source_request": "https://www.consumerfinance.gov/data-research/consumer-complaints/search/api/v1/?date_received_min=2025-01-01&date_received_max=2025-12-31&product=Checking+or+savings+account&field=all&format=csv"
+}

@@ -1,0 +1,402 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta
+      http-equiv="Content-Security-Policy"
+      content="default-src 'self'; script-src 'self'; style-src 'self'; img-src 'self' data:; font-src 'self'; connect-src 'none'; object-src 'none'; base-uri 'none'; form-action 'none'"
+    >
+    <meta
+      name="description"
+      content="An independent operations analysis of 2025 CFPB checking and savings account complaints."
+    >
+    <title>Consumer Complaint Operations Dashboard</title>
+    <link rel="icon" href="./favicon.svg" type="image/svg+xml">
+    <link rel="stylesheet" href="./styles.css?v=20260728-6">
+    <script src="./dashboard-data.js" defer></script>
+    <script src="./vendor/chart.umd.min.js" defer></script>
+    <script src="./app.js?v=20260728-7" defer></script>
+  </head>
+  <body>
+    <a class="skip-link" href="#main-content">Skip to dashboard</a>
+
+    <header class="masthead">
+      <div class="masthead__inner">
+        <p class="kicker">Consumer Complaint Operations</p>
+        <p class="masthead__mark" id="scope-snapshot">2025 CFPB public-data snapshot</p>
+      </div>
+    </header>
+
+    <main id="main-content">
+      <section class="hero" aria-labelledby="page-title">
+        <div class="hero__title">
+          <p class="eyebrow">Operations analytics</p>
+          <h1 id="page-title">Consumer Complaint Operations Dashboard</h1>
+          <p class="hero__summary">
+            An external complaint-signal diagnostic covering every published
+            CFPB checking or savings complaint received in 2025. Use it to
+            identify investigation hypotheses that require validation with
+            internal operating data.
+          </p>
+        </div>
+        <aside class="decision-note" aria-labelledby="decision-title">
+          <p class="decision-note__label" id="decision-title">Discovery signal</p>
+          <p class="decision-note__finding" id="decision-finding">Loading verified data…</p>
+          <p class="decision-note__action" id="decision-action"></p>
+        </aside>
+      </section>
+
+      <section class="scope-line" aria-label="Dataset scope">
+        <div>
+          <span class="scope-line__label">Population</span>
+          <strong id="scope-population">Loading</strong>
+        </div>
+        <div>
+          <span class="scope-line__label">Period</span>
+          <strong id="scope-period">Jan–Dec 2025</strong>
+        </div>
+        <div>
+          <span class="scope-line__label">Product</span>
+          <strong>Checking or savings account</strong>
+        </div>
+        <div>
+          <span class="scope-line__label">Source</span>
+          <a
+            href="https://www.consumerfinance.gov/data-research/consumer-complaints/"
+            rel="noopener noreferrer"
+          >CFPB public database</a>
+        </div>
+      </section>
+
+      <section class="filter-panel" aria-labelledby="filter-title">
+        <div class="filter-panel__heading">
+          <div>
+            <p class="section-number">Filters</p>
+            <h2 id="filter-title">Focus the operating view</h2>
+          </div>
+          <p id="filter-status" class="filter-status" role="status" aria-live="polite">
+            Loading records…
+          </p>
+        </div>
+        <form id="filters" class="filters">
+          <label>
+            <span>Month</span>
+            <select id="month-filter" name="month">
+              <option value="">All months</option>
+            </select>
+          </label>
+          <label>
+            <span>Account type</span>
+            <select id="subproduct-filter" name="subproduct">
+              <option value="">All account types</option>
+            </select>
+          </label>
+          <label>
+            <span>Issue</span>
+            <select id="issue-filter" name="issue">
+              <option value="">All issues</option>
+            </select>
+          </label>
+          <label>
+            <span>Company (100+ complaints)</span>
+            <select id="company-filter" name="company">
+              <option value="">All companies</option>
+            </select>
+          </label>
+          <button type="reset">Reset filters</button>
+        </form>
+      </section>
+
+      <section class="metric-strip" aria-label="Operational summary metrics">
+        <article class="metric-card">
+          <p class="metric-card__label">Published complaints</p>
+          <p class="metric-card__value" id="metric-total">—</p>
+          <p class="metric-card__context" id="metric-total-context">Selected source rows</p>
+          <p class="metric-card__definition">One row per complaint in the selected view</p>
+        </article>
+        <article class="metric-card">
+          <p class="metric-card__label">Response exceptions</p>
+          <p class="metric-card__value" id="metric-exceptions">—</p>
+          <p class="metric-card__context" id="metric-exceptions-context">—</p>
+          <p class="metric-card__definition">Rows CFPB marked not timely</p>
+        </article>
+        <article class="metric-card">
+          <p class="metric-card__label">Closed with reported relief</p>
+          <p class="metric-card__value" id="metric-relief">—</p>
+          <p class="metric-card__context" id="metric-relief-context">—</p>
+          <p class="metric-card__definition">Non-directional company response category</p>
+        </article>
+        <article class="metric-card">
+          <p class="metric-card__label" id="metric-concentration-label">Leading issue share</p>
+          <p class="metric-card__value" id="metric-concentration">—</p>
+          <p class="metric-card__context" id="metric-concentration-context">—</p>
+          <p class="metric-card__definition" id="metric-concentration-definition">
+            Largest share of published complaint volume
+          </p>
+        </article>
+      </section>
+
+      <section class="dashboard-section" aria-labelledby="movement-title">
+        <div class="section-heading">
+          <p class="section-number">Trends</p>
+          <div>
+            <h2 id="movement-title">Published volume and response exceptions</h2>
+            <p>External signals for discovery; not an internal backlog, staffing, or service-level view.</p>
+          </div>
+        </div>
+        <div class="chart-grid chart-grid--two">
+          <article class="chart-card">
+            <div class="chart-card__heading">
+              <h3>Complaints received by month</h3>
+              <p>Count of published complaints by received month</p>
+            </div>
+            <p class="chart-signal" id="volume-signal">
+              Loading monthly-volume quality signal…
+            </p>
+            <div class="chart-frame">
+              <canvas
+                id="volume-chart"
+                role="img"
+                aria-label="Monthly complaint volume chart"
+              >Monthly complaint volumes are provided in the accessible table below.</canvas>
+            </div>
+            <details class="data-table-details">
+              <summary>View chart data</summary>
+              <div class="table-scroll">
+                <table id="volume-data-table">
+                  <thead><tr><th>Month</th><th>Complaints</th></tr></thead>
+                  <tbody></tbody>
+                </table>
+              </div>
+            </details>
+          </article>
+          <article class="chart-card">
+            <div class="chart-card__heading">
+              <h3>Not-timely response rate by month</h3>
+              <p>Exception count and share in CFPB’s published timely-response field</p>
+            </div>
+            <p class="chart-signal" id="exception-signal">
+              Loading response-exception context…
+            </p>
+            <div class="chart-frame">
+              <canvas
+                id="exception-chart"
+                role="img"
+                aria-label="Monthly not-timely company response rate chart"
+              >Monthly response exceptions are provided in the accessible table below.</canvas>
+            </div>
+            <details class="data-table-details">
+              <summary>View chart data</summary>
+              <div class="table-scroll">
+                <table id="exception-data-table">
+                  <thead><tr><th>Month</th><th>Not timely</th></tr></thead>
+                  <tbody></tbody>
+                </table>
+              </div>
+            </details>
+          </article>
+        </div>
+      </section>
+
+      <section class="dashboard-section" aria-labelledby="drivers-title">
+        <div class="section-heading">
+          <p class="section-number">Drivers</p>
+          <div>
+            <h2 id="drivers-title">Which signals deserve internal validation?</h2>
+            <p>Issue concentration identifies hypotheses; consumer-selected categories are not proven root causes.</p>
+          </div>
+        </div>
+        <div class="chart-grid chart-grid--drivers">
+          <article class="chart-card chart-card--wide">
+            <div class="chart-card__heading">
+              <h3 id="issue-chart-title">Leading complaint issues</h3>
+              <p id="issue-chart-subtitle">Published complaint concentration in the selected view</p>
+            </div>
+            <p class="chart-signal" id="issue-signal">
+              Loading issue-concentration context…
+            </p>
+            <div class="chart-frame chart-frame--tall">
+              <canvas
+                id="issue-chart"
+                role="img"
+                aria-label="Complaint volume by issue"
+              >Issue volumes are provided in the accessible table below.</canvas>
+            </div>
+            <details class="data-table-details">
+              <summary>View chart data</summary>
+              <div class="table-scroll">
+                <table id="issue-data-table">
+                  <thead><tr><th>Issue</th><th>Complaints</th></tr></thead>
+                  <tbody></tbody>
+                </table>
+              </div>
+            </details>
+          </article>
+          <article class="chart-card">
+            <div class="chart-card__heading">
+              <h3>Reported-relief share in high-volume issue details</h3>
+              <p>
+                Six highest-volume details; response mix, not performance
+              </p>
+            </div>
+            <p class="chart-signal" id="relief-signal">
+              Loading reported-relief context…
+            </p>
+            <div class="chart-frame chart-frame--tall">
+              <canvas
+                id="relief-chart"
+                role="img"
+                aria-label="Reported-relief share by high-volume issue detail"
+              >Reported-relief rates are provided in the accessible table below.</canvas>
+            </div>
+            <details class="data-table-details">
+              <summary>View chart data</summary>
+              <div class="table-scroll">
+                <table id="relief-data-table">
+                  <thead><tr><th>Issue detail</th><th>Reported relief</th></tr></thead>
+                  <tbody></tbody>
+                </table>
+              </div>
+            </details>
+          </article>
+        </div>
+      </section>
+
+      <section class="dashboard-section" aria-labelledby="focus-title">
+        <div class="section-heading">
+          <p class="section-number">Detail</p>
+          <div>
+            <h2 id="focus-title">Investigation evidence</h2>
+            <p>Compare issue details and response exceptions before requesting internal evidence.</p>
+          </div>
+        </div>
+        <div class="table-grid">
+          <article class="table-card">
+            <div class="chart-card__heading">
+              <h3>Highest-volume issue details</h3>
+              <p>Published volume and non-directional response signals</p>
+            </div>
+            <div class="table-scroll">
+              <table id="issue-detail-table">
+                <thead>
+                  <tr>
+                    <th>Issue detail</th>
+                    <th>Complaints</th>
+                    <th>Share</th>
+                    <th>Not timely</th>
+                    <th>Reported relief</th>
+                  </tr>
+                </thead>
+                <tbody></tbody>
+              </table>
+            </div>
+          </article>
+          <article class="table-card">
+            <div class="chart-card__heading">
+              <h3>Monthly response-exception detail</h3>
+              <p>Exact exceptions and rates for the selected view</p>
+            </div>
+            <div class="table-scroll">
+              <table id="exception-detail-table">
+                <thead>
+                  <tr>
+                    <th>Month</th>
+                    <th>Complaints</th>
+                    <th>Not timely</th>
+                    <th>Exception rate</th>
+                    <th>Reported relief</th>
+                  </tr>
+                </thead>
+                <tbody></tbody>
+              </table>
+            </div>
+          </article>
+        </div>
+      </section>
+
+      <section class="executive-section" aria-labelledby="executive-title">
+        <div class="section-heading">
+          <p class="section-number">Before acting</p>
+          <div>
+            <h2 id="executive-title">Internal evidence required</h2>
+            <p>The public signal generates questions; internal data determines action.</p>
+          </div>
+        </div>
+        <div class="executive-grid executive-grid--two">
+          <article>
+            <p class="executive-grid__label">Validate the hypothesis</p>
+            <p>
+              Request transaction and account denominators, process step and
+              channel, repeat contacts, reopens, resolution time, consumer
+              feedback, and policy-exception evidence.
+            </p>
+          </article>
+          <article>
+            <p class="executive-grid__label">Decision guardrail</p>
+            <p>
+              Do not interpret complaint counts as defect rates or company
+              rankings, or use them alone for staffing or policy changes. The
+              dataset lacks customer volume, market share, complaint
+              propensity, case inventory, and controllability evidence.
+            </p>
+          </article>
+        </div>
+      </section>
+
+      <section class="method-section" aria-labelledby="method-title">
+        <div>
+          <p class="section-number">Methodology</p>
+          <h2 id="method-title">Method and limits</h2>
+        </div>
+        <div class="method-grid">
+          <div>
+            <h3>What is included</h3>
+            <p>
+              The complete published CFPB population for the selected product
+              and period. Metrics are produced in SQLite and reconciled to the
+              same minimized, encoded record-level rows used by the filters.
+            </p>
+          </div>
+          <div>
+            <h3>What is excluded</h3>
+            <p>
+              Consumer narratives, ZIP codes, complaint IDs, and company public
+              response prose never reach the public dashboard. State, tags,
+              and submission channel are not ingested. No individual complaint
+              is displayed.
+            </p>
+          </div>
+          <div>
+            <h3>What cannot be concluded</h3>
+            <p>
+              CFPB complaints are not a statistical sample of consumer harm.
+              Counts do not control for company size, geography, product usage,
+              or differences in the likelihood of filing a complaint. Issue
+              labels are intake categories, not validated process causes.
+            </p>
+          </div>
+        </div>
+        <p class="freshness" id="freshness">Loading build provenance…</p>
+      </section>
+    </main>
+
+    <footer>
+      <div>
+        <p>Consumer Complaint Operations Dashboard</p>
+        <p>Independent portfolio project · No organizational endorsement implied</p>
+      </div>
+      <a
+        href="https://www.consumerfinance.gov/data-research/consumer-complaints/"
+        rel="noopener noreferrer"
+      >Source and CFPB caveats</a>
+    </footer>
+
+    <noscript>
+      <p class="noscript">
+        JavaScript is required for the dashboard filters and charts. The source,
+        methodology, and metric definitions remain documented in the project repository.
+      </p>
+    </noscript>
+  </body>
+</html>

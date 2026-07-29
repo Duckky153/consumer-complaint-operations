@@ -1,0 +1,107 @@
+{
+  "checks": [
+    {
+      "evidence": "passed_with_warnings",
+      "name": "quality_status",
+      "passed": true
+    },
+    {
+      "evidence": "{\"duplicate_complaint_ids\": 0, \"invalid_timely_values\": 0, \"negative_route_hours\": 0, \"outside_date_window\": 0, \"required_nulls\": 0, \"status\": \"passed\", \"wrong_product\": 0}",
+      "name": "critical_data_checks",
+      "passed": true
+    },
+    {
+      "evidence": "manifest=84194, quality=84194, dashboard=84194, sqlite=84194",
+      "name": "row_count_reconciliation",
+      "passed": true
+    },
+    {
+      "evidence": "(84194, 99.28, 609, 0.72, 15.41, 12977)",
+      "name": "sql_overview_reconciliation",
+      "passed": true
+    },
+    {
+      "evidence": "964912efdcfe70f2376591d40781f64832e879c73ff7d629fdadb6115541053b",
+      "name": "source_hash",
+      "passed": true
+    },
+    {
+      "evidence": "{\"date_received_max_exclusive\": \"2026-01-01\", \"date_received_min\": \"2025-01-01\", \"product\": \"Checking or savings account\"}",
+      "name": "source_scope",
+      "passed": true
+    },
+    {
+      "evidence": "{\"2025-01\": 18367}",
+      "name": "temporal_warning_disclosed",
+      "passed": true
+    },
+    {
+      "evidence": "sanitized columns=['date_received', 'product', 'sub_product', 'issue', 'sub_issue', 'company', 'date_sent_to_company', 'company_response', 'timely', 'complaint_id']",
+      "name": "source_field_minimization",
+      "passed": true
+    },
+    {
+      "evidence": "48444a82d4edcb5bec0f1965faacdde18d9c17db3063d042abada2f705c9f54a",
+      "name": "chartjs_hash",
+      "passed": true
+    },
+    {
+      "evidence": "public columns=['company', 'has_relief', 'is_timely', 'issue', 'received_month', 'sub_issue', 'sub_product']",
+      "name": "public_field_minimization",
+      "passed": true
+    },
+    {
+      "evidence": "encoded_records=84194",
+      "name": "record_count_reconciliation",
+      "passed": true
+    },
+    {
+      "evidence": "{\"issue\": true, \"received_month\": true}",
+      "name": "chart_dimension_reconciliation",
+      "passed": true
+    },
+    {
+      "evidence": "{\"2025-01\": 0.21, \"2025-02\": 0.57, \"2025-03\": 0.51, \"2025-04\": 0.73, \"2025-05\": 0.63, \"2025-06\": 2.43, \"2025-07\": 1.36, \"2025-08\": 0.74, \"2025-09\": 0.64, \"2025-10\": 0.51, \"2025-11\": 0.77, \"2025-12\": 0.7}",
+      "name": "monthly_chart_rate_reconciliation",
+      "passed": true
+    },
+    {
+      "evidence": "{\"january_count\": 18367, \"residual\": 6923, \"top_pairs\": [[[\"NAVY FEDERAL CREDIT UNION\", \"Problem caused by your funds being low\"], 6970], [[\"CAPITAL ONE FINANCIAL CORPORATION\", \"Managing an account\"], 4474]]}",
+      "name": "january_driver_reconciliation",
+      "passed": true
+    },
+    {
+      "evidence": "issue filter is present and bound to the shared record set",
+      "name": "issue_filter_contract",
+      "passed": true
+    },
+    {
+      "evidence": "local scripts only; runtime connections disabled",
+      "name": "content_security_policy",
+      "passed": true
+    },
+    {
+      "evidence": "data asset loads before app.js; no fetch call requires an HTTP server",
+      "name": "direct_open_data_contract",
+      "passed": true
+    },
+    {
+      "evidence": "styles.css:12427, app.js:34386, chart.umd.min.js:208522, dashboard-data.js:1703265",
+      "name": "required_static_assets",
+      "passed": true
+    },
+    {
+      "evidence": "node --check passed",
+      "name": "javascript_syntax",
+      "passed": true
+    },
+    {
+      "evidence": "node --check passed",
+      "name": "dashboard_data_javascript_syntax",
+      "passed": true
+    }
+  ],
+  "failure_count": 0,
+  "status": "passed",
+  "verified_at": "2026-07-29T02:12:29+00:00"
+}
