@@ -67,3 +67,14 @@ def test_public_page_has_no_runtime_third_party_dependencies(
     assert "eval(" not in script
     assert (project_root / "docs" / "vendor" / "chart.umd.min.js").is_file()
     assert (project_root / "docs" / "vendor" / "Chart.js-LICENSE.md").is_file()
+
+
+@pytest.mark.requirement("R6")
+def test_public_page_links_to_the_project_source_code(project_root: Path) -> None:
+    html = (project_root / "docs" / "index.html").read_text(encoding="utf-8")
+    css = (project_root / "docs" / "styles.css").read_text(encoding="utf-8")
+
+    assert 'href="https://github.com/Duckky153/consumer-complaint-operations"' in html
+    assert "View source code on GitHub" in html
+    assert 'class="github-mark"' in html
+    assert ".footer-source-link" in css
