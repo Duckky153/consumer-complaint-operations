@@ -2,7 +2,7 @@
 
 ## Release state
 
-**Source candidate:** local commit `38aa385`, fully verified
+**Source candidate:** local commit `5420c0b`, fully verified
 
 **Published dashboard content commit:** `6c6918779484ae34826cde410cd2ffab360e3cef`
 
@@ -25,7 +25,7 @@ preparation, and résumé-preparation material.
 | Data-quality controls | `src/complaint_ops/quality.py` plus real quality report | Local pass |
 | SQL metrics | Seven checked-in views in `sql/metrics.sql` | Local pass |
 | Responsive black-and-white dashboard | `docs/` plus three reviewed browser screenshots | Local pass |
-| Tests mapped to requirements | 15 pytest cases marked R1–R6 and `delivery/test-traceability.md` | Local pass |
+| Tests mapped to requirements | 16 pytest cases marked R1–R6 and `delivery/test-traceability.md` | Local pass |
 | Methodology and analytical limitations | `delivery/methodology.md` | Local pass |
 | Executive findings and recommendations | `delivery/findings.md` with SQLite-reconciled figures | Local pass |
 | Clean README and delivery evidence | `README.md` and this document | Local pass |
@@ -71,11 +71,11 @@ independent portfolio project, not a production complaint-management system.
 
 ## Automated release gates
 
-Recorded on 2026-07-28 EDT:
+Refreshed on 2026-08-16 EDT:
 
 | Gate | Result | Evidence |
 |---|---|---|
-| Requirement-linked pytest suite | Passed | 15 tests passed; tests carry R1–R6 markers |
+| Requirement-linked pytest suite | Passed | 16 tests passed; tests carry R1–R6 markers |
 | JavaScript syntax | Passed | `node --check docs/app.js` and `node --check docs/dashboard-data.js` |
 | Local delivery verifier | Passed | 20 checks, zero failures in `evidence/local-verification.json` |
 | SQL reconciliation | Passed | `(84,194 complaints; 609 not timely; 0.72% exception rate; 12,977 reported relief; 15.41% relief share)` |
@@ -182,6 +182,13 @@ Reviewed screenshots:
 - `evidence/screenshots/mobile-360.jpg`
 
 ## Public verification evidence
+
+The live dashboard was independently rechecked on 2026-08-16. The default view
+loaded all 84,194 records. Selecting January recalculated the view to 18,367
+records and updated each summary metric; reset restored the full population. A
+four-filter combination returned an explicit zero-result state without a
+runtime failure, and the chart-data disclosure expanded into its accessible
+table. This was a read-only browser check; no external state changed.
 
 - Repository: https://github.com/Duckky153/consumer-complaint-operations
 - Dashboard content commit:
