@@ -75,6 +75,7 @@ def test_dashboard_payload_supports_consistent_global_filters(
     )["dashboard"]
 
     assert payload["meta"]["row_count"] == len(payload["records"]) == 12
+    assert set(payload["meta"]) == {"scope", "row_count", "record_columns"}
     assert payload["meta"]["record_columns"] == [
         "received_month",
         "sub_product",

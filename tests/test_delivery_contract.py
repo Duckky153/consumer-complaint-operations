@@ -97,6 +97,7 @@ def test_default_anomaly_and_known_filter_slice_are_reproducible(
     )
     prefix = "window.COMPLAINT_DASHBOARD_DATA = "
     payload = json.loads(data_text[len(prefix) : -2])
+    assert set(payload["meta"]) == {"scope", "row_count", "record_columns"}
     columns = payload["meta"]["record_columns"]
     dictionaries = payload["dictionaries"]
 
