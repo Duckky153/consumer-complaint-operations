@@ -9,7 +9,7 @@
     >
     <meta
       name="description"
-      content="An independent operations analysis of 2025 CFPB checking and savings account complaints."
+      content="Explore 2025 CFPB checking and savings account complaints by month, issue, account type, and company."
     >
     <title>Consumer Complaint Operations Dashboard</title>
     <link rel="icon" href="./favicon.svg" type="image/svg+xml">
@@ -34,15 +34,13 @@
           <p class="eyebrow">Operations analytics</p>
           <h1 id="page-title">Consumer Complaint Operations Dashboard</h1>
           <p class="hero__summary">
-            An external complaint-signal diagnostic covering every published
-            CFPB checking or savings complaint received in 2025. Use it to
-            identify investigation hypotheses that require validation with
-            internal operating data.
+            Explore all published CFPB checking and savings complaints received
+            in 2025. Filter the data to find patterns worth investigating.
           </p>
         </div>
         <aside class="decision-note" aria-labelledby="decision-title">
-          <p class="decision-note__label" id="decision-title">Discovery signal</p>
-          <p class="decision-note__finding" id="decision-finding">Loading verified data…</p>
+          <p class="decision-note__label" id="decision-title">What stands out</p>
+          <p class="decision-note__finding" id="decision-finding">Loading complaint data…</p>
           <p class="decision-note__action" id="decision-action"></p>
         </aside>
       </section>
@@ -73,7 +71,7 @@
         <div class="filter-panel__heading">
           <div>
             <p class="section-number">Filters</p>
-            <h2 id="filter-title">Focus the operating view</h2>
+            <h2 id="filter-title">Filter complaints</h2>
           </div>
           <p id="filter-status" class="filter-status" role="status" aria-live="polite">
             Loading records…
@@ -141,8 +139,8 @@
         <div class="section-heading">
           <p class="section-number">Trends</p>
           <div>
-            <h2 id="movement-title">Published volume and response exceptions</h2>
-            <p>External signals for discovery; not an internal backlog, staffing, or service-level view.</p>
+            <h2 id="movement-title">Complaints and late responses over time</h2>
+            <p>Compare monthly complaint volume with responses marked not timely.</p>
           </div>
         </div>
         <div class="chart-grid chart-grid--two">
@@ -203,8 +201,8 @@
         <div class="section-heading">
           <p class="section-number">Drivers</p>
           <div>
-            <h2 id="drivers-title">Which signals deserve internal validation?</h2>
-            <p>Issue concentration identifies hypotheses; consumer-selected categories are not proven root causes.</p>
+            <h2 id="drivers-title">What is driving complaint volume?</h2>
+            <p>Compare the issues and issue details behind the selected complaints.</p>
           </div>
         </div>
         <div class="chart-grid chart-grid--drivers">
@@ -235,10 +233,8 @@
           </article>
           <article class="chart-card">
             <div class="chart-card__heading">
-              <h3>Reported-relief share in high-volume issue details</h3>
-              <p>
-                Six highest-volume details; response mix, not performance
-              </p>
+              <h3>Reported relief by issue detail</h3>
+              <p>Share of complaints marked closed with relief</p>
             </div>
             <p class="chart-signal" id="relief-signal">
               Loading reported-relief context…
@@ -267,8 +263,8 @@
         <div class="section-heading">
           <p class="section-number">Detail</p>
           <div>
-            <h2 id="focus-title">Investigation evidence</h2>
-            <p>Compare issue details and response exceptions before requesting internal evidence.</p>
+            <h2 id="focus-title">Issue details</h2>
+            <p>Compare complaint volume, response exceptions, and reported relief.</p>
           </div>
         </div>
         <div class="table-grid">
@@ -315,76 +311,40 @@
         </div>
       </section>
 
-      <section class="executive-section" aria-labelledby="executive-title">
-        <div class="section-heading">
-          <p class="section-number">Before acting</p>
-          <div>
-            <h2 id="executive-title">Internal evidence required</h2>
-            <p>The public signal generates questions; internal data determines action.</p>
-          </div>
-        </div>
-        <div class="executive-grid executive-grid--two">
-          <article>
-            <p class="executive-grid__label">Validate the hypothesis</p>
-            <p>
-              Request transaction and account denominators, process step and
-              channel, repeat contacts, reopens, resolution time, consumer
-              feedback, and policy-exception evidence.
-            </p>
-          </article>
-          <article>
-            <p class="executive-grid__label">Decision guardrail</p>
-            <p>
-              Do not interpret complaint counts as defect rates or company
-              rankings, or use them alone for staffing or policy changes. The
-              dataset lacks customer volume, market share, complaint
-              propensity, case inventory, and controllability evidence.
-            </p>
-          </article>
-        </div>
-      </section>
-
       <section class="method-section" aria-labelledby="method-title">
         <div>
-          <p class="section-number">Methodology</p>
-          <h2 id="method-title">Method and limits</h2>
+          <p class="section-number">About the data</p>
+          <h2 id="method-title">What this dashboard includes</h2>
         </div>
         <div class="method-grid">
           <div>
-            <h3>What is included</h3>
+            <h3>Data</h3>
             <p>
-              The complete published CFPB population for the selected product
-              and period. Metrics are produced in SQLite and reconciled to the
-              same minimized, encoded record-level rows used by the filters.
+              All published 2025 checking and savings complaints. Every chart
+              and table responds to the same filters.
             </p>
           </div>
           <div>
-            <h3>What is excluded</h3>
+            <h3>Privacy</h3>
             <p>
-              Consumer narratives, ZIP codes, complaint IDs, and company public
-              response prose never reach the public dashboard. State, tags,
-              and submission channel are not ingested. No individual complaint
-              is displayed.
+              Narratives, complaint IDs, ZIP codes, and company response text
+              are excluded. No individual complaint is displayed.
             </p>
           </div>
           <div>
-            <h3>What cannot be concluded</h3>
+            <h3>Limits</h3>
             <p>
-              CFPB complaints are not a statistical sample of consumer harm.
-              Counts do not control for company size, geography, product usage,
-              or differences in the likelihood of filing a complaint. Issue
-              labels are intake categories, not validated process causes.
+              Complaint counts do not adjust for company size or product usage.
+              Issue labels are intake categories, not confirmed causes.
             </p>
           </div>
         </div>
-        <p class="freshness" id="freshness">Loading build provenance…</p>
       </section>
     </main>
 
     <footer>
       <div>
         <p>Consumer Complaint Operations Dashboard</p>
-        <p>Independent portfolio project · No organizational endorsement implied</p>
       </div>
       <div class="footer-links" aria-label="Project links">
         <a

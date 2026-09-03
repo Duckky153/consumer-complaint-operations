@@ -54,6 +54,10 @@ def test_dashboard_exposes_required_accessible_views(project_root: Path) -> None
     assert "MIN_INTERPRETIVE_COUNT = 30" in script
     assert "Do not generalize this into staffing demand" in script
     assert "Two company-issue clusters contributed" in script
+    assert 'id="freshness"' not in html
+    assert "Source file SHA-256" not in script
+    assert "Independent portfolio project" not in html
+    assert 'class="executive-section"' not in html
 
 
 @pytest.mark.requirement("R3")

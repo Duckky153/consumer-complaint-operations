@@ -99,9 +99,7 @@ footer {
 .decision-note__label,
 .scope-line__label,
 .section-number,
-.metric-card__label,
-.executive-grid__label,
-.freshness {
+.metric-card__label {
   margin: 0;
   font-size: 0.72rem;
   font-weight: 700;
@@ -214,13 +212,11 @@ h1 {
 
 .filter-panel,
 .dashboard-section,
-.executive-section,
 .method-section {
   padding: 2.4rem 0;
 }
 
 .dashboard-section,
-.executive-section,
 .method-section {
   border-top: 1px solid var(--line);
 }
@@ -500,30 +496,6 @@ tbody tr:hover {
   background: #fafafa;
 }
 
-.executive-grid {
-  display: grid;
-  grid-template-columns: repeat(3, minmax(0, 1fr));
-  gap: 1rem;
-}
-
-.executive-grid--two {
-  grid-template-columns: repeat(2, minmax(0, 1fr));
-}
-
-.executive-grid article {
-  padding: 1.2rem 1.25rem 1.35rem;
-  border: 1px solid var(--line);
-  border-radius: 7px;
-  background: var(--surface);
-}
-
-.executive-grid article > p:last-child {
-  margin: 0.75rem 0 0;
-  font-size: 1rem;
-  font-weight: 550;
-  line-height: 1.45;
-}
-
 .method-section {
   display: grid;
   grid-template-columns: minmax(180px, 0.45fr) minmax(0, 1.8fr);
@@ -547,17 +519,6 @@ tbody tr:hover {
   margin: 0.55rem 0 0;
   color: #45494d;
   font-size: 0.84rem;
-}
-
-.freshness {
-  grid-column: 2;
-  margin-top: 1.25rem;
-  color: var(--muted);
-  font-family: var(--mono);
-  font-size: 0.65rem;
-  font-weight: 500;
-  letter-spacing: 0;
-  text-transform: none;
 }
 
 footer {
@@ -637,9 +598,6 @@ footer p {
     gap: 1.2rem;
   }
 
-  .freshness {
-    grid-column: 1;
-  }
 }
 
 @media (max-width: 900px) {
@@ -695,7 +653,6 @@ footer p {
 
   .scope-line,
   .filters,
-  .executive-grid,
   .method-grid {
     grid-template-columns: 1fr;
   }
@@ -806,7 +763,6 @@ footer p {
   }
 
   .dashboard-section,
-  .executive-section,
   .method-section {
     break-inside: avoid;
     padding: 1.2rem 0;
