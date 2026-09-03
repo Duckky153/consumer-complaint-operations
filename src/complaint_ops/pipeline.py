@@ -254,17 +254,11 @@ def build_dashboard_payload(
 
     return {
         "meta": {
-            "title": "Consumer Complaint Operations Dashboard",
-            "source_name": config.source["name"],
-            "source_url": config.source["database_page"],
-            "source_license": config.source["license"],
             "scope": {
                 "date_received_min": config.scope.date_received_min,
                 "date_received_max_exclusive": config.scope.date_received_max_exclusive,
                 "product": config.scope.product,
             },
-            "generated_at": manifest["generated_at"],
-            "source_sha256": manifest["sanitized_csv_sha256"],
             "row_count": len(frame),
             "record_columns": [
                 *dictionary_columns,
