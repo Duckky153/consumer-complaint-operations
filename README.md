@@ -147,6 +147,10 @@ guardrails, and evidence-backed delivery. Sources are listed in
 [the architecture note](delivery/architecture.md); no proprietary methodology
 is claimed.
 
+The dashboard itself is reserved for analysis and decisions. Build hashes,
+test counts, project-provenance notices, and other verification metadata stay
+in this repository's documentation and evidence files.
+
 ## License and source rights
 
 Project code and original documentation are MIT licensed. The CFPB source data

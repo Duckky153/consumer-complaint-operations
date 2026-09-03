@@ -986,17 +986,13 @@ function loadDashboard() {
     const scopeYear = scopeStart.getUTCFullYear();
     setText("scope-period", `Jan–Dec ${scopeYear}`);
     setText("scope-snapshot", `${scopeYear} CFPB public-data snapshot`);
-    setText(
-      "freshness",
-      `Static snapshot built ${new Date(state.payload.meta.generated_at).toLocaleString("en-US", { dateStyle: "medium", timeStyle: "short" })} · Source file SHA-256 ${state.payload.meta.source_sha256.slice(0, 12)}… · CC0 source`,
-    );
     updateDashboard();
   } catch (error) {
     console.error(error);
     setText("filter-status", "Dashboard data could not be loaded.");
     setText(
       "decision-finding",
-      "The verified dataset is unavailable in this browser session.",
+      "Dashboard data is unavailable in this browser session.",
     );
     setText(
       "decision-action",
