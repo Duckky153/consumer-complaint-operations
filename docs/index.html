@@ -13,10 +13,10 @@
     >
     <title>Consumer Complaint Operations Dashboard</title>
     <link rel="icon" href="./favicon.svg" type="image/svg+xml">
-    <link rel="stylesheet" href="./styles.css?v=20260728-6">
+    <link rel="stylesheet" href="./styles.css?v=20260903-1">
     <script src="./dashboard-data.js" defer></script>
     <script src="./vendor/chart.umd.min.js" defer></script>
-    <script src="./app.js?v=20260728-7" defer></script>
+    <script src="./app.js?v=20260903-1" defer></script>
   </head>
   <body>
     <a class="skip-link" href="#main-content">Skip to dashboard</a>
@@ -110,27 +110,26 @@
         <article class="metric-card">
           <p class="metric-card__label">Published complaints</p>
           <p class="metric-card__value" id="metric-total">—</p>
-          <p class="metric-card__context" id="metric-total-context">Selected source rows</p>
-          <p class="metric-card__definition">One row per complaint in the selected view</p>
+          <p class="metric-card__definition">Complaints matching the selected filters</p>
         </article>
         <article class="metric-card">
-          <p class="metric-card__label">Response exceptions</p>
+          <p class="metric-card__label">Responses marked not timely</p>
           <p class="metric-card__value" id="metric-exceptions">—</p>
           <p class="metric-card__context" id="metric-exceptions-context">—</p>
-          <p class="metric-card__definition">Rows CFPB marked not timely</p>
+          <p class="metric-card__definition">Based on the CFPB timely-response field</p>
         </article>
         <article class="metric-card">
           <p class="metric-card__label">Closed with reported relief</p>
           <p class="metric-card__value" id="metric-relief">—</p>
           <p class="metric-card__context" id="metric-relief-context">—</p>
-          <p class="metric-card__definition">Non-directional company response category</p>
+          <p class="metric-card__definition">A CFPB response category, not a performance score</p>
         </article>
         <article class="metric-card">
           <p class="metric-card__label" id="metric-concentration-label">Leading issue share</p>
           <p class="metric-card__value" id="metric-concentration">—</p>
           <p class="metric-card__context" id="metric-concentration-context">—</p>
           <p class="metric-card__definition" id="metric-concentration-definition">
-            Largest share of published complaint volume
+            Largest category within the selected complaints
           </p>
         </article>
       </section>
@@ -150,7 +149,7 @@
               <p>Count of published complaints by received month</p>
             </div>
             <p class="chart-signal" id="volume-signal">
-              Loading monthly-volume quality signal…
+              Loading monthly complaint totals…
             </p>
             <div class="chart-frame">
               <canvas
@@ -171,18 +170,18 @@
           </article>
           <article class="chart-card">
             <div class="chart-card__heading">
-              <h3>Not-timely response rate by month</h3>
-              <p>Exception count and share in CFPB’s published timely-response field</p>
+              <h3>Responses marked not timely by month</h3>
+              <p>Count and share from the CFPB timely-response field</p>
             </div>
             <p class="chart-signal" id="exception-signal">
-              Loading response-exception context…
+              Loading monthly response totals…
             </p>
             <div class="chart-frame">
               <canvas
                 id="exception-chart"
                 role="img"
                 aria-label="Monthly not-timely company response rate chart"
-              >Monthly response exceptions are provided in the accessible table below.</canvas>
+              >Monthly responses marked not timely are provided in the accessible table below.</canvas>
             </div>
             <details class="data-table-details">
               <summary>View chart data</summary>
@@ -209,10 +208,10 @@
           <article class="chart-card chart-card--wide">
             <div class="chart-card__heading">
               <h3 id="issue-chart-title">Leading complaint issues</h3>
-              <p id="issue-chart-subtitle">Published complaint concentration in the selected view</p>
+              <p id="issue-chart-subtitle">Share of complaints matching the selected filters</p>
             </div>
             <p class="chart-signal" id="issue-signal">
-              Loading issue-concentration context…
+              Loading issue totals…
             </p>
             <div class="chart-frame chart-frame--tall">
               <canvas
@@ -237,7 +236,7 @@
               <p>Share of complaints marked closed with relief</p>
             </div>
             <p class="chart-signal" id="relief-signal">
-              Loading reported-relief context…
+              Loading reported-relief totals…
             </p>
             <div class="chart-frame chart-frame--tall">
               <canvas
@@ -264,14 +263,14 @@
           <p class="section-number">Detail</p>
           <div>
             <h2 id="focus-title">Issue details</h2>
-            <p>Compare complaint volume, response exceptions, and reported relief.</p>
+            <p>Compare complaint volume, responses marked not timely, and reported relief.</p>
           </div>
         </div>
         <div class="table-grid">
           <article class="table-card">
             <div class="chart-card__heading">
               <h3>Highest-volume issue details</h3>
-              <p>Published volume and non-directional response signals</p>
+              <p>Published complaint and response totals</p>
             </div>
             <div class="table-scroll">
               <table id="issue-detail-table">
@@ -290,8 +289,8 @@
           </article>
           <article class="table-card">
             <div class="chart-card__heading">
-              <h3>Monthly response-exception detail</h3>
-              <p>Exact exceptions and rates for the selected view</p>
+              <h3>Monthly response detail</h3>
+              <p>Responses marked not timely in the selected view</p>
             </div>
             <div class="table-scroll">
               <table id="exception-detail-table">
@@ -300,7 +299,7 @@
                     <th>Month</th>
                     <th>Complaints</th>
                     <th>Not timely</th>
-                    <th>Exception rate</th>
+                    <th>Not-timely rate</th>
                     <th>Reported relief</th>
                   </tr>
                 </thead>

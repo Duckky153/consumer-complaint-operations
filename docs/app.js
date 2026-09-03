@@ -234,10 +234,6 @@ function updateSummary(rows) {
     canInterpret(summary.count) ? formatPercent(summary.concentrationRate) : "—",
   );
   setText(
-    "metric-total-context",
-    `${numberFormat.format(summary.count)} selected source rows`,
-  );
-  setText(
     "metric-exceptions-context",
     canInterpret(summary.count)
       ? `${formatPercent(summary.notTimelyRate)} of selected complaints`
@@ -268,15 +264,15 @@ function updateSummary(rows) {
   setText(
     "metric-concentration-definition",
     findingDimension === "issue"
-      ? "Largest share of published complaint volume"
-      : "Largest share within the selected issue",
+      ? "Largest category within the selected complaints"
+      : "Largest issue detail within the selected issue",
   );
 
   if (!topGroup) {
     setText("decision-finding", "No complaints match the selected filters.");
     setText(
       "decision-action",
-      "Reset or broaden the filters to restore the diagnostic view.",
+      "Reset or broaden the filters to see complaints again.",
     );
     return;
   }
@@ -288,7 +284,7 @@ function updateSummary(rows) {
     );
     setText(
       "decision-action",
-      `Use this as a lookup only. Rates and priority language are withheld until at least ${MIN_INTERPRETIVE_COUNT} published complaints are selected.`,
+      `This view is too small for reliable percentages. Select at least ${MIN_INTERPRETIVE_COUNT} complaints to show rates.`,
     );
     return;
   }
@@ -313,25 +309,23 @@ function updateSummary(rows) {
       (100 * excludingJanuaryLeading) / excludingJanuary.length;
     setText(
       "decision-finding",
-      `${topGroup.label} leads with ${numberFormat.format(topGroup.count)} complaints (${formatPercent((100 * topGroup.count) / rows.length)}) and remains the leading issue at ${formatPercent(excludingJanuaryShare)} after excluding January. Its two largest sub-issues total ${numberFormat.format(leadingSubIssueCount)} (${formatPercent((100 * leadingSubIssueCount) / rows.length)} of the year).`,
+      `${topGroup.label} is the largest category with ${numberFormat.format(topGroup.count)} complaints (${formatPercent((100 * topGroup.count) / rows.length)}). It remains the largest after January is removed (${formatPercent(excludingJanuaryShare)}).`,
     );
     setText(
       "decision-action",
-      "Use those account-management themes as the first discovery hypotheses. Validate them with transactions, process steps, repeat contacts, reopens, and resolution time before changing policy or staffing.",
+      `Start with its two largest issue details, which account for ${numberFormat.format(leadingSubIssueCount)} complaints. Compare the public pattern with internal transactions, repeat contacts, reopened cases, and resolution times before making changes.`,
     );
     return;
   }
 
   const share = (100 * topGroup.count) / rows.length;
-  const findingLabel =
-    findingDimension === "issue" ? "The leading issue" : "The leading sub-issue";
   setText(
     "decision-finding",
-    `${findingLabel}, ${topGroup.label}, represents ${formatPercent(share)} of the selected published complaint volume (${numberFormat.format(topGroup.count)} complaints).`,
+    `${topGroup.label} is the largest ${findingDimension === "issue" ? "issue" : "issue detail"} with ${numberFormat.format(topGroup.count)} complaints (${formatPercent(share)}).`,
   );
   setText(
     "decision-action",
-    "Treat this as an external validation lead, not a proven cause. Request the internal denominator, workflow step, case outcome, and repeat-contact evidence before choosing an intervention.",
+    "Use this pattern to choose what to review next. Confirm it with internal volume, workflow steps, outcomes, and repeat contacts before making changes.",
   );
 }
 
@@ -465,7 +459,7 @@ function updateCharts(rows) {
       .join("; ");
     setText(
       "volume-signal",
-      `Peak ${months[peakMonthIndex]}: ${numberFormat.format(peakMonthlyCount)} (${(peakMonthlyCount / medianMonthlyCount).toFixed(1)}× annual median). Two company-issue clusters contributed ${numberFormat.format(topPairCount)} (${formatPercent((100 * topPairCount) / peakMonthlyCount)}): ${pairText}. Without them: ${numberFormat.format(residual)} (${(residual / nonPeakMedian).toFixed(2)}× the other-month median). Do not generalize this into staffing demand.`,
+      `Peak ${months[peakMonthIndex]}: ${numberFormat.format(peakMonthlyCount)} (${(peakMonthlyCount / medianMonthlyCount).toFixed(1)}× the annual median). Two company and issue combinations account for ${numberFormat.format(topPairCount)} (${formatPercent((100 * topPairCount) / peakMonthlyCount)}): ${pairText}. Without them, the month has ${numberFormat.format(residual)} complaints (${(residual / nonPeakMedian).toFixed(2)}× the other-month median). This public spike alone is not enough to change staffing.`,
     );
   } else if (monthlyCounts.length) {
     setText(
@@ -536,8 +530,8 @@ function updateCharts(rows) {
   exceptionOptions.scales.y.title = {
     display: true,
     text: interpretiveBase
-      ? "Not-timely response (%)"
-      : "Not-timely complaints",
+      ? "Marked not timely (%)"
+      : "Marked not timely",
     color: palette.dark,
   };
   exceptionOptions.scales.y.ticks.callback = (value) =>
@@ -565,20 +559,20 @@ function updateCharts(rows) {
     );
     const companyContext =
       companyFilterActive
-        ? " Company concentration is not compared while a company filter is active."
+        ? ""
         : leadingCompany && peakExceptionRows.length
-        ? ` ${conciseCompanyLabel(leadingCompany.label)} accounts for ${numberFormat.format(leadingCompany.count)} of ${numberFormat.format(peakExceptionRows.length)} (${formatPercent((100 * leadingCompany.count) / peakExceptionRows.length)}); use as a validation lead, not a company ranking.`
+        ? ` ${conciseCompanyLabel(leadingCompany.label)} accounts for ${numberFormat.format(leadingCompany.count)} of ${numberFormat.format(peakExceptionRows.length)} (${formatPercent((100 * leadingCompany.count) / peakExceptionRows.length)}). Review that cluster first; this does not rank companies.`
         : "";
     setText(
       "exception-signal",
       interpretiveBase
         ? `Peak ${months[maximumIndex]}: ${numberFormat.format(monthlyExceptionCounts[maximumIndex])} not timely (${formatPercent(maximumExceptionRate)}); selected view: ${numberFormat.format(totalSummary.notTimelyCount)} (${formatPercent(totalSummary.notTimelyRate)}).${companyContext}`
-        : `Small base: showing exception counts only. Rates are withheld until at least ${MIN_INTERPRETIVE_COUNT} published complaints are selected.`,
+        : `Showing counts only because fewer than ${MIN_INTERPRETIVE_COUNT} complaints match the filters.`,
     );
   } else {
     setText(
       "exception-signal",
-      "No response-exception data matches the selected filters.",
+      "No responses marked not timely match the selected filters.",
     );
   }
   upsertChart(
@@ -587,9 +581,7 @@ function updateCharts(rows) {
     months,
     [
       {
-        label: interpretiveBase
-          ? "Not-timely response rate"
-          : "Not-timely complaints",
+        label: "Marked not timely",
         data: exceptionData,
         borderColor: palette.ink,
         backgroundColor: palette.white,
@@ -606,7 +598,7 @@ function updateCharts(rows) {
     .setAttribute(
       "aria-label",
       buildChartAriaLabel(
-        "Monthly not-timely response exceptions",
+        "Monthly responses marked not timely",
         months.map(
           (month, index) =>
             `${month}: ${numberFormat.format(monthlyExceptionCounts[index])} not timely, ${formatPercent(monthlyExceptionRates[index])}`,
@@ -657,8 +649,8 @@ function updateCharts(rows) {
   setText(
     "issue-chart-subtitle",
     issueDimension === "issue"
-      ? "Published complaint concentration in the selected view"
-      : "Published complaint concentration within the selected issue",
+      ? "Share of complaints matching the selected filters"
+      : "Share of complaints within the selected issue",
   );
   const issueShares = leadingIssues.map((group) =>
     rows.length ? (100 * group.count) / rows.length : 0,
@@ -703,8 +695,8 @@ function updateCharts(rows) {
     "issue-signal",
     rows.length
       ? interpretiveBase
-        ? `Top three ${issueDimension === "issue" ? "issues" : "sub-issues"}: ${numberFormat.format(topThreeIssueCount)} complaints (${formatPercent((100 * topThreeIssueCount) / rows.length)}) · remaining: ${numberFormat.format(rows.length - topThreeIssueCount)} (${formatPercent((100 * (rows.length - topThreeIssueCount)) / rows.length)}). Categories are intake labels, not validated causes.`
-        : `Small base: showing complaint counts only. Shares and priority language are withheld below ${MIN_INTERPRETIVE_COUNT} complaints.`
+        ? `Top three ${issueDimension === "issue" ? "issues" : "issue details"}: ${numberFormat.format(topThreeIssueCount)} complaints (${formatPercent((100 * topThreeIssueCount) / rows.length)}). The remaining categories account for ${numberFormat.format(rows.length - topThreeIssueCount)} (${formatPercent((100 * (rows.length - topThreeIssueCount)) / rows.length)}). CFPB categories describe what was reported; they do not confirm the cause.`
+        : `Showing counts only because fewer than ${MIN_INTERPRETIVE_COUNT} complaints match the filters.`
       : "No issue data matches the selected filters.",
   );
   upsertChart(
@@ -784,8 +776,8 @@ function updateCharts(rows) {
     "relief-signal",
     rows.length
       ? interpretiveBase && highestReliefDetail
-        ? `Selected-view baseline: ${formatPercent(selectedSummary.reliefRate)}. Highest among the six volume-selected details: ${highestReliefDetail.labels[1]} at ${formatPercent(highestReliefDetail.reliefRate)} (${numberFormat.format(highestReliefDetail.reliefCount)} of ${numberFormat.format(highestReliefDetail.count)}). This is response mix, not success or fault.`
-        : `Small base: showing reported-relief counts only. Rates are withheld below ${MIN_INTERPRETIVE_COUNT} complaints.`
+        ? `Overall, ${formatPercent(selectedSummary.reliefRate)} of the selected complaints were closed with reported relief. Among the six most common issue details, ${highestReliefDetail.labels[1]} has the highest share at ${formatPercent(highestReliefDetail.reliefRate)} (${numberFormat.format(highestReliefDetail.reliefCount)} of ${numberFormat.format(highestReliefDetail.count)}). This describes response type, not success or fault.`
+        : `Showing counts only because fewer than ${MIN_INTERPRETIVE_COUNT} complaints match the filters.`
       : "No reported-relief data matches the selected filters.",
   );
   upsertChart(
@@ -996,7 +988,7 @@ function loadDashboard() {
     );
     setText(
       "decision-action",
-      "Confirm dashboard-data.js is beside index.html, then reopen the page.",
+      "Reload the page. If the problem continues, try the dashboard again later.",
     );
   }
 }

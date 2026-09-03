@@ -2,17 +2,18 @@
 
 ## Release state
 
-**Source candidate:** local commit `5420c0b`, fully verified
+**Current local candidate:** latest commit on the `publish-source-link` branch,
+fully verified on September 3, 2026
 
-**Published dashboard content commit:** `6c6918779484ae34826cde410cd2ffab360e3cef`
+**Published dashboard content commit:** `cb705efdb06d2be0e82ab5610725f61a72b60d10`
 
 **Public repository:** https://github.com/Duckky153/consumer-complaint-operations
 
 **GitHub Pages:** https://duckky153.github.io/consumer-complaint-operations/
 
-Publication was explicitly approved after the local quality and browser gates
-passed. The public history excludes operator instructions, private interview
-preparation, and résumé-preparation material.
+The public URL is online, but it still serves the July 29 release. The cleaned
+September 3 local candidate has not been pushed or deployed. Publication still
+requires owner approval.
 
 ## Completion audit against the requested delivery
 
@@ -32,13 +33,13 @@ preparation, and résumé-preparation material.
 | Security and privacy considerations | Field allowlist, minimized public data asset, CSP, vendored dependency, and `delivery/security-privacy.md` | Local pass |
 | AI-assistance disclosure | `delivery/ai-assistance.md` | Local pass |
 | Two-minute demo | `delivery/demo-script.md` | Local pass |
-| Privacy-clean public history | Operator instructions, private interview preparation, and résumé preparation are absent | Public pass |
+| Privacy-clean public history | Operator instructions, private interview preparation, and resume preparation are absent | Public pass |
 | Python/pandas/SQLite/pytest/HTML/CSS/JS/Chart.js | Runtime, source, tests, assets, and version evidence | Local pass |
-| GitHub Actions and Pages | CI plus manual deployment workflow; deployment depends on a fresh quality job | Public pass |
-| Public repository and live dashboard | Repository, CI, Pages, desktop, mobile, and filter checks are recorded below | Public pass |
+| GitHub Actions and Pages | CI plus manual deployment workflow; deployment depends on pytest, JavaScript, and Chromium checks | Local pass; public refresh pending approval |
+| Public repository and live dashboard | The URL is online, but the cleaned local candidate is not the published release | Previous public release only |
 
-The local and public scopes are complete. The published artifact is an
-independent portfolio project, not a production complaint-management system.
+The local candidate is complete. The public site remains on the previous
+release until an approved push and manual Pages deployment occur.
 
 ## Source evidence
 
@@ -71,13 +72,15 @@ independent portfolio project, not a production complaint-management system.
 
 ## Automated release gates
 
-Refreshed on 2026-08-16 EDT:
+Refreshed on 2026-09-03 EDT:
 
 | Gate | Result | Evidence |
 |---|---|---|
 | Requirement-linked pytest suite | Passed | 16 tests passed; tests carry R1–R6 markers |
 | JavaScript syntax | Passed | `node --check docs/app.js` and `node --check docs/dashboard-data.js` |
 | Local delivery verifier | Passed | 20 checks, zero failures in `evidence/local-verification.json` |
+| Real-browser regression suite | Passed | Three responsive layouts, filters, reset, charts, tables, links, keyboard order, 29-record handling, zero results, direct-file loading, and zero console or page errors |
+| Static Pages cache contract | Passed | Versioned CSS and application URLs prevent a cleaned HTML release from reusing incompatible cached assets |
 | SQL reconciliation | Passed | `(84,194 complaints; 609 not timely; 0.72% exception rate; 12,977 reported relief; 15.41% relief share)` |
 | Chart-source reconciliation | Passed | public month, issue-detail, and 12 monthly not-timely outputs match the SQLite views |
 | January sensitivity reconciliation | Passed | two leading company-issue pairs total 11,444; residual 6,923; all figures match SQLite |
@@ -93,9 +96,10 @@ Refreshed on 2026-08-16 EDT:
 
 ## Real-browser acceptance evidence
 
-The dashboard was exercised in two real browser surfaces against a local HTTP
-server using the real 84,194-record output. Functional filter checks were
-repeated after the content audit, and Chrome produced the final visual evidence.
+The dashboard was exercised with Computer Use and the checked-in Chromium test
+against a local HTTP server using the real 84,194-record output. The September
+3 check also exposed and fixed an asset-cache mismatch that could pair new HTML
+with old JavaScript on a static host.
 
 The first owner handoff also exposed an important usability failure: opening
 `docs/index.html` directly in Chrome showed the page shell but no metrics or
@@ -183,16 +187,14 @@ Reviewed screenshots:
 
 ## Public verification evidence
 
-The live dashboard was independently rechecked on 2026-08-16. The default view
-loaded all 84,194 records. Selecting January recalculated the view to 18,367
-records and updated each summary metric; reset restored the full population. A
-four-filter combination returned an explicit zero-result state without a
-runtime failure, and the chart-data disclosure expanded into its accessible
-table. This was a read-only browser check; no external state changed.
+The live dashboard was independently rechecked on September 3, 2026. It returns
+HTTP 200 over HTTPS and loads all 84,194 records, but it still serves commit
+`cb705efdb06d2be0e82ab5610725f61a72b60d10`. It therefore does not yet contain
+the September 3 copy cleanup, asset-cache repair, or permanent Chromium gate.
 
 - Repository: https://github.com/Duckky153/consumer-complaint-operations
 - Dashboard content commit:
-  `6c6918779484ae34826cde410cd2ffab360e3cef`
+  `cb705efdb06d2be0e82ab5610725f61a72b60d10`
 - Push quality gate:
   https://github.com/Duckky153/consumer-complaint-operations/actions/runs/30416782413
   — passed Python 3.12 tests and both JavaScript syntax checks.
@@ -201,8 +203,5 @@ table. This was a read-only browser check; no external state changed.
   — passed a fresh quality job and deployed successfully.
 - Live dashboard:
   https://duckky153.github.io/consumer-complaint-operations/
-- Live Chrome verification: 84,194 default rows; exact 281-row January +
-  checking account + managing an account + Bank of America slice; reset;
-  populated filters; four non-zero canvases; complete fallback tables; 360 and
-  1440 CSS-pixel layouts; zero page overflow; and zero site-owned console
-  errors or warnings.
+- Current public state: online and usable, but one approved push and one manual
+  Pages deployment are required before it matches the verified local candidate.

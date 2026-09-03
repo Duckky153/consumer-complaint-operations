@@ -10,7 +10,7 @@ constraints and approval gates.
 It would be inaccurate for Dakshit to claim that he manually wrote every line
 of code. It is accurate to say that he defined the desired outcome, stack,
 scope, delivery standard, prohibited features, privacy boundary, publication
-gate, and résumé gate; directed the project; and is responsible for reviewing,
+gate, and resume gate; directed the project; and is responsible for reviewing,
 understanding, verifying, and presenting the finished work.
 
 ## Dakshit's contribution
@@ -24,7 +24,7 @@ understanding, verifying, and presenting the finished work.
   machine learning, authentication, and chat features;
 - set the local-first and one-approval publication gate;
 - required a truthful personal/AI contribution split; and
-- retains final authority over publication, deployment, and résumé changes.
+- retains final authority over publication, deployment, and resume changes.
 
 ## AI contribution
 
@@ -67,7 +67,7 @@ The implementation followed a controlled sequence:
 5. Failures were investigated and documented.
 6. Tests and independent runtime checks were used to verify AI-produced work.
 7. Public actions were withheld for explicit approval; private interview and
-   résumé-preparation material was excluded from the public repository.
+   resume-preparation material was excluded from the public repository.
 
 ## Interview-safe wording
 

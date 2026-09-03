@@ -1,8 +1,7 @@
 # Consumer Complaint Operations Dashboard
 
-An independent, recruiter-ready portfolio project that turns a bounded set of
-official CFPB complaint data into a diagnostic for an analyst preparing an
-internal validation workshop.
+An independent portfolio project that turns official CFPB complaint records
+into a dashboard for deciding what an operations analyst should review first.
 
 The project is deliberately small: one reproducible Python pipeline, one
 SQLite database, one set of SQL metric views, and one static dashboard. The
@@ -21,12 +20,11 @@ limitations, and handoff—is part of the product.
 
 ## Business decision
 
-**Intended user:** a financial-services risk or operations analyst preparing
-an external complaint-signal diagnostic before an internal process-review
-workshop.
+**Intended user:** a financial-services risk or operations analyst deciding
+which public complaint patterns deserve a closer internal review.
 
-**Question:** which public complaint themes and response exceptions deserve
-validation with internal operating data first?
+**Question:** which complaint categories and responses marked not timely should
+be checked first against internal operating data?
 
 The default view shows published volume, response exceptions, reported-relief
 response mix, issue concentration, and a sensitivity analysis of the January
@@ -99,6 +97,9 @@ python3.12 -m venv .venv
 .venv/bin/pytest
 node --check docs/app.js
 node --check docs/dashboard-data.js
+npm ci
+npx playwright install chromium
+npm run test:browser
 ```
 
 Then double-click [`docs/index.html`](docs/index.html). Metrics, charts, and all
@@ -140,12 +141,6 @@ To run the pipeline without network access, pass a CFPB-format CSV:
 - [Two-minute demo](delivery/demo-script.md)
 
 ## Engineering approach
-
-The delivery controls were informed by public engineering research on business
-value, requirements, software quality, simplicity, human oversight,
-guardrails, and evidence-backed delivery. Sources are listed in
-[the architecture note](delivery/architecture.md); no proprietary methodology
-is claimed.
 
 The dashboard itself is reserved for analysis and decisions. Build hashes,
 test counts, project-provenance notices, and other verification metadata stay

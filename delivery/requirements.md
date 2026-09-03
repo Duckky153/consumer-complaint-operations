@@ -90,8 +90,9 @@ Acceptance criteria:
   completeness, distinct counts, warnings, and critical-check results.
 - **R4-AC3:** The source manifest records the exact request, row count, scope,
   build timestamp, exclusions, and sanitized-data SHA-256.
-- **R4-AC4:** The site displays source, period, product, population, snapshot
-  timestamp, and a shortened data hash.
+- **R4-AC4:** The site displays source, period, product, and population. Build
+  timestamps and hashes remain in the source manifest and delivery evidence,
+  where they support verification without cluttering the dashboard.
 - **R4-AC5:** A stable monthly-volume rule reports—not deletes—months above
   twice the calendar-year monthly median so unusual source patterns remain
   visible for investigation.
@@ -126,10 +127,11 @@ Acceptance criteria:
 - **R6-AC1:** Automated tests map to R1–R6 and pass under Python 3.12.
 - **R6-AC2:** Application and generated-data JavaScript syntax, required
   static-asset references, and load order pass automated checks.
-- **R6-AC3:** The dashboard is checked in a real browser at 360, 768, and 1440
-  CSS-pixel widths with no page-level horizontal overflow.
-- **R6-AC4:** Filters, reset, chart rendering, tables, source link, keyboard
-  focus, and reduced-motion behavior are verified.
+- **R6-AC3:** A repeatable Chromium check opens the dashboard at 360, 768, and
+  1440 CSS-pixel widths with no page-level horizontal overflow.
+- **R6-AC4:** The browser check verifies filters, reset, chart rendering,
+  tables, source links, keyboard focus, small-result handling, empty results,
+  and direct-file loading.
 - **R6-AC5:** The repository includes methodology, limitations, findings,
   recommendations, delivery evidence, AI disclosure, a two-minute demo,
   and a privacy-clean public handoff.
