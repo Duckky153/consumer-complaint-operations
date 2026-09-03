@@ -21,6 +21,12 @@ jobs:
           cache: pip
           cache-dependency-path: pyproject.toml
 
+      - name: Set up Node.js
+        uses: actions/setup-node@v6
+        with:
+          node-version: "22"
+          cache: npm
+
       - name: Install pinned dependencies
         run: python -m pip install -e '.[dev]'
 
@@ -31,3 +37,11 @@ jobs:
         run: |
           node --check docs/app.js
           node --check docs/dashboard-data.js
+
+      - name: Install browser test dependencies
+        run: |
+          npm ci
+          npx playwright install --with-deps chromium
+
+      - name: Exercise the dashboard in Chromium
+        run: npm run test:browser

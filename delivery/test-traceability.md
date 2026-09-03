@@ -11,7 +11,7 @@ complete evidence by itself.
 | R3 — Trends, drivers, filters | `test_dashboard_payload_supports_consistent_global_filters`; `test_dashboard_exposes_required_accessible_views`; `test_small_base_interpretation_threshold_is_executable`; `test_default_anomaly_and_known_filter_slice_are_reproducible` | Public data has the required filter dimensions; HTML has four decision-relevant charts; the 30-row interpretation gate executes; January's two leading clusters and the 281-row four-filter slice reproduce exactly | Real-browser default, issue, multi-filter, small-base, empty, and reset exercise at three widths |
 | R4 — Data quality | `test_quality_gate_rejects_duplicate_complaint_grain`; `test_quality_gate_rejects_out_of_scope_dates`; `test_quality_gate_rejects_negative_routing_time`; `test_optional_issue_null_is_disclosed_not_imputed`; `test_monthly_volume_spike_is_disclosed_as_warning` | Critical defects stop the build while expected sparsity and unusual monthly volume remain visible | Review real 84,194-row quality report |
 | R5 — Privacy/security | `test_public_payload_excludes_unnecessary_sensitive_fields`; `test_public_page_has_no_runtime_third_party_dependencies` | Public data excludes IDs, free text, exact routing time, and raw response category; runtime assets are local; runtime connections are disabled; CSP and safe DOM rules exist | Source scan, vendored hash check, browser network inspection |
-| R6 — Delivery/handoff | `test_client_ready_delivery_set_is_present`; `test_dashboard_direct_open_contract` | Named deliverables and manual-only deployment gate are present; generated data is executable, loads before the app, and requires no HTTP fetch | Pytest, JS syntax, local verifier, browser screenshots, link and overflow checks |
+| R6 — Delivery/handoff | `test_client_ready_delivery_set_is_present`; `test_dashboard_direct_open_contract`; `scripts/browser-check.mjs` | Named deliverables and manual-only deployment gate are present; generated data loads without an HTTP fetch; Chromium exercises responsive layouts, filters, reset, charts, tables, links, keyboard order, small results, empty results, and direct-file loading | Pytest, JS syntax, local verifier, browser check, and screenshots |
 
 ## Commands
 
@@ -19,14 +19,16 @@ complete evidence by itself.
 .venv/bin/pytest -ra
 node --check docs/app.js
 .venv/bin/python scripts/verify_delivery.py
+npm ci
+npx playwright install chromium
+npm run test:browser
 ```
 
 ## Why some gates remain browser-based
 
-Source-level tests can prove that breakpoints, accessible labels, filter code,
-and local assets exist. They cannot prove actual browser geometry or rendered
-Chart.js output. R6 therefore requires real-browser checks at 360, 768, and
-1440 CSS pixels in addition to pytest.
+Source-level tests cannot prove browser geometry or rendered Chart.js output.
+The checked-in Chromium test covers 360, 768, and 1440 CSS pixels in addition
+to pytest.
 
 ## Publication gate
 

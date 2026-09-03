@@ -5,42 +5,31 @@ Target speaking time: approximately two minutes at a calm pace.
 > This is my Consumer Complaint Operations Dashboard, an independent portfolio
 > project built from the CFPB's public Consumer Complaint Database.
 >
-> I started with the operating question, not the charts: where should a
-> risk or operations analyst focus internal validation first when only
-> external public signals are available? I bounded the analysis to every
-> published checking or savings account complaint received in 2025—84,194
-> records.
+> I built it to answer one practical question: with public complaint data, what
+> should an operations analyst review first? It uses all 84,194 published
+> checking and savings complaints received in 2025.
 >
-> The architecture is intentionally simple. A Python 3.12 and pandas pipeline
-> reads an allowlist of structured CFPB fields, normalizes dates and categories,
-> runs data-quality checks, and writes a sanitized local dataset. SQLite holds
-> one complaint per row, and checked-in SQL views calculate the baseline
-> metrics. A build step generates a compact local JavaScript data snapshot
-> consumed by a static HTML, CSS, JavaScript, and Chart.js site. There is no
-> backend, account system, cloud database, or runtime data request, so the page
-> works when opened directly or hosted on GitHub Pages.
+> A Python and pandas pipeline keeps only the needed fields, checks the data,
+> and stores one complaint per row in SQLite. SQL calculates the metrics. The
+> dashboard needs no account or backend, so anyone can open it.
 >
-> The default view shows published volume, response exceptions, reported-relief
-> response mix, and issue concentration. Managing an account represents 44,959
-> complaints, or 53.4 percent, and still leads after excluding January.
-> Deposits and withdrawals plus debit and ATM-card problems together represent
-> 32.3 percent of all complaints, so those are my first internal-validation
-> lanes. This identifies questions; it does not prove root causes.
+> The default view shows complaint volume, responses marked not timely,
+> reported-relief response mix, and issue concentration. Managing an account is
+> the largest issue at 44,959 complaints, or 53.4 percent. Deposits and
+> withdrawals is its leading detail, so I would review that workflow first. The
+> data identifies a starting point; it does not prove the cause.
 >
 > I can filter the complete view by month, account type, issue, or company.
-> The dashboard does more than flag January's 18,367 complaints. Two
-> company-issue clusters contribute 11,444, or 62.3 percent. Without them,
-> January is only 1.14 times the other-month median. That tells me not to turn
-> the spike into a broad staffing conclusion. It also shows 609 not-timely
-> responses, with the June peak concentrated in one source company label.
-> Those are focused validation leads, not rankings.
+> January has 18,367 complaints, but two company-and-issue combinations account
+> for 62.3 percent of them. Without those combinations, January is only 1.14
+> times the other-month median. I would investigate those clusters instead of
+> assuming there was a system-wide staffing problem. I can also narrow the 609
+> responses marked not timely for review.
 >
-> The most important limitation is that complaint counts are not company defect
-> rates. The data lacks customer, account, transaction, and market-share
-> denominators and is not a statistical sample of consumer harm.
+> The main limitation is that complaint counts are not company defect rates.
+> The public data has no customer, transaction, or market-share denominators, so
+> I would not use it to rank companies.
 >
-> This was AI-assisted. I defined the business outcome, requirements, controls,
-> architecture boundaries, and release gates. AI accelerated implementation.
-> I verified the data, SQL definitions, requirement-linked tests, and the
-> handoff. The quality controls reject impossible data and preserve unusual
-> patterns as warnings; they do not silently clean away inconvenient evidence.
+> I documented the requirements, metric definitions, and handoff. Automated
+> checks stop invalid data, reconcile the figures, and test the filters and
+> layouts in a real browser.

@@ -48,16 +48,22 @@ def test_dashboard_exposes_required_accessible_views(project_root: Path) -> None
     assert 'addEventListener("reset"' in script
     assert "minimumCount: 100" in script
     assert '"Share of selected complaints"' in script
-    assert '"Not-timely response (%)"' in script
+    assert '"Marked not timely (%)"' in script
     assert '"Published complaints"' in script
     assert "All other issues" in script
     assert "MIN_INTERPRETIVE_COUNT = 30" in script
-    assert "Do not generalize this into staffing demand" in script
-    assert "Two company-issue clusters contributed" in script
+    assert "This public spike alone is not enough to change staffing" in script
+    assert "Two company and issue combinations account for" in script
     assert 'id="freshness"' not in html
     assert "Source file SHA-256" not in script
     assert "Independent portfolio project" not in html
     assert 'class="executive-section"' not in html
+    assert 'id="metric-total-context"' not in html
+    assert "selected source rows" not in script
+    assert "discovery hypotheses" not in script
+    assert "response-exception data" not in script
+    assert 'href="./styles.css?v=20260903-1"' in html
+    assert 'src="./app.js?v=20260903-1"' in html
 
 
 @pytest.mark.requirement("R3")
