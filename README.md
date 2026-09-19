@@ -151,3 +151,17 @@ in this repository's documentation and evidence files.
 Project code and original documentation are MIT licensed. The CFPB source data
 is published under CC0. Chart.js 4.5.1 is vendored under its MIT license; see
 [`THIRD_PARTY_NOTICES.md`](THIRD_PARTY_NOTICES.md).
+
+## Salesforce Tableau extension — in progress
+
+The original web delivery above remains the published baseline. The `Duckky153/salesforce-tableau` branch adds an actual Tableau extension for Salesforce JR358388. Start with [role context](delivery/SALESFORCE-ROLE-BRIEF.md), [accepted scope](delivery/TABLEAU-SPEC.md) and [current build state](delivery/BUILD-STATE.md).
+
+The minimized data export and six SQL reconciliation scopes are implemented;21 tests pass. The native Tableau workbook, Hyper packaging and native interaction verification remain to be built. With the pinned sanitized source present locally:
+
+```sh
+uv sync --locked --extra dev
+uv run --locked pytest -q
+uv run --locked python -m complaint_ops.tableau
+```
+
+Do not call this extension complete or publish it from the data export alone.

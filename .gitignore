@@ -15,3 +15,8 @@ data/processed/*.sqlite
 
 !data/raw/.gitkeep
 !data/processed/.gitkeep
+
+# Rebuilt local Tableau data
+data/processed/tableau-*.csv
+data/processed/*.hyper
+*.twbr
