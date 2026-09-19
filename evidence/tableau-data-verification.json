@@ -1,0 +1,124 @@
+{
+  "phase": "Tableau data foundation; native workbook not yet built",
+  "source_sha256": "964912efdcfe70f2376591d40781f64832e879c73ff7d629fdadb6115541053b",
+  "export_sha256": "70e708b0fef16c9dd2045001ef2d65e18c861153c9e6284b24c08e385029cc51",
+  "rows": 84194,
+  "fields": [
+    "date_received",
+    "received_month",
+    "sub_product",
+    "issue",
+    "sub_issue",
+    "company",
+    "complaint_count",
+    "not_timely",
+    "has_relief",
+    "january_top_cluster"
+  ],
+  "grain": "one published complaint; original ID excluded",
+  "january_clusters": [
+    {
+      "company": "NAVY FEDERAL CREDIT UNION",
+      "issue": "Problem caused by your funds being low",
+      "complaints": 6970
+    },
+    {
+      "company": "CAPITAL ONE FINANCIAL CORPORATION",
+      "issue": "Managing an account",
+      "complaints": 4474
+    }
+  ],
+  "january_cluster_rows": 11444,
+  "cohort_metric_order": [
+    "complaints",
+    "not_timely",
+    "reported_relief"
+  ],
+  "checks": [
+    {
+      "scope": "all",
+      "sql": [
+        84194,
+        609,
+        12977
+      ],
+      "export": [
+        84194,
+        609,
+        12977
+      ],
+      "passed": true
+    },
+    {
+      "scope": "Managing an account",
+      "sql": [
+        44959,
+        363,
+        7114
+      ],
+      "export": [
+        44959,
+        363,
+        7114
+      ],
+      "passed": true
+    },
+    {
+      "scope": "June",
+      "sql": [
+        5557,
+        135,
+        1030
+      ],
+      "export": [
+        5557,
+        135,
+        1030
+      ],
+      "passed": true
+    },
+    {
+      "scope": "Checking account / Managing an account",
+      "sql": [
+        36185,
+        238,
+        5988
+      ],
+      "export": [
+        36185,
+        238,
+        5988
+      ],
+      "passed": true
+    },
+    {
+      "scope": "Exclude January",
+      "sql": [
+        65827,
+        571,
+        11716
+      ],
+      "export": [
+        65827,
+        571,
+        11716
+      ],
+      "passed": true
+    },
+    {
+      "scope": "Exclude January top two clusters",
+      "sql": [
+        72750,
+        609,
+        12857
+      ],
+      "export": [
+        72750,
+        609,
+        12857
+      ],
+      "passed": true
+    }
+  ],
+  "passed": true
+}
