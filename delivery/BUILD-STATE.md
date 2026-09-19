@@ -1,6 +1,6 @@
 # CCO Tableau version: build state
 
-Updated 2026-09-19T19:40:45.128557-04:00. Phase: baseline audited; owned worktree established; minimized Tableau data foundation implemented and verified. Tableau extension is **not complete**.
+Updated 2026-09-19T19:54:25-04:00. Phase: baseline audited; owned worktree established; minimized Tableau data foundation implemented and verified. Tableau extension is **not complete**.
 
 ## Verified baseline
 
@@ -15,10 +15,14 @@ Run `uv sync --locked --extra dev`, `uv run --locked pytest -q` and `uv run --lo
 
 `src/complaint_ops/tableau.py` produces `data/processed/tableau-complaints.csv` (ignored, rebuildable). Its ten fields exclude complaint IDs and the source's other restricted fields. Existing normalization/quality gates are retained. Original rows are never removed; January's two fixed source-wide clusters are marked for later view sensitivity.
 
-**21 tests pass** (16 existing plus5 export/edge-case tests). Six source-SQL/export scopes reconcile: baseline, Managing an account, June, Checking account/Managing an account, excluding January and excluding January's two largest clusters. Baseline84194/609/12977 and January cluster11444 match the retained findings. Evidence: `evidence/tableau-data-verification.json`; field dictionary: `delivery/TABLEAU-DATA-DICTIONARY.md`.
+**22 tests pass** (16 existing plus 6 export/edge-case tests). Seven source-SQL/export scopes reconcile: baseline, Managing an account, June, CAPITAL ONE FINANCIAL CORPORATION/Managing an account, Checking account/Managing an account, excluding January and excluding January's two largest clusters. Baseline84194/609/12977 and January cluster11444 match the retained findings. Evidence: `evidence/tableau-data-verification.json`; field dictionary: `delivery/TABLEAU-DATA-DICTIONARY.md`.
 
 No Tableau workbook or Hyper extract has been built in this update yet. The existing live web dashboard is unchanged.
 
 ## Next implementation
 
 Follow TABLEAU-SPEC.md: build the real Hyper/TWB/TWBX, verify native interactions, update field/metric/architecture/demo/rebuild documentation and review. Do not describe the web dashboard as an actual Tableau workbook.
+
+## Review — September 19
+
+Completed source/code/documentation review against the specification. Added missing company/issue SQL reconciliation and a regression proving that company misattribution is detected even when totals are unchanged. Fresh 22 pytest tests, 7 Tableau CSV reconciliation scopes, 20 local delivery checks and the responsive Chromium interaction suite pass. Native CCO Tableau gates remain untested because workbook/Hyper artifacts do not yet exist. Next: implement the approved native workbook, packaging and delivery guides; then verify native interactions. No new source extraction, push or publication.

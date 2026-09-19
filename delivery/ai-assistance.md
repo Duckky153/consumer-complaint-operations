@@ -3,14 +3,14 @@
 ## Plain disclosure
 
 This was an AI-assisted personal portfolio build. Dakshit Raj acted as the
-owner and product director. OpenAI Codex performed substantial research,
+project owner. OpenAI Codex performed substantial research,
 implementation, documentation, and test-authoring work under Dakshit's stated
 constraints and approval gates.
 
 It would be inaccurate for Dakshit to claim that he manually wrote every line
 of code. It is accurate to say that he defined the desired outcome, stack,
 scope, delivery standard, prohibited features, privacy boundary, and publication
-gate; directed the project; and is responsible for reviewing,
+gate; set the project requirements; and is responsible for reviewing,
 understanding, verifying, and presenting the finished work.
 
 ## Dakshit's contribution
@@ -66,3 +66,7 @@ The implementation followed a controlled sequence:
 5. Failures were investigated and documented.
 6. Tests and independent runtime checks were used to verify AI-produced work.
 7. Public actions were withheld for explicit approval.
+
+## September 19 review
+
+Codex reviewed the project, added the missing company/issue reconciliation and regression test, ran local tests and documented remaining Tableau delivery gates. No native CCO workbook is claimed.

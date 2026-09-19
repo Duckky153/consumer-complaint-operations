@@ -56,3 +56,16 @@ def test_reconciliation_detects_changed_metric():
     output.loc[0, "not_timely"] = 0
     with pytest.raises(ValueError, match="reconciliation failed"):
         reconcile(source, output)
+
+
+def test_company_issue_slice_detects_misattributed_company():
+    source = rows()
+    source.loc[3, "company"] = "CAPITAL ONE FINANCIAL CORPORATION"
+    output, _ = prepare_tableau(source)
+    checks = reconcile(source, output)
+    company_check = next(c for c in checks if c["scope"].startswith("CAPITAL ONE"))
+    assert company_check["sql"] == [1, 0, 1]
+    # Overall metrics and all previous scopes are unchanged by this defect.
+    output.loc[3, "company"] = "A"
+    with pytest.raises(ValueError, match="reconciliation failed"):
+        reconcile(source, output)

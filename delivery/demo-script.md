@@ -5,7 +5,7 @@ Target speaking time: approximately two minutes at a calm pace.
 > This is my Consumer Complaint Operations Dashboard, an independent portfolio
 > project built from the CFPB's public Consumer Complaint Database.
 >
-> I built it to answer one practical question: with public complaint data, what
+> I developed it with substantial AI assistance to answer one practical question: with public complaint data, what
 > should an operations analyst review first? It uses all 84,194 published
 > checking and savings complaints received in 2025.
 >

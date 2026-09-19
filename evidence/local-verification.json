@@ -86,7 +86,7 @@
       "passed": true
     },
     {
-      "evidence": "styles.css:13106, app.js:34386, chart.umd.min.js:208522, dashboard-data.js:1703265",
+      "evidence": "styles.css:12298, app.js:33662, chart.umd.min.js:208522, dashboard-data.js:1699819",
       "name": "required_static_assets",
       "passed": true
     },
@@ -103,5 +103,5 @@
   ],
   "failure_count": 0,
   "status": "passed",
-  "verified_at": "2026-08-16T07:38:45+00:00"
+  "verified_at": "2026-09-19T23:52:52+00:00"
 }
