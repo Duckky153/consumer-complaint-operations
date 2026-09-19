@@ -78,6 +78,20 @@
       "passed": true
     },
     {
+      "scope": "CAPITAL ONE FINANCIAL CORPORATION / Managing an account",
+      "sql": [
+        6428,
+        0,
+        176
+      ],
+      "export": [
+        6428,
+        0,
+        176
+      ],
+      "passed": true
+    },
+    {
       "scope": "Checking account / Managing an account",
       "sql": [
         36185,

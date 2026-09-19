@@ -3,14 +3,14 @@
 ## Plain disclosure
 
 This was an AI-assisted personal portfolio build. Dakshit Raj acted as the
-owner and product director. OpenAI Codex performed substantial research,
+project owner. OpenAI Codex performed substantial research,
 implementation, documentation, and test-authoring work under Dakshit's stated
 constraints and approval gates.
 
 It would be inaccurate for Dakshit to claim that he manually wrote every line
 of code. It is accurate to say that he defined the desired outcome, stack,
 scope, delivery standard, prohibited features, privacy boundary, publication
-gate, and resume gate; directed the project; and is responsible for reviewing,
+gate, and resume gate; set the project requirements; and is responsible for reviewing,
 understanding, verifying, and presenting the finished work.
 
 ## Dakshit's contribution
@@ -71,12 +71,18 @@ The implementation followed a controlled sequence:
 
 ## Interview-safe wording
 
-> I directed an AI-assisted build. I defined the user, business outcome,
+> I developed this project with substantial AI assistance. I defined the user, business outcome,
 > requirements, stack, privacy boundary, acceptance criteria, and release
-> gates. AI accelerated implementation and documentation. I verified the source
-> population, reviewed the SQL definitions, required tests mapped to each
-> requirement, and can explain the architecture, findings, limitations, and the
-> boundary failure we caught. I would not claim I typed every line manually.
+> gates. AI accelerated implementation and documentation. The project includes
+> source checks, SQL reconciliation and automated tests. I do not claim I typed
+> every line manually.
+
+Use this as preparation wording. Claims about independently explaining or
+rebuilding the work require an observed owner walkthrough first.
+
+September 19 review: Codex reviewed role readiness, added the missing company/issue
+reconciliation and regression test, ran local tests and documented remaining
+Tableau delivery gates. No native CCO workbook or owner mastery is claimed.
 
 ## Required owner understanding
 

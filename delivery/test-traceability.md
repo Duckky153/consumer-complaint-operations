@@ -35,3 +35,7 @@ to pytest.
 CI and Pages workflows are prepared, but the Pages workflow is manual-only.
 No public CI run, repository, deployment, or URL can be claimed until the owner
 approves publication and the resulting external evidence is verified.
+
+## Tableau extension — current foundation only
+
+`tests/test_tableau_export.py` now has six checks covering allowed fields/Unknown labels, fixed January cluster ordering and January-only marking, dedicated timely flag semantics, invalid timely rejection, metric corruption and company-attribution corruption. Seven source-SQL/export scopes reconcile in `evidence/tableau-data-verification.json`. These are CSV gates; native Tableau filters, sensitivity, reset, packaging and edge-state gates remain outstanding. See the September 19 role readiness review for exact acceptance values.
