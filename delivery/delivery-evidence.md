@@ -205,3 +205,7 @@ the September 3 copy cleanup, asset-cache repair, or permanent Chromium gate.
   https://duckky153.github.io/consumer-complaint-operations/
 - Current public state: online and usable, but one approved push and one manual
   Pages deployment are required before it matches the verified local candidate.
+
+## Local Tableau delivery — 2026-09-19T20:22:00-04:00
+
+TWBX `50a713b3a885d77ddeefe3b0757f2981283cf634e012ed2ce1c5454feff38cbb` opened independently in Tableau Public2026.2.2. Native screenshots/observations and final TWB/Hyper hashes are in `evidence/native-tableau-verification.json`. 26 pytest tests, eleven packaged SQL reconciliation scopes and full row multiplicities pass. Original source and web assets unchanged. Role walkthrough, architecture and manual rebuild guides are delivered locally. Independent review and native review repairs are summarized in BUILD-STATE. Personal rehearsal and publication remain separate.

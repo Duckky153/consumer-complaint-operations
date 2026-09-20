@@ -1,6 +1,43 @@
 # CCO Salesforce update — build state
 
-Updated 2026-09-19T19:54:25-04:00. Phase: baseline audited; owned worktree established; minimized Tableau data foundation implemented and verified. Tableau extension is **not complete**.
+Updated 2026-09-19T20:22:00-04:00. **Local Tableau implementation and listed native acceptance checks complete.** Owner rehearsal/acceptance remain separate. No GitHub push or publication.
+
+## Delivered
+
+- `tableau/Consumer Complaint Operations.twbx`: self-contained local package (two dashboards, 11 supporting worksheets, five shared controls).
+- `tableau/Consumer Complaint Operations.twb`: editable workbook; companion Hyper at `data/processed/tableau-complaints.hyper`.
+- Source→CSV→Hyper preparation, independent SQL reconciliation, package verifier and failure-case tests.
+- [Walkthrough](TABLEAU-WALKTHROUGH.md), [architecture/refresh/sharing](TABLEAU-ARCHITECTURE.md), [manual rebuild guide](TABLEAU-REBUILD-GUIDE.md), [field dictionary](TABLEAU-DATA-DICTIONARY.md).
+
+## Verified
+
+26 pytest tests pass. Seven CSV/source SQL scopes and seven Hyper scopes pass; packaged Hyper passes 11 source-SQL scopes and a full observation/multiplicity comparison. All 84,194 observations and the pinned source hash are preserved. Existing web verification: 20 checks and responsive Chromium suite pass.
+
+Final TWBX SHA-256: `50a713b3a885d77ddeefe3b0757f2981283cf634e012ed2ce1c5454feff38cbb`. Native evidence: `evidence/native-tableau-verification.json`; screenshots: `evidence/screenshots/tableau/`. A byte-identical TWBX opened from `/tmp/cco-portable-final/` and Tableau's Hyper process read its extracted package data, whose hash matches the generated Hyper.
+
+Native gates: baseline; Managing an account on both pages; June; Capital One/Managing; Checking/Managing; both January modes; January residual6,923; small base2; empty selection with undefined rates; Unknown51; repeated reset on both pages, including all five controls changed. Wrapped headers, scrollable lists and readable notes verified. Baseline84,194/609/12,977; January18,367/11,444/6,923.
+
+Independent read-only review identified CSV/Hyper provenance binding and missing artifact tests; both repaired. Initial native open exposed XML child ordering; corrected before release. Native review exposed truncated labels; widths/wrapping and scrollable row heights repaired. Final independent review found no remaining blockers. Its browser-install prerequisite documentation correction was applied.
+
+## Reproduce
+
+```sh
+uv sync --locked --extra dev
+uv run --locked python -m complaint_ops.tableau
+uv run --locked python -m complaint_ops.hyper
+uv run --locked python -m complaint_ops.workbook
+uv run --locked python scripts/verify_tableau.py
+uv run --locked pytest -q
+npm run test:browser
+```
+
+The pinned sanitized CSV must already exist locally. Do not rerun live extraction. Rebuilding artifacts requires new hash-bound native evidence before a new release claim.
+
+## Owner and continuation
+
+Current task: plan/build/test/review authorized by owner. Scope: owned salesforce-tableau checkout only. Software is complete at the documented local scope; next is owner walkthrough/manual rebuild. Exactly two projects: hotel flagship plus CCO supporting analytics project. Resume and employer-assigned exercise remain deferred. No account, public release, GitHub push or live-site changes were performed or authorized. The earlier readiness review is historical; this record supersedes its missing-workbook status.
+
+GitNexus guide was read; its suggested npx refresh was not run because no supported installed wrapper is available and automatic package installation was prohibited. Direct source/artifact review was used; no graph-index verification is claimed.
 
 ## Verified baseline
 
@@ -9,29 +46,3 @@ Updated 2026-09-19T19:54:25-04:00. Phase: baseline audited; owned worktree estab
 - Canonical baseline tests:16 passed. Source CSV matches recorded SHA-256 and84194-row snapshot; no new extraction.
 - New owned Orca checkout `/Users/dakshitraj/orca/workspaces/consumer-complaint-operations/salesforce-tableau`, branch `refs/heads/Duckky153/salesforce-tableau` from origin/main/d6a27ac. Creation instance `ca082934-618e-409a-bfdd-9bad67241ca7`. No separate agent conversation was started.
 - This checkout has its own uv environment and dependency lock; its own baseline test run also passes16 tests. Pinned sanitized CSV was copied into its ignored data/raw directory, not shared via a writable symlink.
-
-## Tableau data foundation implemented
-
-Run `uv sync --locked --extra dev`, `uv run --locked pytest -q` and `uv run --locked python -m complaint_ops.tableau`. The build requires the pinned sanitized snapshot at `data/raw/complaints_2025_checking_savings.csv`; this worktree already contains a verified local copy. It stops if the source hash differs rather than silently refreshing data.
-
-`src/complaint_ops/tableau.py` produces `data/processed/tableau-complaints.csv` (ignored, rebuildable). Its ten fields exclude complaint IDs and the source's other restricted fields. Existing normalization/quality gates are retained. Original rows are never removed; January's two fixed source-wide clusters are marked for later view sensitivity.
-
-**22 tests pass** (16 existing plus 6 export/edge-case tests). Seven source-SQL/export scopes reconcile: baseline, Managing an account, June, CAPITAL ONE FINANCIAL CORPORATION/Managing an account, Checking account/Managing an account, excluding January and excluding January's two largest clusters. Baseline84194/609/12977 and January cluster11444 match the retained findings. Evidence: `evidence/tableau-data-verification.json`; field dictionary: `delivery/TABLEAU-DATA-DICTIONARY.md`.
-
-No Tableau workbook or Hyper extract has been built in this update yet. The existing live web dashboard is unchanged.
-
-## Next implementation
-
-Follow TABLEAU-SPEC.md: build the real Hyper/TWB/TWBX, verify native interactions, update field/metric/architecture/demo/rebuild documentation and review. Do not describe the web dashboard as an actual Tableau workbook.
-
-## Orca and continuation
-
-Use this project's salesforce-tableau worktree for the update. Read AGENTS.md, SALESFORCE-ROLE-BRIEF.md, TABLEAU-SPEC.md and this file at the start of a new conversation. Saved files transfer context; this does not imply the full earlier chat is automatically loaded. Hotel is finalized; CCO is the active next project. Resume and employer-assigned demo remain deferred. No new push/publication is authorized here.
-
-## Sidebar organization
-
-Native Orca **Active Projects** group contains **Hotel Booking Decision Studio** and **Consumer Complaint Operations**. Hotel workspaces are labeled **Final review · completed** and **Earlier build · reference**, with histories retained. Continue CCO in **Salesforce Tableau update**. This is sidebar metadata; no repository folders were moved or worktrees deleted.
-
-## Role readiness review — September 19
-
-Completed source/code/documentation review against the exact captured JD. Added missing company/issue SQL reconciliation and a regression proving that company misattribution is detected even when totals are unchanged. Fresh 22 pytest tests, 7 Tableau CSV reconciliation scopes, 20 local delivery checks and the responsive Chromium interaction suite pass. Native CCO Tableau gates remain untested because workbook/Hyper artifacts do not yet exist. See [prioritized work and native acceptance targets](2026-09-19-ROLE-READINESS-REVIEW.md). Next: implement the approved native workbook, packaging and role-focused delivery guides; then verify native interactions. No new source extraction, push or publication.

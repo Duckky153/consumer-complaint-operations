@@ -39,3 +39,7 @@ approves publication and the resulting external evidence is verified.
 ## Tableau extension — current foundation only
 
 `tests/test_tableau_export.py` now has six checks covering allowed fields/Unknown labels, fixed January cluster ordering and January-only marking, dedicated timely flag semantics, invalid timely rejection, metric corruption and company-attribution corruption. Seven source-SQL/export scopes reconcile in `evidence/tableau-data-verification.json`. These are CSV gates; native Tableau filters, sensitivity, reset, packaging and edge-state gates remain outstanding. See the September 19 role readiness review for exact acceptance values.
+
+## Final Tableau acceptance
+
+The earlier foundation-only status is superseded by this local delivery. `test_tableau_package.py` exercises a real two-observation Hyper fixture with identical allowed-field rows, package self-containment, allowed fields, shared controls/reset targets, and rejection of changed CSV or Hyper. `scripts/verify_tableau.py` independently reconciles eleven source SQLite / packaged Hyper scopes and every row multiplicity. Native evidence covers all seven primary scopes plus small/empty/Unknown, cross-page consistency, repeated reset and independent package reopening. XML tests alone do not certify these native behaviors. Full test suite:26 passed.

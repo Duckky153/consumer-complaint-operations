@@ -79,7 +79,7 @@ def main() -> None:
     result.to_csv(output, index=False, lineterminator="\n")
     reread = pd.read_csv(output)
     checks = reconcile(source, reread)
-    evidence = {"phase": "Tableau data foundation; native workbook not yet built", "source_sha256": digest,
+    evidence = {"phase": "Tableau CSV verification; native acceptance recorded separately", "source_sha256": digest,
                 "export_sha256": hashlib.sha256(output.read_bytes()).hexdigest(), "rows": len(result),
                 "fields": EXPORT_COLUMNS, "grain": "one published complaint; original ID excluded",
                 "january_clusters": clusters, "january_cluster_rows": int(result.january_top_cluster.sum()),

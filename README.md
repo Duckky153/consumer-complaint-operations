@@ -152,18 +152,23 @@ Project code and original documentation are MIT licensed. The CFPB source data
 is published under CC0. Chart.js 4.5.1 is vendored under its MIT license; see
 [`THIRD_PARTY_NOTICES.md`](THIRD_PARTY_NOTICES.md).
 
-## Salesforce Tableau extension — in progress
+## Salesforce Tableau extension — local delivery
 
-The original web delivery above remains the published baseline. The `Duckky153/salesforce-tableau` branch adds an actual Tableau extension for Salesforce JR358388. Start with [role context](delivery/SALESFORCE-ROLE-BRIEF.md), [accepted scope](delivery/TABLEAU-SPEC.md) and [current build state](delivery/BUILD-STATE.md).
+The supporting Tableau project for Salesforce JR358388 now includes **Overview** and **Investigation** dashboards, five shared cohort controls, both January sensitivity modes and repeatable reset. The original web dashboard remains unchanged.
 
-The minimized data export and seven SQL reconciliation scopes are implemented; 22 tests pass. The native Tableau workbook, Hyper packaging and native interaction verification remain to be built. With the pinned sanitized source present locally:
+Open [Consumer Complaint Operations.twbx](tableau/Consumer%20Complaint%20Operations.twbx) locally in Tableau. The [editable TWB](tableau/Consumer%20Complaint%20Operations.twb) uses the companion generated Hyper. The package includes its own Hyper and was reopened independently in native Tableau.
+
+Start with the [walkthrough](delivery/TABLEAU-WALKTHROUGH.md), [manual rebuild guide](delivery/TABLEAU-REBUILD-GUIDE.md), [architecture](delivery/TABLEAU-ARCHITECTURE.md) and [current build/evidence record](delivery/BUILD-STATE.md). This is AI-assisted portfolio work; personal rehearsal is separate.
+
+26 automated tests pass; 11 packaged-data/source-SQL scopes and full row multiplicities reconcile. Native filters, sensitivity, cross-page scope, reset and edge states are recorded in [native evidence](evidence/native-tableau-verification.json). No new publication or GitHub push has occurred.
 
 ```sh
 uv sync --locked --extra dev
-uv run --locked pytest -q
 uv run --locked python -m complaint_ops.tableau
+uv run --locked python -m complaint_ops.hyper
+uv run --locked python -m complaint_ops.workbook
+uv run --locked python scripts/verify_tableau.py
+uv run --locked pytest -q
 ```
 
-Do not call this extension complete or publish it from the data export alone.
-
-Role readiness was reviewed and tested on September 19: [findings, remaining work and acceptance gates](delivery/2026-09-19-ROLE-READINESS-REVIEW.md).
+The pinned source must already be present locally. The [September19 readiness review](delivery/2026-09-19-ROLE-READINESS-REVIEW.md) records the pre-build gaps; BUILD-STATE is the current status.

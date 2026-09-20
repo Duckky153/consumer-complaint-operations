@@ -1,0 +1,204 @@
+{
+  "verified_at": "2026-09-19T20:22:00-04:00",
+  "application": "Tableau Public 2026.2.2 Apple silicon",
+  "passed": true,
+  "workbook_sha256": "e766fe64eefbf86c1b9369d3b5d1a95ca9fd912037c60bdec2d9fdeff243f719",
+  "package_sha256": "50a713b3a885d77ddeefe3b0757f2981283cf634e012ed2ce1c5454feff38cbb",
+  "hyper_sha256": "6e08bff79b10fe5e24522955c85b461e4eee8bb06ed3a390bb64a0cded322cd2",
+  "metric_order": [
+    "complaints",
+    "not_timely",
+    "relief_responses"
+  ],
+  "package_reopen": {
+    "copied_to": "/tmp/cco-portable-final/Consumer Complaint Operations.twbx",
+    "package_bytes_match": true,
+    "native_pid": 88243,
+    "hyper_pid": 88356,
+    "native_hyper_read_from": "/private/var/folders/bf/7hdxnsgn5rn30dqlchb77dbw0000gn/T/tableau-temp/2448948581/Data/tableau-complaints.hyper",
+    "native_extracted_hyper_matches": true
+  },
+  "observations": [
+    {
+      "scope": "Baseline / Overview",
+      "counts": [
+        84194,
+        609,
+        12977
+      ],
+      "rates_display": [
+        "0.72%",
+        "15.41%"
+      ],
+      "screenshot": "01-overview.png",
+      "screenshot_sha256": "64b3dcb3e152864ecae678ed5480fc91ef75d5ba48798fdde086a9410b6f069e"
+    },
+    {
+      "scope": "Managing an account / Overview",
+      "counts": [
+        44959,
+        363,
+        7114
+      ],
+      "rates_display": [
+        "0.81%",
+        "15.82%"
+      ],
+      "screenshot": "02-managing-overview.png",
+      "screenshot_sha256": "e137365c7526afbab78e74d4499e9cd2446e711fcc25244eb139b014ed6698cf"
+    },
+    {
+      "scope": "Managing an account / Investigation",
+      "counts": [
+        44959,
+        363,
+        7114
+      ],
+      "cross_page_scope_preserved": true,
+      "screenshot": "03-managing-investigation.png",
+      "screenshot_sha256": "92d9bbecb3d5090feedf947338478110ebc45f5f028c414c7f95d1c9c57d27e8"
+    },
+    {
+      "scope": "CAPITAL ONE FINANCIAL CORPORATION / Managing an account",
+      "counts": [
+        6428,
+        0,
+        176
+      ],
+      "rates_display": [
+        "0.00%",
+        "2.74%"
+      ],
+      "screenshot": "04-company-issue.png",
+      "screenshot_sha256": "6f90d7343e1aa7940e53377abd543d5afde4f35f10247837fcef1741ed1a8406"
+    },
+    {
+      "scope": "June",
+      "counts": [
+        5557,
+        135,
+        1030
+      ],
+      "rates_display": [
+        "2.43%",
+        "18.54%"
+      ],
+      "screenshot": "05-june.png",
+      "screenshot_sha256": "9eef6d9dbf0395d20f6aae2d9dbb4ae04ee52e30c33757cb378f3caba3c70a8a"
+    },
+    {
+      "scope": "Exclude January",
+      "counts": [
+        65827,
+        571,
+        11716
+      ],
+      "rates_display": [
+        "0.87%",
+        "17.80%"
+      ],
+      "screenshot": "06-exclude-january.png",
+      "screenshot_sha256": "88c05dbbffe4e9307c20dd9d262b94d0aa0f61a1ef745d8af183c15a751e4d61"
+    },
+    {
+      "scope": "Exclude January top two clusters",
+      "counts": [
+        72750,
+        609,
+        12857
+      ],
+      "rates_display": [
+        "0.84%",
+        "17.67%"
+      ],
+      "screenshot": "07-exclude-clusters.png",
+      "screenshot_sha256": "375dc9aa656671194d703590b2c01163f68bac0de12d761ae33bc856927cf9b3"
+    },
+    {
+      "scope": "TRUEBILL, INC",
+      "counts": [
+        2,
+        0,
+        1
+      ],
+      "small_base_warning_visible": true,
+      "screenshot": "08-small-base.png",
+      "screenshot_sha256": "40eb7c7c0a85e01be64123ffad36e05374d20b8e0026d7ac1d04de12c6a9dd18"
+    },
+    {
+      "scope": "January / CD / Closing an account / NAVY FEDERAL CREDIT UNION / Exclude January top two clusters",
+      "counts": [
+        0,
+        0,
+        0
+      ],
+      "rates_blank": true,
+      "empty_note_visible": true,
+      "screenshot": "09-empty-all-controls.png",
+      "screenshot_sha256": "3d9a385c18c9a2b2f9af3970e49962c86a19e6979eb34f8f225aff0d69b23573"
+    },
+    {
+      "scope": "Reset all five controls from empty Investigation",
+      "counts": [
+        84194,
+        609,
+        12977
+      ],
+      "stays_on_investigation": true,
+      "defaults": [
+        "All account types",
+        "All issues",
+        "All months",
+        "Baseline",
+        "All companies"
+      ],
+      "screenshot": "10-all-controls-reset.png",
+      "screenshot_sha256": "c6e0580247591692d855e1d2a7f1729b88c356a0161f46298be18cd015181cbd"
+    },
+    {
+      "scope": "Problem with fraud alerts or security freezes / Unknown sub-issue",
+      "counts": [
+        51,
+        1,
+        5
+      ],
+      "unknown_label_visible": true,
+      "screenshot": "11-unknown-subissue.png",
+      "screenshot_sha256": "46a5600288dc374a0b9d3c36de18faf098e8021d01f883d309cf96df5bdd0127"
+    },
+    {
+      "scope": "Checking account / Managing an account",
+      "counts": [
+        36185,
+        238,
+        5988
+      ],
+      "rates_display": [
+        "0.66%",
+        "16.55%"
+      ],
+      "screenshot": "12-account-issue.png",
+      "screenshot_sha256": "1c52d9b2e3433c82a88f232deca0d2b0064aa12d41b204486223902bcc6dca46"
+    },
+    {
+      "scope": "Overview / Exclude January top two clusters",
+      "counts": [
+        72750,
+        609,
+        12857
+      ],
+      "january_residual": 6923,
+      "screenshot": "13-january-residual.png",
+      "screenshot_sha256": "b49028d902de94ba262adc0bdaa5c14a3c4e628dffe94e078a09ce03118a2655"
+    }
+  ],
+  "reset_repeatability": "Reset successfully used after company/issue selection, June, both sensitivity modes, small state, all five changed controls/empty state, Unknown, and Checking/Managing. Both pages tested; final state Overview baseline.",
+  "readability": "Wrapped issue/sub-issue headers and 44px rows verified; long category lists scroll; full tooltip details retained.",
+  "automated_evidence": "26 pytest tests; 11 packaged Hyper/source-SQL cohorts and all row multiplicities; seven CSV and Hyper foundation scopes.",
+  "limits": [
+    "Listed interactions were observed, not every possible combination.",
+    "Native screen reading and screenshots are operator observations; automated data checks are separate.",
+    "Owner learning/rehearsal and visual acceptance are not certified.",
+    "No publish, new account, GitHub push, resume or employer-assigned demo."
+  ]
+}

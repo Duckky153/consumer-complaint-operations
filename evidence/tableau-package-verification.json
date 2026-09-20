@@ -1,0 +1,164 @@
+{
+  "passed": true,
+  "package_sha256": "50a713b3a885d77ddeefe3b0757f2981283cf634e012ed2ce1c5454feff38cbb",
+  "source_sha256": "964912efdcfe70f2376591d40781f64832e879c73ff7d629fdadb6115541053b",
+  "hyper_sha256": "6e08bff79b10fe5e24522955c85b461e4eee8bb06ed3a390bb64a0cded322cd2",
+  "all_packaged_rows_and_multiplicities_match": true,
+  "checks": [
+    {
+      "scope": "Baseline",
+      "source_sql": [
+        84194,
+        609,
+        12977
+      ],
+      "packaged_hyper": [
+        84194,
+        609,
+        12977
+      ],
+      "passed": true
+    },
+    {
+      "scope": "Managing an account",
+      "source_sql": [
+        44959,
+        363,
+        7114
+      ],
+      "packaged_hyper": [
+        44959,
+        363,
+        7114
+      ],
+      "passed": true
+    },
+    {
+      "scope": "June",
+      "source_sql": [
+        5557,
+        135,
+        1030
+      ],
+      "packaged_hyper": [
+        5557,
+        135,
+        1030
+      ],
+      "passed": true
+    },
+    {
+      "scope": "Company / issue",
+      "source_sql": [
+        6428,
+        0,
+        176
+      ],
+      "packaged_hyper": [
+        6428,
+        0,
+        176
+      ],
+      "passed": true
+    },
+    {
+      "scope": "Checking / Managing",
+      "source_sql": [
+        36185,
+        238,
+        5988
+      ],
+      "packaged_hyper": [
+        36185,
+        238,
+        5988
+      ],
+      "passed": true
+    },
+    {
+      "scope": "Exclude January",
+      "source_sql": [
+        65827,
+        571,
+        11716
+      ],
+      "packaged_hyper": [
+        65827,
+        571,
+        11716
+      ],
+      "passed": true
+    },
+    {
+      "scope": "Exclude fixed clusters",
+      "source_sql": [
+        72750,
+        609,
+        12857
+      ],
+      "packaged_hyper": [
+        72750,
+        609,
+        12857
+      ],
+      "passed": true
+    },
+    {
+      "scope": "Small base",
+      "source_sql": [
+        2,
+        0,
+        1
+      ],
+      "packaged_hyper": [
+        2,
+        0,
+        1
+      ],
+      "passed": true
+    },
+    {
+      "scope": "Empty",
+      "source_sql": [
+        0,
+        0,
+        0
+      ],
+      "packaged_hyper": [
+        0,
+        0,
+        0
+      ],
+      "passed": true
+    },
+    {
+      "scope": "Unknown sub-issue",
+      "source_sql": [
+        51,
+        1,
+        5
+      ],
+      "packaged_hyper": [
+        51,
+        1,
+        5
+      ],
+      "passed": true
+    },
+    {
+      "scope": "29 observations",
+      "source_sql": [
+        29,
+        0,
+        7
+      ],
+      "packaged_hyper": [
+        29,
+        0,
+        7
+      ],
+      "passed": true
+    }
+  ],
+  "scope": "Automated packaged-data verification; see native-tableau-verification.json for GUI evidence"
+}

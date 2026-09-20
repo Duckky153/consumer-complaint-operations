@@ -99,3 +99,9 @@ Dakshit should be able to:
 - describe what AI did; and
 - explain the architecture, metrics, findings, tests, and limitations without
   claiming unsupported manual authorship.
+
+## Tableau delivery — September 19
+
+Following the owner's plan/build/test/review instruction, Codex built the typed Hyper export, explicit Tableau workbook generator and package verifier; authored artifact/provenance tests and the manual rebuild, architecture and walkthrough documents; and operated native Tableau to verify the final package. A separate read-only review agent identified the CSV/Hyper binding gap, which was repaired and regression-tested. Existing verified hotel workbook patterns were reused without changing that project.
+
+Native verification belongs to the operator's evidence record. It is not evidence that Dakshit has independently authored, rebuilt or mastered Tableau. No customer deployment, measured benefit or employer exercise is claimed.

@@ -1,5 +1,7 @@
 # Salesforce JR358388 — CCO readiness review
 
+> Historical pre-build review. The subsequent owner-authorized implementation is recorded in [BUILD-STATE.md](BUILD-STATE.md); its local software/native gates are now complete.
+
 Reviewed September 19, 2026 against the locally captured exact job description (observed September 19), TABLEAU-SPEC.md, source code, source snapshot and fresh local tests. This review does not revalidate the vacancy or application status.
 
 **Verdict: the existing web project and Tableau CSV foundation are verified; the CCO Tableau extension is not ready to present as delivered Tableau work.** Hotel remains the flagship; CCO is the supporting second project. The key contribution here is careful analytical investigation, SQL reconciliation and honest interpretation of public data.

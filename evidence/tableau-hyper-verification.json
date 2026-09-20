@@ -1,7 +1,5 @@
 {
-  "phase": "Tableau CSV verification; native acceptance recorded separately",
-  "source_sha256": "964912efdcfe70f2376591d40781f64832e879c73ff7d629fdadb6115541053b",
-  "export_sha256": "70e708b0fef16c9dd2045001ef2d65e18c861153c9e6284b24c08e385029cc51",
+  "passed": true,
   "rows": 84194,
   "fields": [
     "date_received",
@@ -15,34 +13,16 @@
     "has_relief",
     "january_top_cluster"
   ],
-  "grain": "one published complaint; original ID excluded",
-  "january_clusters": [
-    {
-      "company": "NAVY FEDERAL CREDIT UNION",
-      "issue": "Problem caused by your funds being low",
-      "complaints": 6970
-    },
-    {
-      "company": "CAPITAL ONE FINANCIAL CORPORATION",
-      "issue": "Managing an account",
-      "complaints": 4474
-    }
-  ],
-  "january_cluster_rows": 11444,
-  "cohort_metric_order": [
-    "complaints",
-    "not_timely",
-    "reported_relief"
-  ],
+  "all_rows_and_multiplicities_match": true,
   "checks": [
     {
       "scope": "all",
-      "sql": [
+      "hyper": [
         84194,
         609,
         12977
       ],
-      "export": [
+      "sql": [
         84194,
         609,
         12977
@@ -51,12 +31,12 @@
     },
     {
       "scope": "Managing an account",
-      "sql": [
+      "hyper": [
         44959,
         363,
         7114
       ],
-      "export": [
+      "sql": [
         44959,
         363,
         7114
@@ -65,12 +45,12 @@
     },
     {
       "scope": "June",
-      "sql": [
+      "hyper": [
         5557,
         135,
         1030
       ],
-      "export": [
+      "sql": [
         5557,
         135,
         1030
@@ -79,12 +59,12 @@
     },
     {
       "scope": "CAPITAL ONE FINANCIAL CORPORATION / Managing an account",
-      "sql": [
+      "hyper": [
         6428,
         0,
         176
       ],
-      "export": [
+      "sql": [
         6428,
         0,
         176
@@ -93,12 +73,12 @@
     },
     {
       "scope": "Checking account / Managing an account",
-      "sql": [
+      "hyper": [
         36185,
         238,
         5988
       ],
-      "export": [
+      "sql": [
         36185,
         238,
         5988
@@ -107,12 +87,12 @@
     },
     {
       "scope": "Exclude January",
-      "sql": [
+      "hyper": [
         65827,
         571,
         11716
       ],
-      "export": [
+      "sql": [
         65827,
         571,
         11716
@@ -121,12 +101,12 @@
     },
     {
       "scope": "Exclude January top two clusters",
-      "sql": [
+      "hyper": [
         72750,
         609,
         12857
       ],
-      "export": [
+      "sql": [
         72750,
         609,
         12857
@@ -134,5 +114,9 @@
       "passed": true
     }
   ],
-  "passed": true
+  "source_sha256": "964912efdcfe70f2376591d40781f64832e879c73ff7d629fdadb6115541053b",
+  "export_sha256": "70e708b0fef16c9dd2045001ef2d65e18c861153c9e6284b24c08e385029cc51",
+  "hyper_sha256": "6e08bff79b10fe5e24522955c85b461e4eee8bb06ed3a390bb64a0cded322cd2",
+  "telemetry": "DO_NOT_SEND_USAGE_DATA_TO_TABLEAU",
+  "scope": "Data engine verification; native workbook interactions are separate"
 }
