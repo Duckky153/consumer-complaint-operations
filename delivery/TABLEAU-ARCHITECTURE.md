@@ -10,7 +10,7 @@ Five string parameters select account type, issue, company, month and sensitivit
 
 The two January company/issue clusters are computed once over the whole pinned January population, with deterministic alphabetical tie breaks. The flag is 1 only on their January observations. Changing a view parameter cannot redefine cluster membership. No FIXED expression or table calculation silently changes the population.
 
-The workbook has 11 supporting worksheets and exactly two dashboards. Readable wrapped category headers use scrollable lists; all categories remain available. Bar selection is not a filter action. Dropdowns are the shared cohort controls.
+The workbook has 15 supporting worksheets (including four selected-value readbacks) and exactly two dashboards. Readable wrapped category headers use scrollable lists; all categories remain available. Bar selection is not a filter action. The four dropdowns and January radio list share cohort state across pages. Larger selected-value readbacks accompany the native compact dropdowns.
 
 ## Refresh contract
 

@@ -60,7 +60,8 @@ def build(root: Path = ROOT) -> Path:
         el(col,'calculation',**{'class':'tableau','formula':f'"{default}"'})
         members = el(col,'members')
         for value in ([default]+sorted({r[field] for r in rows}) if field else MODES):
-            el(members,'member',value='"'+value.replace('"','""')+'"')
+            el(members,'member',value='"'+value.replace('"','""')+'"',
+               **({'alias':'Exclude top 2 groups'} if value==MODES[2] else {}))
         param_meta[name] = col
     data = el(ds,'datasource',caption='Published CFPB complaints · 2025 snapshot',inline='true',name=D,version='18.1')
     conn = el(data,'connection',**{'class':'federated'})
@@ -89,12 +90,14 @@ def build(root: Path = ROOT) -> Path:
     formulas.update({
         'Not timely rate': ('real','measure','IF [Selected complaints] > 0 THEN [Selected not timely] / [Selected complaints] END'),
         'Relief mix': ('real','measure','IF [Selected complaints] > 0 THEN [Selected relief] / [Selected complaints] END'),
-        'Cohort note': ('string','measure','IF [Selected complaints] = 0 THEN "No complaints match. Change a control or Reset view. Rates are undefined." ELSEIF [Selected complaints] < 30 THEN "Small base: fewer than 30 complaints. Review individual cases; interpret percentages cautiously." ELSE "Selected complaints are the denominator. Validate patterns against internal cases and transaction volumes." END'),
+        'Cohort note': ('string','measure','IF [Selected complaints] = 0 THEN "No complaints match. Change a control or Reset view. Rates are undefined." ELSEIF [Selected complaints] < 30 THEN "Small base: fewer than 30 complaints. Review individual cases; interpret percentages cautiously." ELSE "Rates use the selected complaints. Public counts do not measure company performance." END'),
         'Small group': ('string','measure','IF SUM([complaint_count]) < 30 THEN " *" ELSE "" END'),
         'Reset label': ('string','dimension','"Reset view"'),
         'Clear reset selection': ('string','dimension','"Clear selection"'),
     })
-    for p,(_,default) in CONTROLS.items():
+    for p,(source_field,default) in CONTROLS.items():
+        if source_field:
+            formulas['Current '+p] = ('string','measure',f'IF [Parameters].[{p}] = "{default}" THEN "" ELSEIF LEN([Parameters].[{p}]) > 24 THEN REGEXP_REPLACE(MAX([Parameters].[{p}]), "^(.{{1,24}}) +", "$1" + CHAR(10)) ELSE MAX([Parameters].[{p}]) END')
         formulas['Reset '+p] = ('string','dimension',f'"{default}"')
     for name,(typ,role,formula) in formulas.items():
         attrs = {'default-format':'p0.00%'} if typ=='real' else {'default-format':'n#,##0'} if typ=='integer' else {}
@@ -124,7 +127,7 @@ def build(root: Path = ROOT) -> Path:
         sheet_names.append(name)
         s = el(works,'worksheet',name=name)
         title = el(el(s,'layout-options'),'title')
-        el(el(title,'formatted-text'),'run',fontname='Arial',fontsize='14',fontcolor=NAVY,bold='true').text=name
+        el(el(title,'formatted-text'),'run',fontname='Arial',fontsize='17',fontcolor=NAVY,bold='true').text=name
         t=el(s,'table'); v=el(t,'view'); sources=el(v,'datasources')
         el(sources,'datasource',name=D,caption='Published CFPB complaints · 2025 snapshot')
         el(sources,'datasource',name='Parameters')
@@ -140,14 +143,14 @@ def build(root: Path = ROOT) -> Path:
         style=el(t,'style')
         for element in ['worksheet','axis','header','pane']:
             rule=el(style,'style-rule',element=element)
-            el(rule,'format',attr='font-family',value='Arial'); el(rule,'format',attr='font-size',value='12')
+            el(rule,'format',attr='font-family',value='Arial'); el(rule,'format',attr='font-size',value='14')
             el(rule,'format',attr='color',value=NAVY)
             if element == 'header' and dimension in {'issue', 'sub_issue'}:
-                el(rule,'format',attr='width',field=ref(dimension),value='350' if dimension=='sub_issue' else '255')
+                el(rule,'format',attr='width',field=ref(dimension),value='550')
                 el(rule,'format',attr='wrap',field=ref(dimension),value='on')
         if dimension in {'issue', 'sub_issue'}:
             cell = el(style,'style-rule',element='cell')
-            el(cell,'format',attr='height',field=ref(dimension),value='44')
+            el(cell,'format',attr='height',field=ref(dimension),value='48')
         pane=el(el(t,'panes'),'pane');el(el(pane,'view'),'breakdown',value='auto')
         el(pane,'mark',**{'class':'Text' if text else 'Bar'})
         enc=el(pane,'encodings');el(enc,'text',column=ref(measure))
@@ -157,10 +160,11 @@ def build(root: Path = ROOT) -> Path:
         if detail:
             el(enc,'text',column=ref('Not timely rate'));el(enc,'text',column=ref('Small group'))
         label=el(el(pane,'customized-label'),'formatted-text')
-        font='28' if text and not dimension and measure not in {'Cohort note','Reset label'} else '12'
+        font='32' if text and not dimension and measure not in {'Cohort note','Reset label'} and not measure.startswith('Current ') else '14'
+        if measure in {'Not timely rate','Relief mix'}: font='20'
         label_text=f'<{ref(measure)}>'
-        if detail: label_text+=f'  |  <{ref("Not timely rate")}> NT<{ref("Small group")}>'
-        el(label,'run',fontname='Arial',fontsize=font,fontcolor=NAVY,bold='true' if font=='28' else 'false').text=label_text
+        if detail: label_text+=f'    |    <{ref("Not timely rate")}> <{ref("Small group")}>'
+        el(label,'run',fontname='Arial',fontsize=font,fontcolor=NAVY,bold='true' if font=='32' else 'false').text=label_text
         tooltip=el(el(pane,'customized-tooltip',show_buttons='false'),'formatted-text')
         el(tooltip,'run').text=(f'<{ref(dimension)}>\n' if dimension else '')+f'Complaints: <{ref("Selected complaints")}>\nNot timely: <{ref("Selected not timely")}> (<{ref("Not timely rate")}>)\nRelief responses: <{ref("Selected relief")}> (<{ref("Relief mix")}>)'
         tooltip_node = pane.find('customized-tooltip')
@@ -179,19 +183,24 @@ def build(root: Path = ROOT) -> Path:
     sheet('Relief mix','Relief mix',text=True)
     sheet('Monthly complaints','Selected complaints','received_month',filter_rows=True)
     sheet('Monthly not-timely exceptions','Selected not timely','received_month',filter_rows=True)
-    sheet('Issues · count and not-timely rate','Selected complaints','issue',filter_rows=True,detail=True)
+    sheet('Issues · count and not-timely rate','Selected complaints','issue',text=True,filter_rows=True,detail=True)
     sheet('Sub-issues · count and not-timely rate','Selected complaints','sub_issue',text=True,filter_rows=True,detail=True)
     sheet('Selection note','Cohort note',text=True)
     sheet('Reset view','Reset label',text=True,reset=True)
+    for p,(source_field,_) in CONTROLS.items():
+        if source_field: sheet('Current '+p,'Current '+p,text=True)
 
     dashboards=el(w,'dashboards'); dashboard_sheets={}
-    for number,title,question in [('01','Overview','Which complaint patterns deserve a closer look?'),
-                                  ('02','Investigation','What should we validate against internal cases?')]:
+    for number,title,question in [('01','Overview','Complaint patterns at a glance'),
+                                  ('02','Investigation','Choose an issue to investigate')]:
         name=number+' · '+title
         db=el(dashboards,'dashboard',name=name)
         el(db,'layout-options');st=el(db,'style')
         el(el(st,'style-rule',element='dashboard'),'format',attr='background-color',value='#f7f6f2')
-        el(el(st,'style-rule',element='quick-filter'),'format',attr='font-size',value='12')
+        for element in ['parameter-ctrl','parameter-ctrl-title']:
+            rule=el(st,'style-rule',element=element)
+            el(rule,'format',attr='font-size',value='14')
+            el(rule,'format',attr='font-family',value='Arial')
         el(db,'size',maxheight='850',minheight='850',maxwidth='1200',minwidth='1200')
         sources=el(db,'datasources');el(sources,'datasource',name=D);el(sources,'datasource',name='Parameters')
         dependencies(db,['Selected cohort'])
@@ -206,27 +215,51 @@ def build(root: Path = ROOT) -> Path:
         def textzone(text,x,y,width,height,size=14,bold=False,color=NAVY):
             z=zone(x,y,width,height,type='text')
             el(el(z,'formatted-text'),'run',fontname='Arial',fontsize=size,bold=str(bold).lower(),fontcolor=color).text=text
-        textzone('CONSUMER COMPLAINT OPERATIONS  /  '+title.upper(),24,15,925,24,12,True,TEAL)
-        zone(1035,12,141,32,name='Reset view',show_title='false')
-        textzone(question,24,47,1152,44,26,True)
-        textzone('2025 checking and savings complaints. Use public patterns to choose an internal validation question.',24,99,1152,27)
-        for p,x,width in [('Account type',24,230),('Issue',274,405),('Month',699,160),('January sensitivity',879,297)]:
-            zone(x,137,width,64,type='paramctrl',param=f'[Parameters].[{p}]')
-        zone(24,203,730,64,type='paramctrl',param='[Parameters].[Company]')
-        textzone('Company narrows the view; volume does not rank performance.',774,216,402,45,12)
-        for i,(sheet_name,label) in enumerate([('Published complaints','Published complaints'),('Not timely','Not timely'),('Not timely rate','Not timely rate'),('Relief responses','Relief responses'),('Relief mix','Relief mix')]):
-            zone(24+i*232,280,222,94,name=sheet_name,show_title='true')
-        zone(24,382,1152,42,name='Selection note',show_title='false')
+        textzone('CONSUMER COMPLAINT OPERATIONS',24,18,1000,25,14,True,TEAL)
+        textzone(question,340,58,836,43,26,True)
+        textzone('2025 · Checking and savings accounts',340,105,836,26,16)
+        # A stable left rail keeps controls out of the chart's reading path.
+        rail=zone(16,56,300,716,type='text')
+        el(el(rail,'formatted-text'),'run').text=''
+        zs=el(rail,'zone-style');el(zs,'format',attr='background-color',value='#edf3f4')
+        textzone('Filter the view',30,72,270,28,18,True)
+        for i,p in enumerate(['Account type','Issue','Company','Month','January sensitivity']):
+            y=116+i*95
+            if p=='January sensitivity':
+                zone(30,y,270,140,type='paramctrl',mode='list',param=f'[Parameters].[{p}]')
+            else:
+                textzone(p,30,y,270,23,14,True)
+                zone(30,y+27,270,24,type='paramctrl',mode='compact',show_title='false',param=f'[Parameters].[{p}]')
+                zone(30,y+52,270,42,name='Current '+p,show_title='false')
+        z=zone(30,642,270,46,name='Reset view',show_title='false')
+        zs=el(z,'zone-style');el(zs,'format',attr='border-color',value=TEAL)
+        el(zs,'format',attr='border-width',value='1');el(zs,'format',attr='border-style',value='solid')
+        textzone('Full January: 18,367 complaints\nTop 2 company/issue pairs: 11,444',30,700,270,60,13)
+        # Three metric groups pair each count with its own rate.
+        for x,label in [(340,'Complaints'),(624,'Not timely'),(908,'Responses with relief')]:
+            textzone(label,x,137,268,28,17,True)
+        zone(340,170,268,58,name='Published complaints',show_title='false')
+        zone(624,170,268,58,name='Not timely',show_title='false')
+        zone(908,170,268,58,name='Relief responses',show_title='false')
+        for x,sheet_name in [(624,'Not timely rate'),(908,'Relief mix')]:
+            zone(x,230,140,40,name=sheet_name,show_title='false')
+            textzone('of complaints',x+148,237,120,28,13)
+        textzone('Selected records',340,236,268,28,14)
+        zone(340,277,836,50,name='Selection note',show_title='false')
         if number=='01':
-            zone(24,442,559,268,name='Monthly complaints',show_title='true')
-            zone(613,442,563,268,name='Monthly not-timely exceptions',show_title='true')
-            textzone('Start with Managing an account, then compare the two January exclusions.\nJanuary’s original 18,367 complaints include 11,444 in two fixed company/issue clusters.',24,729,1152,49,14)
+            zone(340,335,400,395,name='Monthly complaints',show_title='true')
+            zone(770,335,406,395,name='Monthly not-timely exceptions',show_title='true')
+            textzone('Start with “Managing an account”. Compare both January exclusions.',340,738,836,45,15)
         else:
-            zone(24,442,559,269,name='Issues · count and not-timely rate',show_title='true')
-            zone(613,442,563,269,name='Sub-issues · count and not-timely rate',show_title='true')
-            textzone('NT = not timely. * = fewer than 30 complaints. Scroll each list for all categories. Hover a mark for full details.\nNext: check current internal case outcomes and transaction volumes before proposing a process change.',24,725,1152,54,13)
-        textzone('Public complaint volume is not a defect or harm rate. Relief is response mix, not proof of customer satisfaction.',24,788,1152,24,12)
-        textzone('Source: CFPB · pinned snapshot extracted July 29, 2026 · all 84,194 observations retained in the data.',24,817,1152,20,11,color='#5b6770')
+            textzone('Issues',340,337,380,28,17,True)
+            textzone('Complaints  |  Not timely %',910,339,266,26,14,True)
+            zone(340,372,836,154,name='Issues · count and not-timely rate',show_title='false')
+            textzone('Sub-issues',340,541,380,28,17,True)
+            textzone('Complaints  |  Not timely %',910,543,266,26,14,True)
+            zone(340,576,836,173,name='Sub-issues · count and not-timely rate',show_title='false')
+            textzone('Scroll for more rows. * Fewer than 30 complaints. Validate with internal cases.',340,751,836,30,14)
+        textzone('Complaint volume is not a defect or harm rate. Relief describes response mix, not satisfaction.',24,790,1152,25,14)
+        textzone('Source: CFPB · snapshot extracted July 29, 2026 · 84,194 records retained',24,822,1152,24,13,color='#465563')
         dashboard_sheets[name]=placed
 
     actions=el(w,'actions')

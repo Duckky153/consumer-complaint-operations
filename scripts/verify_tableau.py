@@ -65,7 +65,7 @@ def verify(root=ROOT):
     receipt={'passed':True,'package_sha256':hashlib.sha256(package.read_bytes()).hexdigest(),
              'source_sha256':PINNED_SHA256,'hyper_sha256':expected['hyper_sha256'],
              'all_packaged_rows_and_multiplicities_match':True,'checks':checks,
-             'scope':'Automated packaged-data verification; see native-tableau-verification.json for GUI evidence'}
+             'scope':'Automated packaged-data verification; see native-tableau-readability-verification.json for current GUI evidence'}
     (root/'evidence/tableau-package-verification.json').write_text(json.dumps(receipt,indent=2)+'\n')
     print(f'Packaged Hyper: {len(checks)} source-SQL cohorts and all row multiplicities passed')
 

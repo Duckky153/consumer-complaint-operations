@@ -76,3 +76,8 @@ Codex reviewed the project, added the missing company/issue reconciliation and r
 Following the owner's plan/build/test/review instruction, Codex built the typed Hyper export, explicit Tableau workbook generator and package verifier; authored artifact/provenance tests and the manual rebuild, architecture and walkthrough documents; and operated native Tableau to verify the final package. A separate read-only review agent identified the CSV/Hyper binding gap, which was repaired and regression-tested. Patterns from an earlier verified Tableau workbook were reused.
 
 The native Tableau checks were run by the AI agent. They are not evidence that Dakshit built the workbook by hand. No customer deployment or measured benefit is claimed.
+
+
+## September 19, 2026 — readability correction
+
+Owner reported poor readability. AI revised layout, typography and control readbacks, investigated native parameter formatting, and operated Tableau to test the exact final package. Independent AI source/visual review identified January-context and label-wrap issues, repaired before final acceptance.
