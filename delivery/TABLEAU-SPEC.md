@@ -39,3 +39,7 @@ Reconcile source, SQL, Tableau export and native workbook at baseline and at lea
 ## Completion boundary
 
 Do not call this update complete from generated XML, a passing test count or screenshots alone. Observe filters, sensitivity and reset in Tableau, reopen the package independently and check numbers. The build phase excluded fresh source extraction, Pages deployment, new accounts and paid services.
+
+## Subsequent distribution authorization
+
+September 19, 2026: after finalization, the owner requested “Github and whatever else you have to do.” This authorizes publication of the reviewed project and minimized packaged Tableau workbook in the existing public repository and its downloadable release. Raw source CSVs and complaint IDs stay excluded. The original no-publication gate above describes the initial build phase.

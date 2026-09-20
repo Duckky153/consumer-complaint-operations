@@ -1,6 +1,6 @@
 # CCO Tableau version: build state
 
-Finalized September 19, 2026, 21:04 EDT. **The Tableau version is complete.** No remaining software blockers were identified. No GitHub push or publication.
+Finalized September 19, 2026, 21:04 EDT. **The Tableau version is complete.** No remaining software blockers were identified. Owner subsequently authorized GitHub finalization on September 19, 2026. GitHub destination: `Duckky153/consumer-complaint-operations` (public); downloadable release: `tableau-2026-09-19`.
 
 Release software commit: `841ec2b`. Finalization preserves the exact native-tested workbook and packaged data. Fresh final checks: 26 tests, 11 source-SQL/package comparisons, browser regression suite, package integrity, and hashes of the workbook, Hyper and all 15 native screenshots pass. The final independent visual/source review remains applicable to this unchanged release.
 
