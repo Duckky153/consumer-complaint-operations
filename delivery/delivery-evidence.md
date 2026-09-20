@@ -214,3 +214,8 @@ TWBX `50a713b3a885d77ddeefe3b0757f2981283cf634e012ed2ce1c5454feff38cbb` opened i
 ## September 19, 2026 — readability correction
 
 Readability revision delivered locally. Final TWBX SHA-256 `01ed72476006210e4d898bc1aabb517bb4edad75b9545b1053ae6f344238b778`. Two dashboards, 15 supporting sheets, unchanged verified Hyper. Native receipt: evidence/native-tableau-readability-verification.json; final images: evidence/screenshots/tableau-readable/. Independent review found no blockers; no push/publication.
+
+
+## September 19, 2026 — finalization
+
+Owner requested finalization. The unchanged readability release at software commit `841ec2b` passes fresh 26-test, 11-SQL-comparison and browser checks. Package integrity and native receipt/screenshot hashes verified. Documentation marks local portfolio delivery finalized. No push, publication or live-site change.

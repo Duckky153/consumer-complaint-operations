@@ -18,6 +18,10 @@ limitations, and handoff—is part of the product.
 
 ![Consumer Complaint Operations Dashboard](evidence/screenshots/desktop-1440.jpg)
 
+## Finalized Tableau portfolio delivery
+
+The local Salesforce JR358388 extension is complete: two Tableau dashboards with verified data, readable controls, January sensitivity and repeatable reset. Start with the [packaged workbook](<tableau/Consumer Complaint Operations.twbx>) and [five-minute walkthrough](delivery/TABLEAU-WALKTHROUGH.md). [Final build state](delivery/BUILD-STATE.md) records the release and checks. The live web dashboard above is the existing web delivery; this Tableau extension has not been published.
+
 ## Business decision
 
 **Intended user:** a financial-services risk or operations analyst deciding
