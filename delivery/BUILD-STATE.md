@@ -1,6 +1,8 @@
 # CCO Tableau version: build state
 
-Updated 2026-09-19 20:47 EDT. Owner requested and received a readability revision. **Local Tableau implementation and listed native acceptance checks complete.** No GitHub push or publication.
+Finalized September 19, 2026, 21:04 EDT. **The Tableau version is complete.** No remaining software blockers were identified. No GitHub push or publication.
+
+Release software commit: `841ec2b`. Finalization preserves the exact native-tested workbook and packaged data. Fresh final checks: 26 tests, 11 source-SQL/package comparisons, browser regression suite, package integrity, and hashes of the workbook, Hyper and all 15 native screenshots pass. The final independent visual/source review remains applicable to this unchanged release.
 
 ## Readability revision
 
@@ -41,7 +43,7 @@ The pinned sanitized CSV must already exist locally. Do not rerun live extractio
 
 ## Status
 
-Software is complete at the documented local scope. No account, public release, GitHub push or live-site changes were performed or authorized.
+Next use: open the packaged workbook and follow the walkthrough.
 
 ## Verified baseline
 
