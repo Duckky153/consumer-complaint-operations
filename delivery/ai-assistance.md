@@ -70,3 +70,9 @@ The implementation followed a controlled sequence:
 ## September 19 review
 
 Codex reviewed the project, added the missing company/issue reconciliation and regression test, ran local tests and documented remaining Tableau delivery gates. No native CCO workbook is claimed.
+
+## Tableau delivery — September 19
+
+Following the owner's plan/build/test/review instruction, Codex built the typed Hyper export, explicit Tableau workbook generator and package verifier; authored artifact/provenance tests and the manual rebuild, architecture and walkthrough documents; and operated native Tableau to verify the final package. A separate read-only review agent identified the CSV/Hyper binding gap, which was repaired and regression-tested. Patterns from an earlier verified Tableau workbook were reused.
+
+The native Tableau checks were run by the AI agent. They are not evidence that Dakshit built the workbook by hand. No customer deployment or measured benefit is claimed.

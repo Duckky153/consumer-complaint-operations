@@ -10,6 +10,7 @@ readme = "README.md"
 requires-python = ">=3.12,<3.13"
 dependencies = [
   "pandas==3.0.5",
+  "tableauhyperapi==0.0.26479",
 ]
 
 [project.optional-dependencies]

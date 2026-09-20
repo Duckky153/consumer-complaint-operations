@@ -1,5 +1,5 @@
 {
-  "phase": "Tableau data foundation; native workbook not yet built",
+  "phase": "Tableau CSV verification; native acceptance recorded separately",
   "source_sha256": "964912efdcfe70f2376591d40781f64832e879c73ff7d629fdadb6115541053b",
   "export_sha256": "70e708b0fef16c9dd2045001ef2d65e18c861153c9e6284b24c08e385029cc51",
   "rows": 84194,

@@ -1,0 +1,122 @@
+{
+  "passed": true,
+  "rows": 84194,
+  "fields": [
+    "date_received",
+    "received_month",
+    "sub_product",
+    "issue",
+    "sub_issue",
+    "company",
+    "complaint_count",
+    "not_timely",
+    "has_relief",
+    "january_top_cluster"
+  ],
+  "all_rows_and_multiplicities_match": true,
+  "checks": [
+    {
+      "scope": "all",
+      "hyper": [
+        84194,
+        609,
+        12977
+      ],
+      "sql": [
+        84194,
+        609,
+        12977
+      ],
+      "passed": true
+    },
+    {
+      "scope": "Managing an account",
+      "hyper": [
+        44959,
+        363,
+        7114
+      ],
+      "sql": [
+        44959,
+        363,
+        7114
+      ],
+      "passed": true
+    },
+    {
+      "scope": "June",
+      "hyper": [
+        5557,
+        135,
+        1030
+      ],
+      "sql": [
+        5557,
+        135,
+        1030
+      ],
+      "passed": true
+    },
+    {
+      "scope": "CAPITAL ONE FINANCIAL CORPORATION / Managing an account",
+      "hyper": [
+        6428,
+        0,
+        176
+      ],
+      "sql": [
+        6428,
+        0,
+        176
+      ],
+      "passed": true
+    },
+    {
+      "scope": "Checking account / Managing an account",
+      "hyper": [
+        36185,
+        238,
+        5988
+      ],
+      "sql": [
+        36185,
+        238,
+        5988
+      ],
+      "passed": true
+    },
+    {
+      "scope": "Exclude January",
+      "hyper": [
+        65827,
+        571,
+        11716
+      ],
+      "sql": [
+        65827,
+        571,
+        11716
+      ],
+      "passed": true
+    },
+    {
+      "scope": "Exclude January top two clusters",
+      "hyper": [
+        72750,
+        609,
+        12857
+      ],
+      "sql": [
+        72750,
+        609,
+        12857
+      ],
+      "passed": true
+    }
+  ],
+  "source_sha256": "964912efdcfe70f2376591d40781f64832e879c73ff7d629fdadb6115541053b",
+  "export_sha256": "70e708b0fef16c9dd2045001ef2d65e18c861153c9e6284b24c08e385029cc51",
+  "hyper_sha256": "6e08bff79b10fe5e24522955c85b461e4eee8bb06ed3a390bb64a0cded322cd2",
+  "telemetry": "DO_NOT_SEND_USAGE_DATA_TO_TABLEAU",
+  "scope": "Data engine verification; native workbook interactions are separate"
+}
