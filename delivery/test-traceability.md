@@ -43,3 +43,8 @@ approves publication and the resulting external evidence is verified.
 ## Final Tableau acceptance
 
 The earlier foundation-only status is superseded by this local delivery. `test_tableau_package.py` exercises a real two-observation Hyper fixture with identical allowed-field rows, package self-containment, allowed fields, shared controls/reset targets, and rejection of changed CSV or Hyper. `scripts/verify_tableau.py` independently reconciles eleven source SQLite / packaged Hyper scopes and every row multiplicity. Native evidence covers all seven primary scopes plus small/empty/Unknown, cross-page consistency, repeated reset and independent package reopening. XML tests alone do not certify these native behaviors. Full test suite:26 passed.
+
+
+## September 19, 2026 — readability correction
+
+Readability revision: 26 tests and 11 packaged-data/source SQL comparisons pass. Fifteen new native screenshots verify baseline/slices, both January modes, cross-page continuity, small/empty/Unknown groups, repeated reset and scrolling. Receipt: evidence/native-tableau-readability-verification.json; prior receipt applies only to its historical package.

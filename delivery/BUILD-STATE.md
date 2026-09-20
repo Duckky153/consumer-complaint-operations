@@ -1,10 +1,16 @@
 # CCO Salesforce update — build state
 
-Updated 2026-09-19T20:22:00-04:00. **Local Tableau implementation and listed native acceptance checks complete.** Owner rehearsal/acceptance remain separate. No GitHub push or publication.
+Updated 2026-09-19 20:47 EDT. Owner requested and received a readability revision. **Local Tableau implementation and listed native acceptance checks complete.** Owner rehearsal/acceptance remain separate. No GitHub push or publication.
+
+## Readability revision
+
+Shorter headings, larger chart/category text, taller monthly charts, a left filter rail, paired count/rate groups, plain investigation headers, full-width scrolling tables and a bordered reset target. January uses a visible three-choice list; “Exclude top 2 groups” aliases the same fixed full-population company/issue rule. Four unfiltered selected-value sheets give larger readbacks for compact native dropdowns. Long selected labels break at a word boundary. The full-January reference stays explicit under filtered views.
+
+Fresh native acceptance covers 15 screenshots, including long company/issue names, cross-page state, both sensitivity modes, repeated reset of all five changed controls, small/empty/Unknown groups, and table scrolling. Independent visual/source review found no blocking issues. Original native receipt/screenshots remain historical and are not evidence for this new hash.
 
 ## Delivered
 
-- `tableau/Consumer Complaint Operations.twbx`: self-contained local package (two dashboards, 11 supporting worksheets, five shared controls).
+- `tableau/Consumer Complaint Operations.twbx`: self-contained local package (two dashboards, 15 supporting worksheets, five shared controls).
 - `tableau/Consumer Complaint Operations.twb`: editable workbook; companion Hyper at `data/processed/tableau-complaints.hyper`.
 - Source→CSV→Hyper preparation, independent SQL reconciliation, package verifier and failure-case tests.
 - [Walkthrough](TABLEAU-WALKTHROUGH.md), [architecture/refresh/sharing](TABLEAU-ARCHITECTURE.md), [manual rebuild guide](TABLEAU-REBUILD-GUIDE.md), [field dictionary](TABLEAU-DATA-DICTIONARY.md).
@@ -13,7 +19,7 @@ Updated 2026-09-19T20:22:00-04:00. **Local Tableau implementation and listed nat
 
 26 pytest tests pass. Seven CSV/source SQL scopes and seven Hyper scopes pass; packaged Hyper passes 11 source-SQL scopes and a full observation/multiplicity comparison. All 84,194 observations and the pinned source hash are preserved. Existing web verification: 20 checks and responsive Chromium suite pass.
 
-Final TWBX SHA-256: `50a713b3a885d77ddeefe3b0757f2981283cf634e012ed2ce1c5454feff38cbb`. Native evidence: `evidence/native-tableau-verification.json`; screenshots: `evidence/screenshots/tableau/`. A byte-identical TWBX opened from `/tmp/cco-portable-final/` and Tableau's Hyper process read its extracted package data, whose hash matches the generated Hyper.
+Final TWBX SHA-256: `01ed72476006210e4d898bc1aabb517bb4edad75b9545b1053ae6f344238b778`. Native evidence: `evidence/native-tableau-readability-verification.json`; screenshots: `evidence/screenshots/tableau-readable/`. A byte-identical TWBX opened from `/tmp/cco-readability-delivery/` and Tableau's Hyper process read its extracted package data, whose hash matches the generated Hyper.
 
 Native gates: baseline; Managing an account on both pages; June; Capital One/Managing; Checking/Managing; both January modes; January residual6,923; small base2; empty selection with undefined rates; Unknown51; repeated reset on both pages, including all five controls changed. Wrapped headers, scrollable lists and readable notes verified. Baseline84,194/609/12,977; January18,367/11,444/6,923.
 

@@ -1,6 +1,6 @@
 {
   "passed": true,
-  "package_sha256": "50a713b3a885d77ddeefe3b0757f2981283cf634e012ed2ce1c5454feff38cbb",
+  "package_sha256": "01ed72476006210e4d898bc1aabb517bb4edad75b9545b1053ae6f344238b778",
   "source_sha256": "964912efdcfe70f2376591d40781f64832e879c73ff7d629fdadb6115541053b",
   "hyper_sha256": "6e08bff79b10fe5e24522955c85b461e4eee8bb06ed3a390bb64a0cded322cd2",
   "all_packaged_rows_and_multiplicities_match": true,
@@ -160,5 +160,5 @@
       "passed": true
     }
   ],
-  "scope": "Automated packaged-data verification; see native-tableau-verification.json for GUI evidence"
+  "scope": "Automated packaged-data verification; see native-tableau-readability-verification.json for current GUI evidence"
 }

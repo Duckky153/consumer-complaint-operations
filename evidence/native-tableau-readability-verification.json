@@ -1,0 +1,181 @@
+{
+  "verified_at": "2026-09-20T00:46:42.753659+00:00",
+  "passed": true,
+  "application": "Tableau Public 2026.2.2 Apple silicon",
+  "scope": "Native readability revision; visual and interaction checks observed on exact packaged artifact",
+  "package_sha256": "01ed72476006210e4d898bc1aabb517bb4edad75b9545b1053ae6f344238b778",
+  "workbook_sha256": "cd4f5817248d94a91c4b2f1a5f8ed556930c60a03d7afd6d36f0e3fe805f2496",
+  "hyper_sha256": "6e08bff79b10fe5e24522955c85b461e4eee8bb06ed3a390bb64a0cded322cd2",
+  "metric_order": [
+    "complaints",
+    "not_timely",
+    "relief_responses"
+  ],
+  "package_reopen": {
+    "copied_to": "/tmp/cco-readability-delivery/Consumer Complaint Operations.twbx",
+    "package_bytes_match": true,
+    "native_pid": 16904,
+    "hyper_pid": 16932,
+    "native_hyper_read_from": "/private/var/folders/bf/7hdxnsgn5rn30dqlchb77dbw0000gn/T/tableau-temp/166469209/Data/tableau-complaints.hyper",
+    "native_extracted_hyper_matches": true
+  },
+  "observations": [
+    {
+      "screenshot": "01-overview.png",
+      "scope": "Baseline Overview",
+      "counts": [
+        84194,
+        609,
+        12977
+      ],
+      "screenshot_sha256": "8ae1bb5c4240bc3e19937771b684f419a09e32298e203508a56880fa3afa08fe"
+    },
+    {
+      "screenshot": "02-managing.png",
+      "scope": "Managing an account Overview",
+      "counts": [
+        44959,
+        363,
+        7114
+      ],
+      "screenshot_sha256": "fadf0d0d9c912db253f46887eb27a125aa1b37967a7033d8b8f96378e8dcf86e"
+    },
+    {
+      "screenshot": "03-investigation.png",
+      "scope": "Managing cross-page continuity",
+      "counts": [
+        44959,
+        363,
+        7114
+      ],
+      "screenshot_sha256": "eb41e24b2363a711830a0786d24a2f067785141f6415175bbfc99e3fdcc3d51c"
+    },
+    {
+      "screenshot": "04-company.png",
+      "scope": "Capital One + Managing; long label fully visible",
+      "counts": [
+        6428,
+        0,
+        176
+      ],
+      "screenshot_sha256": "63f69c5601db7898fe591265d65270b9311505c0d0153fa454d048dc9432b8d2"
+    },
+    {
+      "screenshot": "05-reset.png",
+      "scope": "Reset on Investigation",
+      "counts": [
+        84194,
+        609,
+        12977
+      ],
+      "screenshot_sha256": "4f803f7f4193a14c910c8b5e6f5774a9200fd428ae359f0b53c4e7c847f703f6"
+    },
+    {
+      "screenshot": "06-exclude-january.png",
+      "scope": "Exclude January",
+      "counts": [
+        65827,
+        571,
+        11716
+      ],
+      "screenshot_sha256": "5de10d8c2f398eef3c9a1a192f67fc9e555ef5004deaccd04888277dc12fb797"
+    },
+    {
+      "screenshot": "07-exclude-groups.png",
+      "scope": "Exclude fixed January groups; January residual 6923",
+      "counts": [
+        72750,
+        609,
+        12857
+      ],
+      "screenshot_sha256": "21a593b5076895dbe155cf2020b0cbbe1c784ccde673e1a45826a5e974470745"
+    },
+    {
+      "screenshot": "08-june.png",
+      "scope": "June",
+      "counts": [
+        5557,
+        135,
+        1030
+      ],
+      "screenshot_sha256": "0a42140c2e7bfb48a5ae2c0fa8364d2b9852f0a69b47f8308258b0fd524b38b3"
+    },
+    {
+      "screenshot": "09-small-base.png",
+      "scope": "TRUEBILL small base; visible warning",
+      "counts": [
+        2,
+        0,
+        1
+      ],
+      "screenshot_sha256": "435a5b3c584c5f412f4702373a25b1c74a15a23bcbfa3139cdfdb8884d02bfe4"
+    },
+    {
+      "screenshot": "10-empty.png",
+      "scope": "All five controls changed; zero results and undefined blank rates",
+      "counts": [
+        0,
+        0,
+        0
+      ],
+      "screenshot_sha256": "beb26f00b6c1035cad963fb0cb1a0a162f83bb93811b434db04d0f20c66d4de3"
+    },
+    {
+      "screenshot": "11-all-controls-reset.png",
+      "scope": "All five controls reset on Overview",
+      "counts": [
+        84194,
+        609,
+        12977
+      ],
+      "screenshot_sha256": "a21c4d2dce57e19e1cb705737f7207aa3fda0d53e625abb01cb8a6bed7b2e605"
+    },
+    {
+      "screenshot": "12-unknown.png",
+      "scope": "Fraud alert issue; explicit Unknown sub-issue",
+      "counts": [
+        51,
+        1,
+        5
+      ],
+      "screenshot_sha256": "d920d337b3fefc4ffa5b8ab69b13786072f4ab77788618265faede387b8ea82b"
+    },
+    {
+      "screenshot": "13-checking-managing.png",
+      "scope": "Checking + Managing",
+      "counts": [
+        36185,
+        238,
+        5988
+      ],
+      "screenshot_sha256": "00052fc75ad188485199512510f2cbc52cbce9b5f04991b4774e638aca634af4"
+    },
+    {
+      "screenshot": "14-scrolled.png",
+      "scope": "Sub-issue scroll exposes later rows",
+      "counts": [
+        36185,
+        238,
+        5988
+      ],
+      "screenshot_sha256": "ea05d405d8c88e835895837bf3b5ea2d1fa9fa34484f3b285161b70bd8b13552"
+    },
+    {
+      "screenshot": "15-final-baseline.png",
+      "scope": "Repeated reset and return to Overview",
+      "counts": [
+        84194,
+        609,
+        12977
+      ],
+      "screenshot_sha256": "8ae1bb5c4240bc3e19937771b684f419a09e32298e203508a56880fa3afa08fe"
+    }
+  ],
+  "review": "Independent read-only source and final visual review found no blocking issues. Full-population January context and long-company wrapping corrected before final tests.",
+  "limitations": [
+    "Local Tableau desktop presentation verified; no published/mobile Tableau experience claimed.",
+    "Native compact dropdown text retains its native size; larger headings and selected-value readbacks accompany it. Very long choices can be inspected in the opened dropdown.",
+    "Software verification does not establish owner acceptance or personal mastery."
+  ],
+  "previous_release_receipt": "native-tableau-verification.json (historical artifact, not this revision)"
+}

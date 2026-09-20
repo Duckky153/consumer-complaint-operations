@@ -105,3 +105,8 @@ Dakshit should be able to:
 Following the owner's plan/build/test/review instruction, Codex built the typed Hyper export, explicit Tableau workbook generator and package verifier; authored artifact/provenance tests and the manual rebuild, architecture and walkthrough documents; and operated native Tableau to verify the final package. A separate read-only review agent identified the CSV/Hyper binding gap, which was repaired and regression-tested. Existing verified hotel workbook patterns were reused without changing that project.
 
 Native verification belongs to the operator's evidence record. It is not evidence that Dakshit has independently authored, rebuilt or mastered Tableau. No customer deployment, measured benefit or employer exercise is claimed.
+
+
+## September 19, 2026 — readability correction
+
+Owner reported poor readability. AI revised layout, typography and control readbacks, investigated native parameter formatting, and operated Tableau to test the exact final package. Independent AI source/visual review identified January-context and label-wrap issues, repaired before final acceptance. No personal mastery claim.

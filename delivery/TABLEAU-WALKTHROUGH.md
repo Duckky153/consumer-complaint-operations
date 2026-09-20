@@ -4,7 +4,7 @@ This is the supporting portfolio project for Salesforce JR358388. Hotel Booking 
 
 ## Open and orient
 
-Open `tableau/Consumer Complaint Operations.twbx` in Tableau Desktop Public Edition. It includes its data and needs no Tableau account for local use. Choose Window → Presentation Mode for a clear view. The two tabs are Overview and Investigation. Use the dropdowns for filtering; clicking bars selects marks but does not change the shared cohort. On Mac, dropdowns support typing a name prefix. Company has many labels; typing is easier than scrolling.
+Open `tableau/Consumer Complaint Operations.twbx` in Tableau Desktop Public Edition. It includes its data and needs no Tableau account for local use. Choose Window → Presentation Mode for a clear view. The two tabs are Overview and Investigation. Use the left-side dropdowns and January radio list for filtering; clicking bars selects marks but does not change the shared cohort. On Mac, dropdowns support typing a name prefix. Company has many labels; typing is easier than scrolling.
 
 ## Discovery before demonstration
 
@@ -15,7 +15,7 @@ State the agreed decision: choose an investigation to validate, not rank compani
 ## Executive path — about two minutes
 
 1. **Reset view.** Baseline: 84,194 published complaints, 609 not timely (0.72%), and 12,977 relief responses (15.41%). Timeliness and relief are separate indicators. The denominator is all selected complaints, not customers.
-2. **Investigate January.** Original January volume is 18,367. Choose “Exclude January top two clusters”: January becomes 6,923 and the annual selection is 72,750. The fixed clusters account for 11,444 January observations. Choose “Exclude January” separately: annual selection is 65,827. These are sensitivity views; original data is preserved.
+2. **Investigate January.** Original January volume is 18,367. Choose “Exclude top 2 groups” (the full-snapshot company/issue pairs): January becomes 6,923 and the annual selection is 72,750. The fixed clusters account for 11,444 January observations. Choose “Exclude January” separately: annual selection is 65,827. These are sensitivity views; original data is preserved.
 3. **Recommend a next evidence request.** Reset and choose Managing an account: 44,959 complaints. Request current internal case outcomes and transaction volumes before proposing a process change. No savings or causal improvement has been measured.
 
 Close: “This identifies where to ask better questions. It cannot establish a company's defect rate, consumer harm or a current operating failure.”
