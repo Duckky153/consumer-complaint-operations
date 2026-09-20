@@ -1,6 +1,6 @@
 # CCO Salesforce update — build state
 
-Finalized September 19, 2026, 21:04 EDT at the owner's request. **Complete and ready for local portfolio demonstration as the supporting Salesforce JR358388 project.** No remaining software blockers were identified. No GitHub push or publication.
+Finalized September 19, 2026, 21:04 EDT at the owner's request. **Complete and ready for local portfolio demonstration as the supporting Salesforce JR358388 project.** No remaining software blockers were identified. Owner subsequently authorized GitHub finalization on September 19, 2026. GitHub destination: `Duckky153/consumer-complaint-operations` (public); downloadable release: `tableau-2026-09-19`.
 
 Release software commit: `841ec2b`. Finalization preserves the exact native-tested workbook and packaged data. Fresh final checks: 26 tests, 11 source-SQL/package comparisons, browser regression suite, package integrity, and hashes of the workbook, Hyper and all 15 native screenshots pass. The final independent visual/source review remains applicable to this unchanged release. Presentation practice and personal mastery are separate from software readiness.
 
@@ -43,7 +43,7 @@ The pinned sanitized CSV must already exist locally. Do not rerun live extractio
 
 ## Owner and continuation
 
-Owner requested finalization after the readability correction. Local delivery is finalized in the owned salesforce-tableau checkout. Next use: open the packaged workbook and follow the walkthrough; the manual rebuild guide supports personal practice. Exactly two projects: hotel flagship plus CCO supporting analytics project. Resume and employer-assigned exercise remain deferred. No account, public release, GitHub push or live-site changes were performed or authorized. The earlier readiness review is historical; this record supersedes its missing-workbook status.
+Owner requested finalization after the readability correction. Local delivery is finalized in the owned salesforce-tableau checkout. Next use: open the packaged workbook and follow the walkthrough; the manual rebuild guide supports personal practice. Exactly two projects: hotel flagship plus CCO supporting analytics project. Resume and employer-assigned exercise remain deferred. GitHub publication of this reviewed repository and packaged workbook is now authorized by the owner. No new account or website redeployment is needed. The earlier readiness review is historical; this record supersedes its missing-workbook status.
 
 GitNexus guide was read; its suggested npx refresh was not run because no supported installed wrapper is available and automatic package installation was prohibited. Direct source/artifact review was used; no graph-index verification is claimed.
 

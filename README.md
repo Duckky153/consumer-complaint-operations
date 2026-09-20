@@ -20,7 +20,7 @@ limitations, and handoff—is part of the product.
 
 ## Finalized Tableau portfolio delivery
 
-The local Salesforce JR358388 extension is complete: two Tableau dashboards with verified data, readable controls, January sensitivity and repeatable reset. Start with the [packaged workbook](<tableau/Consumer Complaint Operations.twbx>) and [five-minute walkthrough](delivery/TABLEAU-WALKTHROUGH.md). [Final build state](delivery/BUILD-STATE.md) records the release and checks. The live web dashboard above is the existing web delivery; this Tableau extension has not been published.
+The local Salesforce JR358388 extension is complete: two Tableau dashboards with verified data, readable controls, January sensitivity and repeatable reset. Start with the [packaged workbook](<tableau/Consumer Complaint Operations.twbx>) and [five-minute walkthrough](delivery/TABLEAU-WALKTHROUGH.md). [Final build state](delivery/BUILD-STATE.md) records the release and checks. The live web dashboard above is the existing web delivery; the Tableau extension is provided as a downloadable workbook.
 
 ## Business decision
 
@@ -164,7 +164,7 @@ Open [Consumer Complaint Operations.twbx](tableau/Consumer%20Complaint%20Operati
 
 Start with the [walkthrough](delivery/TABLEAU-WALKTHROUGH.md), [manual rebuild guide](delivery/TABLEAU-REBUILD-GUIDE.md), [architecture](delivery/TABLEAU-ARCHITECTURE.md) and [current build/evidence record](delivery/BUILD-STATE.md). This is AI-assisted portfolio work; personal rehearsal is separate.
 
-26 automated tests pass; 11 packaged-data/source-SQL scopes and full row multiplicities reconcile. Native filters, sensitivity, cross-page scope, reset and edge states are recorded in [native evidence](evidence/native-tableau-readability-verification.json). No new publication or GitHub push has occurred.
+26 automated tests pass; 11 packaged-data/source-SQL scopes and full row multiplicities reconcile. Native filters, sensitivity, cross-page scope, reset and edge states are recorded in [native evidence](evidence/native-tableau-readability-verification.json). The final workbook is available from this repository; source CSVs and complaint IDs remain excluded.
 
 ```sh
 uv sync --locked --extra dev
