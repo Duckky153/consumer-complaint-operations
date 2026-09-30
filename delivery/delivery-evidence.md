@@ -2,18 +2,16 @@
 
 ## Release state
 
-**Current local candidate:** latest commit on the `publish-source-link` branch,
-fully verified on September 3, 2026
-
-**Published dashboard content commit:** `cb705efdb06d2be0e82ab5610725f61a72b60d10`
-
 **Public repository:** https://github.com/Duckky153/consumer-complaint-operations
 
 **GitHub Pages:** https://duckky153.github.io/consumer-complaint-operations/
 
-The public URL is online, but it still serves the July 29 release. The cleaned
-September 3 local candidate has not been pushed or deployed. Publication still
-requires owner approval.
+**Tableau release:** https://github.com/Duckky153/consumer-complaint-operations/releases/tag/tableau-2026-09-19
+
+Pages deployments are manual. The
+[deployment workflow](https://github.com/Duckky153/consumer-complaint-operations/actions/workflows/deploy-pages.yml)
+lists each deployment and its commit. The September 3, 2026 deployment
+published commit `d6a27ac`.
 
 ## Completion audit against the requested delivery
 
@@ -26,20 +24,19 @@ requires owner approval.
 | Data-quality controls | `src/complaint_ops/quality.py` plus real quality report | Local pass |
 | SQL metrics | Seven checked-in views in `sql/metrics.sql` | Local pass |
 | Responsive black-and-white dashboard | `docs/` plus three reviewed browser screenshots | Local pass |
-| Tests mapped to requirements | 16 pytest cases marked R1–R6 and `delivery/test-traceability.md` | Local pass |
+| Tests mapped to requirements | 16 pytest cases marked R1–R6 (26 in total with the Tableau tests) and `delivery/test-traceability.md` | Local pass |
 | Methodology and analytical limitations | `delivery/methodology.md` | Local pass |
 | Executive findings and recommendations | `delivery/findings.md` with SQLite-reconciled figures | Local pass |
 | Clean README and delivery evidence | `README.md` and this document | Local pass |
 | Security and privacy considerations | Field allowlist, minimized public data asset, CSP, vendored dependency, and `delivery/security-privacy.md` | Local pass |
 | AI-assistance disclosure | `delivery/ai-assistance.md` | Local pass |
 | Two-minute demo | `delivery/demo-script.md` | Local pass |
-| Privacy-clean public history | Operator instructions, private interview preparation, and resume preparation are absent | Public pass |
+| Privacy-clean public files | No operator instructions or private preparation notes in the current files | Public pass |
 | Python/pandas/SQLite/pytest/HTML/CSS/JS/Chart.js | Runtime, source, tests, assets, and version evidence | Local pass |
-| GitHub Actions and Pages | CI plus manual deployment workflow; deployment depends on pytest, JavaScript, and Chromium checks | Local pass; public refresh pending approval |
-| Public repository and live dashboard | The URL is online, but the cleaned local candidate is not the published release | Previous public release only |
+| GitHub Actions and Pages | CI plus manual deployment workflow; deployment depends on pytest, JavaScript, and Chromium checks | Public pass |
+| Public repository and live dashboard | Repository, Pages site, and Tableau release are online | Public pass |
 
-The local candidate is complete. The public site remains on the previous
-release until an approved push and manual Pages deployment occur.
+The web delivery is complete and published.
 
 ## Source evidence
 
@@ -90,7 +87,6 @@ Refreshed on 2026-09-03 EDT:
 | Interpretation guardrails | Passed | issue drill-down, 30-row minimum, anomaly decomposition, non-directional relief wording, and company-ranking warning are executable |
 | Direct-open data contract | Passed | generated data is executable JavaScript, loads before `app.js`, contains all 84,194 records, and the application contains no `fetch()` call |
 | Runtime dependency check | Passed | Chart.js, CSS, JavaScript, and dashboard data are local; CSP disables runtime connections |
-| Public-page branding scan | Passed | no Deloitte name or branding appears in `docs/` |
 | Deployment gate contract | Passed | manual dispatch only; deployment depends on a fresh pytest and JavaScript quality job |
 | Diff whitespace check | Passed | `git diff --check` returned clean |
 
@@ -101,7 +97,7 @@ against a local HTTP server using the real 84,194-record output. The September
 3 check also exposed and fixed an asset-cache mismatch that could pair new HTML
 with old JavaScript on a static host.
 
-The first owner handoff also exposed an important usability failure: opening
+The first handoff also exposed an important usability failure: opening
 `docs/index.html` directly in Chrome showed the page shell but no metrics or
 filter choices. The original app attempted to fetch a sibling JSON file, which
 Chrome blocks for a `file://` page. The repair replaces that request with a
@@ -112,7 +108,7 @@ control local-file tabs under its security policy, so the repaired HTTP path
 was re-exercised in Chrome while the executable-data regression test verified
 the direct-file path independently.
 
-The owner rejected the first editorial visual direction as overly aesthetic
+Review rejected the first editorial visual direction as overly aesthetic
 and insufficiently professional. The presentation layer was rebuilt as a
 restrained operations dashboard: one sans-serif system, compact section
 hierarchy, conventional filter and KPI cards, neutral surfaces, tighter
@@ -121,7 +117,7 @@ source year, strengthened privacy and quality controls, added the issue
 drill-down and bounded company control, and clarified the relevant CFPB
 response fields without reintroducing decorative UI.
 
-The owner's next review correctly identified that rendering alone did not make
+The next review correctly identified that rendering alone did not make
 the charts complete. Sparse month labels hid most of the calendar, the issue
 chart made smaller categories nearly invisible, and the response chart used a
 100,000-count scale that visually erased three outcomes. The final value audit
@@ -187,35 +183,30 @@ Reviewed screenshots:
 
 ## Public verification evidence
 
-The live dashboard was independently rechecked on September 3, 2026. It returns
-HTTP 200 over HTTPS and loads all 84,194 records, but it still serves commit
-`cb705efdb06d2be0e82ab5610725f61a72b60d10`. It therefore does not yet contain
-the September 3 copy cleanup, asset-cache repair, or permanent Chromium gate.
+Rechecked on September 30, 2026: the live dashboard returns HTTP 200 over
+HTTPS, and its `index.html`, `app.js`, `styles.css`, and `dashboard-data.js`
+are byte-identical to the files at commit `d6a27ac`.
 
 - Repository: https://github.com/Duckky153/consumer-complaint-operations
-- Dashboard content commit:
-  `cb705efdb06d2be0e82ab5610725f61a72b60d10`
-- Push quality gate:
-  https://github.com/Duckky153/consumer-complaint-operations/actions/runs/30416782413
-  — passed Python 3.12 tests and both JavaScript syntax checks.
-- Pages deployment:
-  https://github.com/Duckky153/consumer-complaint-operations/actions/runs/30416816460
-  — passed a fresh quality job and deployed successfully.
+- September 3, 2026 web release, commit `d6a27ac`:
+  push quality gate https://github.com/Duckky153/consumer-complaint-operations/actions/runs/33811452277
+  and Pages deployment https://github.com/Duckky153/consumer-complaint-operations/actions/runs/33811467642.
+  Both passed; the deployment ran a fresh quality job first.
+- September 19, 2026 Tableau release, commit `be25cad`:
+  push quality gate https://github.com/Duckky153/consumer-complaint-operations/actions/runs/35480553724 passed.
 - Live dashboard:
   https://duckky153.github.io/consumer-complaint-operations/
-- Current public state: online and usable, but one approved push and one manual
-  Pages deployment are required before it matches the verified local candidate.
 
 ## Local Tableau delivery — 2026-09-19T20:22:00-04:00
 
-TWBX `50a713b3a885d77ddeefe3b0757f2981283cf634e012ed2ce1c5454feff38cbb` opened independently in Tableau Public2026.2.2. Native screenshots/observations and final TWB/Hyper hashes are in `evidence/native-tableau-verification.json`. 26 pytest tests, eleven packaged SQL reconciliation scopes and full row multiplicities pass. Original source and web assets unchanged. Role walkthrough, architecture and manual rebuild guides are delivered locally. Independent review and native review repairs are summarized in BUILD-STATE. Personal rehearsal and publication remain separate.
+TWBX `50a713b3a885d77ddeefe3b0757f2981283cf634e012ed2ce1c5454feff38cbb` opened independently in Tableau Public 2026.2.2. Native screenshots/observations and final TWB/Hyper hashes are in `evidence/native-tableau-verification.json`. 26 pytest tests, eleven packaged SQL reconciliation scopes and full row multiplicities pass. Original source and web assets unchanged. Walkthrough, architecture and manual rebuild guides are delivered. Independent review and native review repairs are summarized in BUILD-STATE.
 
 
 ## September 19, 2026 — readability correction
 
-Readability revision delivered locally. Final TWBX SHA-256 `01ed72476006210e4d898bc1aabb517bb4edad75b9545b1053ae6f344238b778`. Two dashboards, 15 supporting sheets, unchanged verified Hyper. Native receipt: evidence/native-tableau-readability-verification.json; final images: evidence/screenshots/tableau-readable/. Independent review found no blockers; no push/publication.
+Readability revision delivered. Final TWBX SHA-256 `01ed72476006210e4d898bc1aabb517bb4edad75b9545b1053ae6f344238b778`. Two dashboards, 15 supporting sheets, unchanged verified Hyper. Native receipt: evidence/native-tableau-readability-verification.json; final images: evidence/screenshots/tableau-readable/. Independent review found no blockers.
 
 
 ## September 19, 2026 — finalization
 
-Owner requested finalization. The unchanged readability release at software commit `841ec2b` passes fresh 26-test, 11-SQL-comparison and browser checks. Package integrity and native receipt/screenshot hashes verified. Documentation marks local portfolio delivery finalized. No push, publication or live-site change.
+The unchanged readability release at software commit `841ec2b` passes fresh 26-test, 11-SQL-comparison and browser checks. Package integrity and native receipt/screenshot hashes verified. The workbook was then published in this repository and as release `tableau-2026-09-19` (commit `be25cad`). The live web dashboard files were not changed.
