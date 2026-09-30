@@ -1,26 +1,36 @@
 # Consumer Complaint Operations Dashboard
 
-An independent portfolio project that turns official CFPB complaint records
-into a dashboard for deciding what an operations analyst should review first.
-
-The project is deliberately small: one reproducible Python pipeline, one
-SQLite database, one set of SQL metric views, and one static dashboard. The
-delivery evidence—business case, requirements, quality controls, tests,
-limitations, and handoff—is part of the product.
-
-> This is an independent personal portfolio project. The CFPB and the
-> companies represented in the data did not commission, sponsor, review, or
-> endorse it.
+This project turns 84,194 public CFPB complaints about checking and savings
+accounts into a dashboard that shows where complaints cluster and which
+responses were marked not timely. It helps a bank risk or operations analyst
+decide which complaint patterns to check first against internal data.
 
 **[Open the live dashboard](https://duckky153.github.io/consumer-complaint-operations/)**
+·
+**[Tableau version](https://github.com/Duckky153/consumer-complaint-operations/releases/tag/tableau-2026-09-19)**
 ·
 **[View the quality workflow](https://github.com/Duckky153/consumer-complaint-operations/actions/workflows/ci.yml)**
 
 ![Consumer Complaint Operations Dashboard](evidence/screenshots/desktop-1440.jpg)
 
-## Finalized Tableau portfolio delivery
+- **84,194 complaints:** every published 2025 CFPB complaint about checking or
+  savings accounts in one pinned snapshot, not a sample.
+- **One issue leads:** `Managing an account` has 44,959 complaints (53.4%).
+- **January spike explained:** two company and issue pairs account for 11,444
+  of January's 18,367 complaints. Without them, January has 6,923.
+- **Checked:** 26 automated tests, 20 delivery checks, and 11 comparisons
+  between source SQL and the packaged Tableau data pass.
 
-The local Salesforce JR358388 extension is complete: two Tableau dashboards with verified data, readable controls, January sensitivity and repeatable reset. Start with the [packaged workbook](<tableau/Consumer Complaint Operations.twbx>) and [five-minute walkthrough](delivery/TABLEAU-WALKTHROUGH.md). [Final build state](delivery/BUILD-STATE.md) records the release and checks. The live web dashboard above is the existing web delivery; the Tableau extension is provided as a downloadable workbook.
+Built with AI assistance (OpenAI Codex). See the
+[AI-assistance disclosure](delivery/ai-assistance.md).
+
+> This is an independent personal project. The CFPB and the companies
+> represented in the data did not commission, sponsor, review, or endorse it.
+
+The project is deliberately small: one Python pipeline, one SQLite database,
+one set of SQL metric views, and one static dashboard. The business case,
+requirements, quality controls, tests, limitations, and handoff notes are in
+[`delivery/`](delivery/).
 
 ## Business decision
 
@@ -70,6 +80,37 @@ These are external complaint and response indicators. They do not measure a
 company's complete case inventory, staffing demand, defect rate, or consumer
 harm because internal denominators and workflow outcomes are unavailable.
 
+## Tableau version
+
+The same 84,194 complaints are also available as a Tableau workbook with two
+dashboards, Overview and Investigation. Five shared controls (account type,
+issue, company, month, and January sensitivity) apply to both pages, and one
+Reset view control restores all five.
+
+![Tableau Overview dashboard](evidence/screenshots/tableau-readable/01-overview.png)
+
+To open it:
+
+1. Download `Consumer.Complaint.Operations.twbx` from the
+   [release page](https://github.com/Duckky153/consumer-complaint-operations/releases/tag/tableau-2026-09-19),
+   or use [`tableau/Consumer Complaint Operations.twbx`](<tableau/Consumer Complaint Operations.twbx>)
+   from this repository.
+2. Install the free Tableau Desktop Public Edition (Tableau Public).
+3. Open the `.twbx` file with File > Open. The data is packaged inside the
+   file, so it needs no data connection or Tableau account for local use.
+
+The workbook uses a ten-field extract with no complaint IDs or narratives. Its
+packaged data matches source SQL in 11 checks. Native checks in Tableau Public
+2026.2.2 (filters, both January modes, cross-page state, reset, and small,
+empty and Unknown groups) are recorded with 15 screenshots in
+[`evidence/native-tableau-readability-verification.json`](evidence/native-tableau-readability-verification.json).
+
+More detail: [walkthrough](delivery/TABLEAU-WALKTHROUGH.md),
+[manual rebuild guide](delivery/TABLEAU-REBUILD-GUIDE.md),
+[architecture](delivery/TABLEAU-ARCHITECTURE.md),
+[field dictionary](delivery/TABLEAU-DATA-DICTIONARY.md), and
+[build record](delivery/BUILD-STATE.md).
+
 ## Architecture
 
 ```mermaid
@@ -91,7 +132,7 @@ The public site is a read-only snapshot.
 Requirements:
 
 - Python 3.12
-- Node.js only for the JavaScript syntax check
+- Node.js for the JavaScript syntax and browser checks
 - SQLite 3 for optional command-line inspection
 
 ```bash
@@ -99,12 +140,16 @@ python3.12 -m venv .venv
 .venv/bin/pip install -e '.[dev]'
 .venv/bin/python scripts/build_dashboard.py
 .venv/bin/pytest
+.venv/bin/python scripts/verify_delivery.py
 node --check docs/app.js
 node --check docs/dashboard-data.js
 npm ci
 npx playwright install chromium
 npm run test:browser
 ```
+
+With [uv](https://docs.astral.sh/uv/), run `uv sync --locked --extra dev` and
+prefix the Python commands with `uv run --locked` instead.
 
 Then double-click [`docs/index.html`](docs/index.html). Metrics, charts, and all
 four filters work directly in Chrome without a local server.
@@ -131,6 +176,25 @@ To run the pipeline without network access, pass a CFPB-format CSV:
 .venv/bin/python scripts/build_dashboard.py --source tests/fixtures/complaints.csv
 ```
 
+### Rebuild the Tableau files
+
+The Tableau steps read the pinned source CSV at
+`data/raw/complaints_2025_checking_savings.csv` (SHA-256
+`964912efdcfe70f2376591d40781f64832e879c73ff7d629fdadb6115541053b`). That file
+is not stored in Git. A new live fetch can differ from the pinned snapshot,
+because the CFPB can correct or remove records, so these steps stop when the
+hash does not match.
+
+```bash
+.venv/bin/python -m complaint_ops.tableau
+.venv/bin/python -m complaint_ops.hyper
+.venv/bin/python -m complaint_ops.workbook
+.venv/bin/python scripts/verify_tableau.py
+```
+
+Rebuilt workbook files can differ byte for byte from the released workbook, so
+a new release needs new native Tableau checks.
+
 ## Delivery record
 
 - [Business case and intended user](delivery/business-case.md)
@@ -155,24 +219,3 @@ in this repository's documentation and evidence files.
 Project code and original documentation are MIT licensed. The CFPB source data
 is published under CC0. Chart.js 4.5.1 is vendored under its MIT license; see
 [`THIRD_PARTY_NOTICES.md`](THIRD_PARTY_NOTICES.md).
-
-## Salesforce Tableau extension — local delivery
-
-The supporting Tableau project for Salesforce JR358388 now includes **Overview** and **Investigation** dashboards, five shared cohort controls, both January sensitivity modes and repeatable reset. The original web dashboard remains unchanged.
-
-Open [Consumer Complaint Operations.twbx](tableau/Consumer%20Complaint%20Operations.twbx) locally in Tableau. The [editable TWB](tableau/Consumer%20Complaint%20Operations.twb) uses the companion generated Hyper. The package includes its own Hyper and was reopened independently in native Tableau.
-
-Start with the [walkthrough](delivery/TABLEAU-WALKTHROUGH.md), [manual rebuild guide](delivery/TABLEAU-REBUILD-GUIDE.md), [architecture](delivery/TABLEAU-ARCHITECTURE.md) and [current build/evidence record](delivery/BUILD-STATE.md). This is AI-assisted portfolio work; personal rehearsal is separate.
-
-26 automated tests pass; 11 packaged-data/source-SQL scopes and full row multiplicities reconcile. Native filters, sensitivity, cross-page scope, reset and edge states are recorded in [native evidence](evidence/native-tableau-readability-verification.json). The final workbook is available from this repository; source CSVs and complaint IDs remain excluded.
-
-```sh
-uv sync --locked --extra dev
-uv run --locked python -m complaint_ops.tableau
-uv run --locked python -m complaint_ops.hyper
-uv run --locked python -m complaint_ops.workbook
-uv run --locked python scripts/verify_tableau.py
-uv run --locked pytest -q
-```
-
-The pinned source must already be present locally. The [September19 readiness review](delivery/2026-09-19-ROLE-READINESS-REVIEW.md) records the pre-build gaps; BUILD-STATE is the current status.
