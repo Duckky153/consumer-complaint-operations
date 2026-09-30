@@ -16,7 +16,7 @@ uv run --locked pytest -q
 npm run test:browser
 ```
 
-For a fresh checkout, browser testing additionally needs Node.js and the pinned browser dependencies: run `npm ci` and `npx playwright install chromium` before `npm run test:browser`. These are local test dependencies, not a browser-control MCP.
+For a fresh checkout, browser testing additionally needs Node.js and the pinned browser dependencies: run `npm ci` and `npx playwright install chromium` before `npm run test:browser`. These are local test dependencies.
 
 The first command installs this project's locked dependencies. The next three create the minimized CSV, Hyper and TWB/TWBX. The verifier compares the packaged data against source SQL; pytest checks contracts and failure cases. The browser command tests the preserved web dashboard. Native GUI verification is a separate gate described below. Hyper and ZIP bytes can change on rebuild; rebind native evidence to the actual release hash, not an older receipt.
 
@@ -62,7 +62,7 @@ In the editor, insert parameter fields from the Parameters pane to disambiguate 
 
 Create Selected complaints as `ZN(SUM(IF [Selected cohort] THEN [complaint_count] ELSE 0 END))`. Repeat with not_timely and has_relief for Selected not timely and Selected relief. Change rates to divide those selected aggregates by Selected complaints, only when that denominator is greater than zero. These conditional aggregates preserve a visible zero result.
 
-Use Selected cohort=True on monthly, issue and sub-issue breakdowns. **Do not add that row filter to KPI, selection-note or reset sheets.** Otherwise zero matches can erase the note/reset. Show a text note when selected count is zero, warn below30, and explain the denominator otherwise. Add a small-group star to issue/sub-issue labels below30; it is a communication threshold, not a significance test.
+Use Selected cohort=True on monthly, issue and sub-issue breakdowns. **Do not add that row filter to KPI, selection-note or reset sheets.** Otherwise zero matches can erase the note/reset. Show a text note when selected count is zero, warn below 30, and explain the denominator otherwise. Add a small-group star to issue/sub-issue labels below 30; it is a communication threshold, not a significance test.
 
 ## Assemble two pages
 
@@ -82,6 +82,6 @@ Do not create separate parameters per page: both pages must use the same five ob
 
 Use File → Save As for a local Tableau Packaged Workbook (.twbx), not Save to Tableau Public. Package the Hyper. Copy the TWBX to a separate directory and open it there. Confirm the source is its extracted Data/tableau-complaints.hyper, then check the values in the package evidence table.
 
-Native acceptance: baseline; Managing an account; June; Capital One + Managing an account; Checking + Managing an account; both January modes; a company with fewer than30 complaints; zero matches; Unknown sub-issue; cross-page continuity; repeated reset. Baseline must return to84,194 /609 /12,977. No percentage should appear for an empty denominator. Capture the final workbook/package hashes and screenshots only after the final build.
+Native acceptance: baseline; Managing an account; June; Capital One + Managing an account; Checking + Managing an account; both January modes; a company with fewer than 30 complaints; zero matches; Unknown sub-issue; cross-page continuity; repeated reset. Baseline must return to 84,194 / 609 / 12,977. No percentage should appear for an empty denominator. Capture the final workbook/package hashes and screenshots only after the final build.
 
 Use [Tableau's parameter guide](https://help.tableau.com/current/pro/desktop/en-us/parameters_create.htm) and [parameter-action guide](https://help.tableau.com/current/pro/desktop/en-us/actions_parameters.htm) for the editor dialogs. Window → Presentation Mode hides authoring panels for the walkthrough.

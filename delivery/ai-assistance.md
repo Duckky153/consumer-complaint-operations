@@ -2,7 +2,7 @@
 
 ## Plain disclosure
 
-This was an AI-assisted personal portfolio build. Dakshit Raj acted as the
+This was an AI-assisted personal project. Dakshit Raj acted as the
 project owner. OpenAI Codex performed substantial research,
 implementation, documentation, and test-authoring work under Dakshit's stated
 constraints and approval gates.
@@ -39,12 +39,12 @@ understanding, verifying, and presenting the finished work.
 - detected the prototype's 80-row API maximum-date boundary discrepancy and
   changed the query rather than hiding the failure;
 - refreshed the project to the latest complete 2025 calendar year, profiled
-  the January volume anomaly, and implemented the owner's requested review
+  the January volume anomaly, and implemented the requested review
   corrections; and
 - diagnosed the direct-file Chrome handoff failure, replaced the blocked JSON
   fetch with a generated local data asset, and added requirement-linked
   regression evidence;
-- performed a chart-completeness audit after the owner's visual feedback,
+- performed a chart-completeness audit after visual review feedback,
   replaced misleading count scales with published-volume shares where appropriate,
   exposed all month labels and units, added filter-aware sub-issue analysis,
   and reconciled the rendered chart dimensions to SQLite;
@@ -67,17 +67,12 @@ The implementation followed a controlled sequence:
 6. Tests and independent runtime checks were used to verify AI-produced work.
 7. Public actions were withheld for explicit approval.
 
-## September 19 review
+## Tableau version, September 19, 2026
 
-Codex reviewed the project, added the missing company/issue reconciliation and regression test, ran local tests and documented remaining Tableau delivery gates. No native CCO workbook is claimed.
-
-## Tableau delivery — September 19
-
-Following the owner's plan/build/test/review instruction, Codex built the typed Hyper export, explicit Tableau workbook generator and package verifier; authored artifact/provenance tests and the manual rebuild, architecture and walkthrough documents; and operated native Tableau to verify the final package. A separate read-only review agent identified the CSV/Hyper binding gap, which was repaired and regression-tested. Patterns from an earlier verified Tableau workbook were reused.
+Codex added the missing company/issue reconciliation and regression test, then built the typed Hyper export, explicit Tableau workbook generator and package verifier; authored artifact/provenance tests and the manual rebuild, architecture and walkthrough documents; and operated native Tableau to verify the final package. A separate read-only review agent identified the CSV/Hyper binding gap, which was repaired and regression-tested. Patterns from an earlier verified Tableau workbook were reused.
 
 The native Tableau checks were run by the AI agent. They are not evidence that Dakshit built the workbook by hand. No customer deployment or measured benefit is claimed.
 
+### Readability correction
 
-## September 19, 2026 — readability correction
-
-Owner reported poor readability. AI revised layout, typography and control readbacks, investigated native parameter formatting, and operated Tableau to test the exact final package. Independent AI source/visual review identified January-context and label-wrap issues, repaired before final acceptance.
+After review found the first layout hard to read, AI revised layout, typography and control readbacks, investigated native parameter formatting, and operated Tableau to test the exact final package. Independent AI source/visual review identified January-context and label-wrap issues, repaired before final acceptance.

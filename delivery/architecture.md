@@ -13,7 +13,7 @@ flowchart TD
     G --> H["Requirement-linked tests"]
     H --> I["Local browser, accessibility, and visual gates"]
     I --> J["Client-ready evidence and handoff"]
-    J --> K{"Owner approval?"}
+    J --> K{"Publication approved?"}
     K -- "No" --> L["Remain local"]
     K -- "Yes" --> M["Create public repository and deploy Pages"]
     M --> N["Verify public source, CI, site, and links"]

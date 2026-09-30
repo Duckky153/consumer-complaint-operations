@@ -4,7 +4,7 @@
 
 Pinned sanitized CFPB CSV → Python quality/normalization → ten-field CSV → typed Hyper extract → two-page Tableau workbook. SQLite independently computes source metrics. A verifier extracts the packaged Hyper into a temporary directory and checks 11 source cohorts plus every CSV row and its multiplicity. The TWBX contains exactly the TWB and Hyper. The editable standalone TWB refers to `../data/processed/tableau-complaints.hyper`.
 
-One complaint is one observation. IDs are validated only in the local source pipeline; none are included in CSV/Hyper/TWBX. Narratives, ZIP/state, tags, channels, raw responses and routing intervals are excluded. Dates, issue/category/company labels and aggregate flags remain. Packaging is not anonymization or access control: recipients of a TWBX can inspect its included data. Distribution requires a separate owner decision.
+One complaint is one observation. IDs are validated only in the local source pipeline; none are included in CSV/Hyper/TWBX. Narratives, ZIP/state, tags, channels, raw responses and routing intervals are excluded. Dates, issue/category/company labels and aggregate flags remain. Packaging is not anonymization or access control: recipients of a TWBX can inspect its included data.
 
 Five string parameters select account type, issue, company, month and sensitivity globally. All summary calculations condition on the same Selected cohort predicate. Breakdown sheets additionally filter that predicate to True. Summary/note/reset sheets retain source rows so a zero-match selection still renders zero counts, undefined rates, a message and a working reset. Reset changes all five parameters and clears its own selected mark, making repeat use possible.
 

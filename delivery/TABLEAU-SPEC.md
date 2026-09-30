@@ -1,4 +1,4 @@
-# CCO Tableau extension — implementation specification
+# CCO Tableau version: implementation specification
 
 September 19, 2026. This specification adds a Tableau version to the existing web project. The web project remains the reference; this is an additive Tableau delivery.
 
@@ -10,7 +10,7 @@ A financial-services operations analyst uses public complaints to choose a quest
 
 Use the existing sanitized 2025 checking/savings snapshot: 84,194 rows; SHA-256 `964912efdcfe70f2376591d40781f64832e879c73ff7d629fdadb6115541053b`. Its retained manifest describes extraction July 29, 2026 UTC. This is a pinned historical snapshot, not a new API extraction. Keep the snapshot byte-identical; generate independent worktree outputs.
 
-One observation per complaint. Complaint ID is for local uniqueness checks only, excluded from Tableau. Export only date/month, account type, issue/sub-issue, company label, complaint count, not-timely flag, relief flag and a documented January-cluster flag. Preserve unknown sub-issues as an explicit label. Do not include consumer narratives, ZIP, state, tags, submission channel, raw company response, routing dates/hours or contact details. Publish neither row data nor workbook without separate authorization.
+One observation per complaint. Complaint ID is for local uniqueness checks only, excluded from Tableau. Export only date/month, account type, issue/sub-issue, company label, complaint count, not-timely flag, relief flag and a documented January-cluster flag. Preserve unknown sub-issues as an explicit label. Do not include consumer narratives, ZIP, state, tags, submission channel, raw company response, routing dates/hours or contact details.
 
 ## Compact Tableau scope
 
@@ -24,7 +24,7 @@ These are two compact pages, not four separate dashboards. The monthly view is p
 
 Complaint count is selected rows. Not timely means the dedicated timely-response field equals No. Relief means closed with monetary or non-monetary relief; it is response mix, not customer success or fault. Rates use selected complaint count; never average group percentages. Preserve the original known-value quality contract and document any unknown handling explicitly.
 
-Reconcile source, SQL, Tableau export and native workbook at baseline and at least three meaningful slices: Managing an account; June; a documented company/issue combination. Also test both January modes, zero matches, fewer than30 rows, unknown sub-issue, cross-page consistency and reset. Check January18367, leading two clusters11444, residual6923 against the actual source before using them. Distinguish source-time findings from current company conditions.
+Reconcile source, SQL, Tableau export and native workbook at baseline and at least three meaningful slices: Managing an account; June; a documented company/issue combination. Also test both January modes, zero matches, fewer than 30 rows, unknown sub-issue, cross-page consistency and reset. Check January 18,367, leading two clusters 11,444, residual 6,923 against the actual source before using them. Distinguish source-time findings from current company conditions.
 
 ## Delivery
 
@@ -40,6 +40,6 @@ Reconcile source, SQL, Tableau export and native workbook at baseline and at lea
 
 Do not call this update complete from generated XML, a passing test count or screenshots alone. Observe filters, sensitivity and reset in Tableau, reopen the package independently and check numbers. The build phase excluded fresh source extraction, Pages deployment, new accounts and paid services.
 
-## Subsequent distribution authorization
+## Distribution
 
-September 19, 2026: after finalization, the owner requested “Github and whatever else you have to do.” This authorizes publication of the reviewed project and minimized packaged Tableau workbook in the existing public repository and its downloadable release. Raw source CSVs and complaint IDs stay excluded. The original no-publication gate above describes the initial build phase.
+After finalization on September 19, 2026, the reviewed project and minimized packaged Tableau workbook were published in this repository and its downloadable release. Raw source CSVs and complaint IDs stay excluded.
