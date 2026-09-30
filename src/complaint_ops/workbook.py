@@ -1,6 +1,6 @@
 """Editable CCO workbook specification. Native acceptance is recorded separately.
 
-The explicit Tableau XML layout reuses the locally verified hotel project's
+The explicit Tableau XML layout reuses a previously verified Tableau
 parameter/reset pattern; it is not a substitute for opening the final package.
 """
 from __future__ import annotations

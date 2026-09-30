@@ -2,20 +2,20 @@
 
 ## Plain disclosure
 
-This was an AI-assisted personal portfolio build. Dakshit Raj acted as the
+This was an AI-assisted personal project. Dakshit Raj acted as the
 project owner. OpenAI Codex performed substantial research,
 implementation, documentation, and test-authoring work under Dakshit's stated
 constraints and approval gates.
 
 It would be inaccurate for Dakshit to claim that he manually wrote every line
 of code. It is accurate to say that he defined the desired outcome, stack,
-scope, delivery standard, prohibited features, privacy boundary, publication
-gate, and resume gate; set the project requirements; and is responsible for reviewing,
+scope, delivery standard, prohibited features, privacy boundary, and publication
+gate; set the project requirements; and is responsible for reviewing,
 understanding, verifying, and presenting the finished work.
 
 ## Dakshit's contribution
 
-- identified the career and portfolio outcome;
+- identified the project outcome;
 - required a business-first rather than chart-first project;
 - selected the CFPB domain and required stack;
 - required requirements, acceptance criteria, quality controls, tests,
@@ -24,7 +24,7 @@ understanding, verifying, and presenting the finished work.
   machine learning, authentication, and chat features;
 - set the local-first and one-approval publication gate;
 - required a truthful personal/AI contribution split; and
-- retains final authority over publication, deployment, and resume changes.
+- retains final authority over publication and deployment.
 
 ## AI contribution
 
@@ -34,23 +34,22 @@ understanding, verifying, and presenting the finished work.
 - implemented the Python/pandas ingestion and normalization pipeline;
 - implemented data-quality checks, SQLite metric views, dashboard-data build,
   HTML/CSS/JavaScript interface, and Chart.js visualizations;
-- wrote tests, CI configuration, documentation, demo material, and private
-  career-preparation material;
+- wrote tests, CI configuration, documentation, and demo material;
 - ran the live source extraction;
 - detected the prototype's 80-row API maximum-date boundary discrepancy and
   changed the query rather than hiding the failure;
 - refreshed the project to the latest complete 2025 calendar year, profiled
-  the January volume anomaly, and implemented the owner's requested review
+  the January volume anomaly, and implemented the requested review
   corrections; and
 - diagnosed the direct-file Chrome handoff failure, replaced the blocked JSON
   fetch with a generated local data asset, and added requirement-linked
   regression evidence;
-- performed a chart-completeness audit after the owner's visual feedback,
+- performed a chart-completeness audit after visual review feedback,
   replaced misleading count scales with published-volume shares where appropriate,
   exposed all month labels and units, added filter-aware sub-issue analysis,
   and reconciled the rendered chart dimensions to SQLite;
 - ran three independent adversarial audits of operational value, analytical
-  validity, and recruiter relevance; removed the CFPB-routing KPI, reframed
+  validity, and audience relevance; removed the CFPB-routing KPI, reframed
   the product as an external diagnostic, decomposed January's two dominant
   clusters, replaced the company leaderboard, and added a small-base
   interpretation guardrail; and
@@ -66,47 +65,14 @@ The implementation followed a controlled sequence:
 4. The real data was allowed to fail the first quality gate.
 5. Failures were investigated and documented.
 6. Tests and independent runtime checks were used to verify AI-produced work.
-7. Public actions were withheld for explicit approval; private interview and
-   resume-preparation material was excluded from the public repository.
+7. Public actions were withheld for explicit approval.
 
-## Interview-safe wording
+## Tableau version, September 19, 2026
 
-> I developed this project with substantial AI assistance. I defined the user, business outcome,
-> requirements, stack, privacy boundary, acceptance criteria, and release
-> gates. AI accelerated implementation and documentation. The project includes
-> source checks, SQL reconciliation and automated tests. I do not claim I typed
-> every line manually.
+Codex added the missing company/issue reconciliation and regression test, then built the typed Hyper export, explicit Tableau workbook generator and package verifier; authored artifact/provenance tests and the manual rebuild, architecture and walkthrough documents; and operated native Tableau to verify the final package. A separate read-only review agent identified the CSV/Hyper binding gap, which was repaired and regression-tested. Patterns from an earlier verified Tableau workbook were reused.
 
-Use this as preparation wording. Claims about independently explaining or
-rebuilding the work require an observed owner walkthrough first.
+The native Tableau checks were run by the AI agent. They are not evidence that Dakshit built the workbook by hand. No customer deployment or measured benefit is claimed.
 
-September 19 review: Codex reviewed role readiness, added the missing company/issue
-reconciliation and regression test, ran local tests and documented remaining
-Tableau delivery gates. No native CCO workbook or owner mastery is claimed.
+### Readability correction
 
-## Required owner understanding
-
-Dakshit should be able to:
-
-- run the build and tests;
-- explain every KPI denominator;
-- trace a dashboard value to a SQL view;
-- explain why narratives and ZIP codes are excluded;
-- explain the inclusive API maximum-date correction;
-- explain why January 2025 is retained as a warning rather than deleted or
-  called seasonal;
-- state why company counts are not rankings;
-- describe what AI did; and
-- explain the architecture, metrics, findings, tests, and limitations without
-  claiming unsupported manual authorship.
-
-## Tableau delivery — September 19
-
-Following the owner's plan/build/test/review instruction, Codex built the typed Hyper export, explicit Tableau workbook generator and package verifier; authored artifact/provenance tests and the manual rebuild, architecture and walkthrough documents; and operated native Tableau to verify the final package. A separate read-only review agent identified the CSV/Hyper binding gap, which was repaired and regression-tested. Existing verified hotel workbook patterns were reused without changing that project.
-
-Native verification belongs to the operator's evidence record. It is not evidence that Dakshit has independently authored, rebuilt or mastered Tableau. No customer deployment, measured benefit or employer exercise is claimed.
-
-
-## September 19, 2026 — readability correction
-
-Owner reported poor readability. AI revised layout, typography and control readbacks, investigated native parameter formatting, and operated Tableau to test the exact final package. Independent AI source/visual review identified January-context and label-wrap issues, repaired before final acceptance. No personal mastery claim.
+After review found the first layout hard to read, AI revised layout, typography and control readbacks, investigated native parameter formatting, and operated Tableau to test the exact final package. Independent AI source/visual review identified January-context and label-wrap issues, repaired before final acceptance.

@@ -1,6 +1,6 @@
 # CCO — discovery and five-minute Tableau walkthrough
 
-This is the supporting portfolio project for Salesforce JR358388. Hotel Booking Decision Studio is the flagship. This is an independent public-data investigation, not a Salesforce/customer deployment or an employer-assigned exercise.
+This is an independent public-data investigation, not a customer deployment.
 
 ## Open and orient
 
@@ -28,12 +28,12 @@ Close: “This identifies where to ask better questions. It cannot establish a c
 4. Reset. Choose TRUEBILL, INC: 2 complaints, 0 not timely, 1 relief response. The small-base warning explains why 50% relief mix is fragile. Choose an impossible combination to show zero counts and undefined (blank) rates, not a misleading 0%.
 5. Reset again. Explain the ten-field allowlist and fixed cluster flag, then state the refresh and sharing boundaries from TABLEAU-ARCHITECTURE.md.
 
-## Questions to be able to answer
+## Common questions
 
 - Why SUM(flags)/SUM(complaint_count), not AVG(group rates)? Groups have different denominators.
 - Why retain January? Its concentration is a question to investigate; removing original observations would hide evidence.
 - Why no company leaderboard? Customer/transaction exposure is absent.
 - Why no live integration? The implemented artifact is a pinned local extract; enterprise architecture is a proposal requiring discovery and separate access authorization.
-- What did AI do? Codex substantially implemented and tested the pipeline/workbook/docs. Personal hands-on understanding must be demonstrated separately.
+- What did AI do? Codex substantially implemented and tested the pipeline, workbook and documentation. See the [AI-assistance disclosure](ai-assistance.md).
 
-No rehearsal result is claimed. Use the rebuild guide to make the walkthrough personally defensible.
+The [manual rebuild guide](TABLEAU-REBUILD-GUIDE.md) shows how to build the main sheets, controls and reset by hand.

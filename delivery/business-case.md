@@ -33,10 +33,9 @@ analyst should be able to identify a high-volume intake category, examine its
 sub-issues and response signals, and define the internal evidence needed for
 root-cause investigation.
 
-**Repository audience:** a recruiter or interviewer assessing whether the
-builder can connect a business outcome to requirements, data controls, simple
-architecture, tests, analysis, and a client-ready handoff. The recruiter is
-not a product user.
+**Repository audience:** a reviewer checking how the project connects a
+business outcome to requirements, data controls, simple architecture, tests,
+analysis, and a client-ready handoff. The reviewer is not a product user.
 
 ## Intended outcome
 
@@ -60,4 +59,4 @@ Success is not a polished chart alone. The project succeeds when:
 - the public artifact minimizes exposed complaint fields;
 - requirement-linked tests pass;
 - analytical limitations are visible; and
-- the owner can explain the project without claiming work he did not perform.
+- the AI-assisted build is disclosed plainly.

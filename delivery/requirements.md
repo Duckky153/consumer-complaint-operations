@@ -119,8 +119,8 @@ Acceptance criteria:
 
 ## R6 — Verified delivery and client-ready handoff
 
-**User need:** As a recruiter or interviewer, I need evidence that the work was
-specified, tested, visually checked, and explainable.
+**User need:** As a reviewer of the repository, I need evidence that the work
+was specified, tested, visually checked, and explainable.
 
 Acceptance criteria:
 
@@ -136,7 +136,7 @@ Acceptance criteria:
   recommendations, delivery evidence, AI disclosure, a two-minute demo,
   and a privacy-clean public handoff.
 - **R6-AC6:** Repository creation and deployment occur only after recorded
-  owner approval and retain a verifiable publication sequence.
+  approval and retain a verifiable publication sequence.
 - **R6-AC7:** Opening `docs/index.html` directly in Chrome loads the verified
   data, metrics, and filter choices without requiring a local HTTP server; the
   same static files also work when served over HTTP.

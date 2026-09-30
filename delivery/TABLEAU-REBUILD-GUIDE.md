@@ -1,10 +1,10 @@
 # Rebuild and explain CCO in Tableau
 
-There are two distinct exercises: reproduce the verified software, and manually rebuild an analysis to demonstrate your own understanding. Neither exercise requires publishing or creating an account.
+There are two separate tasks: reproduce the verified software, and rebuild the analysis by hand in Tableau. Neither requires publishing or creating an account.
 
 ## Reproduce the release
 
-From the owned salesforce-tableau checkout, with the pinned sanitized CSV already present:
+From a checkout of this repository, with the pinned sanitized CSV already present:
 
 ```sh
 uv sync --locked --extra dev
@@ -16,7 +16,7 @@ uv run --locked pytest -q
 npm run test:browser
 ```
 
-For a fresh checkout, browser testing additionally needs Node.js and the pinned browser dependencies: run `npm ci` and `npx playwright install chromium` before `npm run test:browser`. These are local test dependencies, not a browser-control MCP.
+For a fresh checkout, browser testing additionally needs Node.js and the pinned browser dependencies: run `npm ci` and `npx playwright install chromium` before `npm run test:browser`. These are local test dependencies.
 
 The first command installs this project's locked dependencies. The next three create the minimized CSV, Hyper and TWB/TWBX. The verifier compares the packaged data against source SQL; pytest checks contracts and failure cases. The browser command tests the preserved web dashboard. Native GUI verification is a separate gate described below. Hyper and ZIP bytes can change on rebuild; rebind native evidence to the actual release hash, not an older receipt.
 
@@ -30,7 +30,7 @@ Never run the original web builder's live extraction command to reproduce this p
 4. Create `Not timely rate` as `IF SUM([complaint_count]) > 0 THEN SUM([not_timely])/SUM([complaint_count]) END`. Format as percentage, two decimals. Explain why it is 0.72% overall. Repeat with `has_relief` for relief mix (15.41%).
 5. Build a simple issue count bar sheet. On a separate sheet place `sub_issue` on Rows and count/rate on Text. Missing source sub-issues are the explicit category Unknown. Do not combine similar category labels.
 
-Stop and explain the grain, numerator and denominator before proceeding. This is a practice checkpoint, not a completed assessment.
+Check the grain, numerator and denominator before continuing.
 
 ## Rebuild the five shared controls
 
@@ -62,7 +62,7 @@ In the editor, insert parameter fields from the Parameters pane to disambiguate 
 
 Create Selected complaints as `ZN(SUM(IF [Selected cohort] THEN [complaint_count] ELSE 0 END))`. Repeat with not_timely and has_relief for Selected not timely and Selected relief. Change rates to divide those selected aggregates by Selected complaints, only when that denominator is greater than zero. These conditional aggregates preserve a visible zero result.
 
-Use Selected cohort=True on monthly, issue and sub-issue breakdowns. **Do not add that row filter to KPI, selection-note or reset sheets.** Otherwise zero matches can erase the note/reset. Show a text note when selected count is zero, warn below30, and explain the denominator otherwise. Add a small-group star to issue/sub-issue labels below30; it is a communication threshold, not a significance test.
+Use Selected cohort=True on monthly, issue and sub-issue breakdowns. **Do not add that row filter to KPI, selection-note or reset sheets.** Otherwise zero matches can erase the note/reset. Show a text note when selected count is zero, warn below 30, and explain the denominator otherwise. Add a small-group star to issue/sub-issue labels below 30; it is a communication threshold, not a significance test.
 
 ## Assemble two pages
 
@@ -82,10 +82,6 @@ Do not create separate parameters per page: both pages must use the same five ob
 
 Use File → Save As for a local Tableau Packaged Workbook (.twbx), not Save to Tableau Public. Package the Hyper. Copy the TWBX to a separate directory and open it there. Confirm the source is its extracted Data/tableau-complaints.hyper, then check the values in the package evidence table.
 
-Native acceptance: baseline; Managing an account; June; Capital One + Managing an account; Checking + Managing an account; both January modes; a company with fewer than30 complaints; zero matches; Unknown sub-issue; cross-page continuity; repeated reset. Baseline must return to84,194 /609 /12,977. No percentage should appear for an empty denominator. Capture the final workbook/package hashes and screenshots only after the final build.
+Native acceptance: baseline; Managing an account; June; Capital One + Managing an account; Checking + Managing an account; both January modes; a company with fewer than 30 complaints; zero matches; Unknown sub-issue; cross-page continuity; repeated reset. Baseline must return to 84,194 / 609 / 12,977. No percentage should appear for an empty denominator. Capture the final workbook/package hashes and screenshots only after the final build.
 
 Use [Tableau's parameter guide](https://help.tableau.com/current/pro/desktop/en-us/parameters_create.htm) and [parameter-action guide](https://help.tableau.com/current/pro/desktop/en-us/actions_parameters.htm) for the editor dialogs. Window → Presentation Mode hides authoring panels for the walkthrough.
-
-## Personal teach-back gate
-
-Without reading a script, explain the selected grain, both rate definitions, fixed January flag, why company counts are not rates, one SQL trace, empty-state behavior and AI contribution. Rebuild one sheet and one calculation, then diagnose an intentionally wrong denominator. Record only observed results; this release does not certify personal mastery.

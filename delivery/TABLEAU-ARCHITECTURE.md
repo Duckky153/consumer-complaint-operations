@@ -4,7 +4,7 @@
 
 Pinned sanitized CFPB CSV → Python quality/normalization → ten-field CSV → typed Hyper extract → two-page Tableau workbook. SQLite independently computes source metrics. A verifier extracts the packaged Hyper into a temporary directory and checks 11 source cohorts plus every CSV row and its multiplicity. The TWBX contains exactly the TWB and Hyper. The editable standalone TWB refers to `../data/processed/tableau-complaints.hyper`.
 
-One complaint is one observation. IDs are validated only in the local source pipeline; none are included in CSV/Hyper/TWBX. Narratives, ZIP/state, tags, channels, raw responses and routing intervals are excluded. Dates, issue/category/company labels and aggregate flags remain. Packaging is not anonymization or access control: recipients of a TWBX can inspect its included data. Distribution requires a separate owner decision.
+One complaint is one observation. IDs are validated only in the local source pipeline; none are included in CSV/Hyper/TWBX. Narratives, ZIP/state, tags, channels, raw responses and routing intervals are excluded. Dates, issue/category/company labels and aggregate flags remain. Packaging is not anonymization or access control: recipients of a TWBX can inspect its included data.
 
 Five string parameters select account type, issue, company, month and sensitivity globally. All summary calculations condition on the same Selected cohort predicate. Breakdown sheets additionally filter that predicate to True. Summary/note/reset sheets retain source rows so a zero-match selection still renders zero counts, undefined rates, a message and a working reset. Reset changes all five parameters and clears its own selected mark, making repeat use possible.
 
@@ -20,9 +20,9 @@ A future refresh needs a separately approved snapshot: preserve the old source/e
 
 For enterprise use, first establish a source owner, refresh cadence, recipient roles and access model. Then evaluate governed Tableau Server/Cloud publishing, secure connections, certified data definitions, failed-refresh notifications and permission tests. These are proposed capabilities, not implemented project features. A package is suitable for this local portfolio demonstration; it is not a substitute for governed production distribution.
 
-## Salesforce discussion
+## CRM integration considerations
 
-The captured role asks for hands-on Tableau, CRM Analytics or Tableau Next experience and customer data architecture. This project demonstrates local Tableau analysis, SQL/data modeling and evidence-based discovery. It does not claim CRM Analytics, Tableau Next, Agentforce or customer-environment integration.
+This project demonstrates local Tableau analysis, SQL/data modeling and evidence-based discovery. It does not include CRM integration, AI features or a customer-environment deployment.
 
 If a customer wanted CRM context, first agree on complaint-to-case matching, lawful source use, internal transaction/customer denominators, historical timing and access controls. Relate or aggregate data at explicit grains to prevent one public complaint from multiplying through one-to-many case/activity joins. Validate unmatched and multiple-match records separately. Choose products after discovery of workflow, users, governance and latency; do not assume every Tableau use case needs a CRM writeback or AI feature.
 

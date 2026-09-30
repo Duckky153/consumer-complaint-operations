@@ -175,7 +175,7 @@
   "limitations": [
     "Local Tableau desktop presentation verified; no published/mobile Tableau experience claimed.",
     "Native compact dropdown text retains its native size; larger headings and selected-value readbacks accompany it. Very long choices can be inspected in the opened dropdown.",
-    "Software verification does not establish owner acceptance or personal mastery."
+    "Software verification does not establish visual acceptance by a person."
   ],
   "previous_release_receipt": "native-tableau-verification.json (historical artifact, not this revision)"
 }
