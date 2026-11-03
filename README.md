@@ -138,9 +138,7 @@ Requirements:
 ```bash
 python3.12 -m venv .venv
 .venv/bin/pip install -e '.[dev]'
-.venv/bin/python scripts/build_dashboard.py
 .venv/bin/pytest
-.venv/bin/python scripts/verify_delivery.py
 node --check docs/app.js
 node --check docs/dashboard-data.js
 npm ci
@@ -163,14 +161,30 @@ python3.12 -m http.server 8000 --directory docs
 
 Then open `http://localhost:8000`.
 
-The live pipeline fetches the exact query in
+The tests above run against the committed snapshot. To rebuild from the live
+API instead:
+
+```bash
+.venv/bin/python scripts/build_dashboard.py
+.venv/bin/python scripts/verify_delivery.py
+```
+
+The pipeline fetches the exact query in
 [`config/pipeline.json`](config/pipeline.json), writes a sanitized local CSV,
 creates SQLite views from [`sql/metrics.sql`](sql/metrics.sql), and regenerates
 [`docs/dashboard-data.js`](docs/dashboard-data.js). The generated file assigns
 the minimized snapshot to a browser variable before the application starts;
 there is no runtime data request.
 
-To run the pipeline without network access, pass a CFPB-format CSV:
+The CFPB revises its database, so a fresh fetch can differ from the published
+snapshot. On November 2, 2026 it returned 84,195 complaints, one more than the
+84,194 published here, so a rebuild overwrites `docs/dashboard-data.js` and the
+`evidence/` reports with the newer data, and the one test that pins 84,194 then
+fails. Rebuild to inspect the pipeline, not to reproduce the published numbers.
+
+To run the pipeline without network access, pass a CFPB-format CSV. The bundled
+fixture has 12 rows, so this checks that the pipeline runs, not the published
+numbers:
 
 ```bash
 .venv/bin/python scripts/build_dashboard.py --source tests/fixtures/complaints.csv
