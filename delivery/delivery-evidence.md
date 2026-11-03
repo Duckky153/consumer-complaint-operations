@@ -11,7 +11,8 @@
 Pages deployments are manual. The
 [deployment workflow](https://github.com/Duckky153/consumer-complaint-operations/actions/workflows/deploy-pages.yml)
 lists each deployment and its commit. The September 3, 2026 deployment
-published commit `d6a27ac`.
+published commit `95c7c6d`. The workflow runs predate a later history cleanup that
+rewrote commit hashes, so their pages show the earlier hash for this commit.
 
 ## Completion audit against the requested delivery
 
@@ -185,14 +186,14 @@ Reviewed screenshots:
 
 Rechecked on September 30, 2026: the live dashboard returns HTTP 200 over
 HTTPS, and its `index.html`, `app.js`, `styles.css`, and `dashboard-data.js`
-are byte-identical to the files at commit `d6a27ac`.
+are byte-identical to the files at commit `95c7c6d`.
 
 - Repository: https://github.com/Duckky153/consumer-complaint-operations
-- September 3, 2026 web release, commit `d6a27ac`:
+- September 3, 2026 web release, commit `95c7c6d` (the linked runs show the earlier hash, from before the history cleanup):
   push quality gate https://github.com/Duckky153/consumer-complaint-operations/actions/runs/33811452277
   and Pages deployment https://github.com/Duckky153/consumer-complaint-operations/actions/runs/33811467642.
   Both passed; the deployment ran a fresh quality job first.
-- September 19, 2026 Tableau release, commit `be25cad`:
+- September 19, 2026 Tableau release, commit `3f1110e` (the linked run shows the earlier hash, for the same reason):
   push quality gate https://github.com/Duckky153/consumer-complaint-operations/actions/runs/35480553724 passed.
 - Live dashboard:
   https://duckky153.github.io/consumer-complaint-operations/
@@ -209,4 +210,4 @@ Readability revision delivered. Final TWBX SHA-256 `01ed72476006210e4d898bc1aabb
 
 ## September 19, 2026 — finalization
 
-The unchanged readability release at software commit `841ec2b` passes fresh 26-test, 11-SQL-comparison and browser checks. Package integrity and native receipt/screenshot hashes verified. The workbook was then published in this repository and as release `tableau-2026-09-19` (commit `be25cad`). The live web dashboard files were not changed.
+The unchanged readability release at software commit `1f7379d` passes fresh 26-test, 11-SQL-comparison and browser checks. Package integrity and native receipt/screenshot hashes verified. The workbook was then published in this repository and as release `tableau-2026-09-19` (commit `3f1110e`). Both hashes are the ones after the later history cleanup; the checks ran before it. The live web dashboard files were not changed.

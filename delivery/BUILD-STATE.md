@@ -2,7 +2,7 @@
 
 Finalized September 19, 2026, 21:04 EDT. **The Tableau version is complete.** No remaining software blockers were identified. The workbook is published in this public repository and as the downloadable release [`tableau-2026-09-19`](https://github.com/Duckky153/consumer-complaint-operations/releases/tag/tableau-2026-09-19).
 
-Release software commit: `841ec2b`. Finalization preserves the exact native-tested workbook and packaged data. Fresh final checks: 26 tests, 11 source-SQL/package comparisons, browser regression suite, package integrity, and hashes of the workbook, Hyper and all 15 native screenshots pass. The final independent visual/source review remains applicable to this unchanged release.
+Release software commit: `1f7379d`. This is the hash after a later history cleanup that rewrote commit hashes; the checks below ran before the cleanup. Finalization preserves the exact native-tested workbook and packaged data. Fresh final checks: 26 tests, 11 source-SQL/package comparisons, browser regression suite, package integrity, and hashes of the workbook, Hyper and all 15 native screenshots pass. The final independent visual/source review remains applicable to this unchanged release.
 
 ## Readability revision
 
@@ -37,5 +37,5 @@ Next use: open the packaged workbook and follow the [walkthrough](TABLEAU-WALKTH
 
 ## Starting baseline
 
-- Starting point: GitHub `main` at `d6a27ac`, the published web dashboard.
+- Starting point: GitHub `main` at `95c7c6d` (hash after the later history cleanup), the published web dashboard.
 - Baseline tests: 16 passed. The source CSV matched its recorded SHA-256 and 84,194-row snapshot; no new extraction was run.
